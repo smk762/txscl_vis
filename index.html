@@ -25,7 +25,9 @@
 	<div id="bubbleLegend">
 		<img src="img/bubble_legend.gif" />
 		<ul>
-			<li id="label_0"><a href="#" class="sm_off" id="sendMany_btn" onclick="toggleSendMany()">SendMany is off</a></li>
+			<li id="toggle_bubleScale"><a href="#" class="s" id="bubbleScale_btn" style="opacity:0;" onclick="toggleBubbleScale()">Scale bubbles</a></li>
+			<li id="toggle_bubbles"><a href="#" class="bubbles_off" id="bubble_btn" style="opacity:0;" onclick="toggleBubble()">Bubbles on</a></li>
+			<li id="label_0"></li>
 			<li id="label_50"> 0-500 transactions</li>
 			<li id="label_100"> 1000 transactions</li>
 			<li id="label_200"> 2000 transactions</li>
@@ -33,7 +35,6 @@
 			<li id="label_400"> 4000 transactions</li>
 			<li id="label_500"> 5000 transactions</li>
 			<li id="label_600"> 6000 transactions</li>
-			<li id="label_5000"><a href="#" class="scale_off" id="bubbleScale_btn" onclick="toggleBubbleScale()">Scale bubbles down</a></li>
 	  </ul>
 	</div> 
 
@@ -77,13 +78,14 @@
 	<div class="statLabel" id="sendManyModeLabel">&nbsp;</div>
 	<div class="statLabel" id="clientCountLabel">&nbsp;</div>
 
-	<div class="statBorder" id="sendManyModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
 	<div class="statBorder" id="clientCountBorder" style="display: hidden; opacity:0;">&nbsp;</div>
 	<div class="statBorder" id="randomModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+	<div class="sm_buttton" id="" style="position: absolute; top: 310px; left: 140px; margin:auto;"><a href="#" class="sm_off" style="margin: auto; width: 130px; text-align:center" id="sendMany_btn" onclick="toggleSendMany()">Transaction mode</a></div>
 </div>
 
 <script src="colors.js"></script>
 <script src="global.js"></script>
+<script src="buttons.js"></script>
 <script src="bubbles.js"></script>
 <script src="speedo.js"></script>
 <script src="statusbars.js"></script>

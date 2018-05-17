@@ -125,11 +125,11 @@ updateStatusBar('numChainActive',0);
 
 
 function toggleSendMany() {
-    if (document.getElementById('sendMany_btn').innerHTML == "SendMany is off") {
+    if (document.getElementById('sendMany_btn').innerHTML == "Transaction mode") {
       sendMany_multiplier = 100;
       sendMany_state = 'on';
       legendLabelScale = 100;
-      document.getElementById('sendMany_btn').innerHTML = "SendMany is on";
+      document.getElementById('sendMany_btn').innerHTML = "Payments mode";
     //  updateStatusBar('sendManyMode', sendMany_multiplier);
       document.getElementById('label_50').innerHTML = " 0-"+50*legendLabelScale+" payments";
       document.getElementById('label_100').innerHTML = " "+100*legendLabelScale+" payments";
@@ -145,7 +145,7 @@ function toggleSendMany() {
       sendMany_multiplier = 1;
       sendMany_state = 'off';
       document.getElementById('sendManyModeLabel').innerHTML = "";
-      document.getElementById('sendMany_btn').innerHTML = "SendMany is off";
+      document.getElementById('sendMany_btn').innerHTML = "Transaction mode";
      // updateStatusBar('sendManyMode', sendMany_multiplier);
       document.getElementById('label_50').innerHTML = " 0-"+50*legendLabelScale+" transactions";
       document.getElementById('label_100').innerHTML = " "+100*legendLabelScale+" transactions";
@@ -157,6 +157,8 @@ function toggleSendMany() {
     document.getElementById("sendMany_btn").className = "sm_off"; 
     }
 }
+bubbles_off
+scale_off
 
 function limitToOne(val) {
   if (val > 1) {

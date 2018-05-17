@@ -54,7 +54,11 @@
 	padding-top: 41px;
 	font-size: 14px;
 }
-#label_5000 {
-	padding-top: 1px;
+#toggle_bubbles {
+	padding-top: 0px;
+	font-size: 14px;
+}
+#toggle_bubleScale {
+	padding-top: 0px;
 	font-size: 14px;
 }
