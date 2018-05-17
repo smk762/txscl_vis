@@ -1,0 +1,60 @@
+
+.bubble {
+	opacity: 0.75;	
+}
+#bubbleLegend img {
+	float:left;
+	padding: 5px;
+	padding-top: 50px;
+}
+#bubbleLegend ul {
+    list-style-type: none;
+    position:absolute;
+    right:20px;
+    padding-top: 30px;
+    width:200px;
+}
+#bubbleLegend li {
+	display: block;
+  font-family: verdana;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px #2D5A5A;
+  color: #DDD;
+  text-align: center;
+}
+#label_0 {
+	padding-top: 8px;
+	font-size: 14px;
+}
+#label_50 {
+	padding-top: 8px;
+	font-size: 14px;
+}
+#label_100 {
+	padding-top: 4px;
+	font-size: 14px;
+}
+#label_200 {
+	padding-top: 7px;
+	font-size: 14px;
+}
+#label_300 {
+	padding-top: 15px;
+	font-size: 14px;
+}
+#label_400 {
+	padding-top: 21px;
+	font-size: 14px;
+}
+#label_500 {
+	padding-top: 29px;
+	font-size: 14px;
+}
+#label_600 {
+	padding-top: 41px;
+	font-size: 14px;
+}
+#label_5000 {
+	padding-top: 1px;
+	font-size: 14px;
+}

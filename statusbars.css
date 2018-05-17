@@ -1,0 +1,153 @@
+.statLabel { 
+  position: absolute;
+  font-family: verdana;
+  color: #DDD;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px #2D5A5A;
+  display:block;
+  float:right;
+  width: 90%;
+  left:5%;
+  margin:auto;
+}
+.statLabel span {
+  margin:auto;
+  font-size: 12px !important;
+}
+.statBorder { 
+  margin:auto;
+  height:20px;
+  width:90%;
+  position: absolute;
+  display:block;
+  border: solid #000000 1px;
+  background: #FFF;
+  opacity: 0.2; 
+  overflow: visible;
+  left: 5%;
+  z-index: 60;
+}
+.statBar {
+  margin:auto;
+  height:20px;
+  position: absolute;
+  left: 5%;
+  display:block;
+  overflow: visible;
+  width: 1px;
+  border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  z-index: 50;
+}
+
+#numApiConnLabel {
+  top:20px;
+}
+#numApiConnBorder {
+  top:35px;
+}
+#numApiConnBar {
+  top:35px;
+  background-image: linear-gradient(to bottom, #ffd65e, #CE9A01);
+}
+
+#numChainActiveLabel {
+  top:60px;
+}
+#numChainActiveBorder {
+  top:75px;
+}
+#numChainActiveBar {
+  top:75px;
+  background-image: linear-gradient(to bottom, #4ba614, #005900);
+}
+
+#numBlockSolvedLabel {
+  top:100px;
+}
+#numBlockSolvedBorder {
+  top:115px;
+}
+#numBlockSolvedBar {
+  top:115px;
+  background-image: linear-gradient(to bottom, #49c0f0, #1a92c2);
+}
+
+#blockPerChainLabel {
+  top:140px;
+}
+#blockPerChainBorder {
+  top:155px;  
+
+}
+#blockPerChainBar {
+  top:155px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+
+#aveChainTXLabel {
+  top:180px;
+}
+#aveChainTXBorder {
+  top:195px;  
+
+}
+#aveChainTXBar {
+  top:195px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+
+
+
+#tx5minLabel {
+  top:220px;
+}
+#tx5minBorder {
+  top:235px;  
+
+}
+#tx5minBar {
+  top:235px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+
+
+
+
+#txPerBlockLabel {
+  top:260px;
+}
+#txPerBlockBorder {
+  top:275px;  
+
+}
+#txPerBlockBar {
+  top:275px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+
+#peakGlobalTXLabel {
+  top:300px;  
+  opacity:0;
+}
+#peakGlobalTXBorder {
+  top:315px;  
+  opacity:0;
+}
+#peakGlobalTXBar {
+  top:315px;  
+  opacity:0;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+#randomModeLabel {
+  top:380px;
+  color:red;
+  font-size: 20px;
+}
+#sendManyModeLabel {
+  top:420px;
+  color:red;
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+#chainCount {
+  position:absolute; 
+  right:-5px;
+  top:-5px;
+  width : 10%;
+  height  : 9%;
+  min-width: 150px;
+  min-height: 90px;
+  background: rgb(59, 104, 104); /* Fall-back for shit browsers */
+  background: rgba(59, 104, 104, .5);
+  border-radius: 10px 10px 0px 40px;
+  -moz-border-radius: 10px 10px 0px 40px;
+  -webkit-border-radius: 10px 10px 0px 40px;
+  border: 3px solid #2D5A5A;
+  text-align: center; display: block; 
+  color: yellow;
+  z-index: 20;
+}          
+
+#chainCount div {
+  display:block;
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  margin: auto;
+  width:90%;
+  height: 70%;
+  position: relative;
+  top: 10%
+}
+
+#chainCount span {
+  display:block;
+  font-weight: 900;
+  position:relative;
+}
+#connCount {
+  font-size: 1.8em;
+  text-shadow: 2px 2px 5px #D5E0E0;
+  color: #2D5A5A;
+}
+#connCountSub {
+  font-size: 0.8em;
+  text-shadow: 2px 2px 5px #2D5A5A;
+  color: #D5E0E0;
+}
+ 
+.amcharts-chart-div a {
+  opacity:0 !important;
+}
+.export-main {
+  opacity:0 !important;
+}

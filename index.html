@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="utf-8"> 
+
+<link rel="stylesheet" href="main.css" />
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="speedo.css" />
+<link rel="stylesheet" href="statusbars.css" />
+<link rel="stylesheet" href="hash_table.css" />
+<link rel="stylesheet" href="animations.css" />
+<link rel="stylesheet" href="bubbles.css" />
+
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+	<div id="bubbleLayer"></div>
+	<div id="bubbleLegend">
+		<img src="img/bubble_legend.gif" />
+		<ul>
+			<li id="label_0"><a href="#" class="sm_off" id="sendMany_btn" onclick="toggleSendMany()">SendMany is off</a></li>
+			<li id="label_50"> 0-500 transactions</li>
+			<li id="label_100"> 1000 transactions</li>
+			<li id="label_200"> 2000 transactions</li>
+			<li id="label_300"> 3000 transactions</li>
+			<li id="label_400"> 4000 transactions</li>
+			<li id="label_500"> 5000 transactions</li>
+			<li id="label_600"> 6000 transactions</li>
+			<li id="label_5000"><a href="#" class="scale_off" id="bubbleScale_btn" onclick="toggleBubbleScale()">Scale bubbles down</a></li>
+	  </ul>
+	</div> 
+
+
+<div id="speedo"></div>    
+<div class="" id="connBars"></div>
+<div id="statsTable">
+	<div class="statLabel" id="numApiConnLabel">No APIs connected! </div>
+	<div class="statBar" id="numApiConnBar">&nbsp;</div>
+	<div class="statBorder" id="numApiConnBorder">&nbsp;</div>
+	
+	<div class="statLabel" id="numChainActiveLabel">Asset Chains Active in last 5 minutes</div>
+	<div class="statBar" id="numChainActiveBar">&nbsp;</div>
+	<div class="statBorder" id="numChainActiveBorder">&nbsp;</div>
+
+	<div class="statLabel" id="numBlockSolvedLabel">Blocks Solved in last 5 minutes</div>
+	<div class="statBar" id="numBlockSolvedBar">&nbsp;</div>
+	<div class="statBorder" id="numBlockSolvedBorder">&nbsp;</div>
+
+	<div class="statLabel" id="blockPerChainLabel">Average Blocks per active Asset Chain in last 5 minutes</div>
+	<div class="statBar" id="blockPerChainBar">&nbsp;</div>
+	<div class="statBorder" id="blockPerChainBorder">&nbsp;</div>
+
+	<div class="statLabel" id="tx5minLabel">Total TX in the last 5 minutes</div>
+	<div class="statBar" id="tx5minBar">&nbsp;</div>
+	<div class="statBorder" id="tx5minBorder">&nbsp;</div>
+
+	<div class="statLabel" id="aveChainTXLabel">Average TX per active Asset Chain in last 5 minutes</div>
+	<div class="statBar" id="aveChainTXBar">&nbsp;</div>
+	<div class="statBorder" id="aveChainTXBorder">&nbsp;</div>
+
+	<div class="statLabel" id="peakGlobalTXLabel">Peak Global TX</div>
+	<div class="statBar" id="peakGlobalTXBar">&nbsp;</div>
+	<div class="statBorder" id="peakGlobalTXBorder">&nbsp;</div>
+
+	<div class="statLabel" id="txPerBlockLabel">Average TX per block</div>
+	<div class="statBar" id="txPerBlockBar">&nbsp;</div>
+	<div class="statBorder" id="txPerBlockBorder">&nbsp;</div>
+
+	<div class="statLabel" id="randomModeLabel">&nbsp;</div>
+	<div class="statLabel" id="sendManyModeLabel">&nbsp;</div>
+	<div class="statLabel" id="clientCountLabel">&nbsp;</div>
+
+	<div class="statBorder" id="sendManyModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+	<div class="statBorder" id="clientCountBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+	<div class="statBorder" id="randomModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+</div>
+
+<script src="colors.js"></script>
+<script src="global.js"></script>
+<script src="bubbles.js"></script>
+<script src="speedo.js"></script>
+<script src="statusbars.js"></script>
+<script src="hash_table.js"></script>
+<script src="tx_sockets.js"></script>
