@@ -10,7 +10,7 @@ function updateStatusBorder(className) {
 }
 
 function updateStatusBar(id, stat) {
-  console.log("#############  updating "+id+", stat = "+stat+", globalTX = "+globalTX+"  ###############");
+ // console.log("#############  updating "+id+", stat = "+stat+", globalTX = "+globalTX+"  ###############");
   if (Number.isNaN(stat) || (stat !== stat)) {
     stat = 0;
     console.log("changed nan to zero "+(stat) );
@@ -122,43 +122,6 @@ setInterval(function() { updateStatusBar('tx5min',tx5min); } ,3671);
 //setTimeout(function() { gobalTXTX = numBlockSolved/numChainActive ; updateStatusBar('aveBlockTX',aveBlockTX); } ,3671);
 updateStatusBar('numBlockSolved',0);
 updateStatusBar('numChainActive',0);
-
-
-function toggleSendMany() {
-    if (document.getElementById('sendMany_btn').innerHTML == "Transaction mode") {
-      sendMany_multiplier = 100;
-      sendMany_state = 'on';
-      legendLabelScale = 100;
-      document.getElementById('sendMany_btn').innerHTML = "Payments mode";
-    //  updateStatusBar('sendManyMode', sendMany_multiplier);
-      document.getElementById('label_50').innerHTML = " 0-"+50*legendLabelScale+" payments";
-      document.getElementById('label_100').innerHTML = " "+100*legendLabelScale+" payments";
-      document.getElementById('label_200').innerHTML = " "+200*legendLabelScale+" payments";
-      document.getElementById('label_300').innerHTML = " "+300*legendLabelScale+" payments";
-      document.getElementById('label_400').innerHTML = " "+400*legendLabelScale+" payments";
-      document.getElementById('label_500').innerHTML = " "+500*legendLabelScale+" payments";
-      document.getElementById('label_600').innerHTML = " "+600*legendLabelScale+" payments";
-      document.getElementById("sendMany_btn").className = "sm_on"; 
-    }
-    else {
-      legendLabelScale = 1;
-      sendMany_multiplier = 1;
-      sendMany_state = 'off';
-      document.getElementById('sendManyModeLabel').innerHTML = "";
-      document.getElementById('sendMany_btn').innerHTML = "Transaction mode";
-     // updateStatusBar('sendManyMode', sendMany_multiplier);
-      document.getElementById('label_50').innerHTML = " 0-"+50*legendLabelScale+" transactions";
-      document.getElementById('label_100').innerHTML = " "+100*legendLabelScale+" transactions";
-      document.getElementById('label_200').innerHTML = " "+200*legendLabelScale+" transactions";
-      document.getElementById('label_300').innerHTML = " "+300*legendLabelScale+" transactions";
-      document.getElementById('label_400').innerHTML = " "+400*legendLabelScale+" transactions";
-      document.getElementById('label_500').innerHTML = " "+500*legendLabelScale+" transactions";
-      document.getElementById('label_600').innerHTML = " "+600*legendLabelScale+" transactions";
-    document.getElementById("sendMany_btn").className = "sm_off"; 
-    }
-}
-bubbles_off
-scale_off
 
 function limitToOne(val) {
   if (val > 1) {

@@ -1,6 +1,6 @@
 
 var hoarder_socket = io.connect(hoarder_url, { secure: true, reconnect: true, rejectUnauthorized : false });
-
+// http://txscl.meshbits.io/insight-api/txs/?block=00b25e955aba9c6812eeb605eb1bcb04d59a8a1cbb2c560330fe650a3b83aab2
 hoarder_socket.on('connect', function () {
     conn_txt = "++++++++++++++++++  Connected to "+hoarder_url+" +++++++++++++++++++++++";
     hoarder_socket.emit('subscribe', 'block');
@@ -47,7 +47,7 @@ hoarder_socket.on('peakGlobalTX', function (data) {
     peakGlobalTX = data;
     //conn_txt = "peakGlobalTXps - "+data;
     //console.log(conn_txt);
-    updateStatusBar('peakGlobalTX', data);
+    //updateStatusBar('peakGlobalTX', data);
 });
 
 hoarder_socket.on('tx5min', function (data) {
@@ -67,7 +67,6 @@ hoarder_socket.on('randomMode', function (data) {
 hashArr = [];
 lastBlocktime = [];
 hoarder_socket.on('block', function (data) {
- // console.log("block in "+data);
   if (typeof data != "object") {
       jdata = JSON.parse(data) || 0; 
       blockHash = jdata['blockhash'];
@@ -78,7 +77,7 @@ hoarder_socket.on('block', function (data) {
         blockTime = jdata['blocktime'];
         numConn = numApiConn;
         globalTX = jdata['globaltx'];                                                                                                          // function from hash_table.js
-        //console.log("Recieved "+blockCount+" tx from "+blockChain+" at "+blockTime);
+        console.log("Recieved "+blockCount+" tx from "+blockChain+" at "+blockTime);
         // changeCell(blockHash, blockCount, blockChain, blockHeight);
         if (typeof lastBlocktime[blockChain] === 'undefined') {
           blockSolveTime = 60; 
@@ -87,7 +86,7 @@ hoarder_socket.on('block', function (data) {
           blockSolveTime = blockTime - lastBlocktime[blockChain]; 
         }
         block_url="http://"+blockChain+".meshbits.io/block/"+blockHash
-        // setBubble(blockChain, blockHeight, blockCount, blockSolveTime, block_url);
+        setBubble(blockChain, blockHeight, blockCount, blockSolveTime, block_url);
         lastBlocktime[blockChain] = blockTime;
         if (hashArr.length > 10) {
           hashArr.shift();

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="hash_table.css" />
 <link rel="stylesheet" href="animations.css" />
 <link rel="stylesheet" href="bubbles.css" />
+<link rel="stylesheet" href="buttons.css" />
 
 <script src="https://d3js.org/d3-color.v1.min.js"></script>
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
@@ -21,20 +22,23 @@
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
 
+
 	<div id="bubbleLayer"></div>
 	<div id="bubbleLegend">
 		<img src="img/bubble_legend.gif" />
-		<ul>
-			<li id="toggle_bubleScale"><a href="#" class="s" id="bubbleScale_btn" style="opacity:0;" onclick="toggleBubbleScale()">Scale bubbles</a></li>
-			<li id="toggle_bubbles"><a href="#" class="bubbles_off" id="bubble_btn" style="opacity:0;" onclick="toggleBubble()">Bubbles on</a></li>
+		<div class="toggle_bubbles" id="bubble_btn" onclick="toggleBubble()">Bubbles off<span class="bubbleon_tooltip">Blocks blow bubbles</span></div>
+		<div class="toggle_bubblePop" id="popBubbles_btn" onclick="popBubbles()">*pop*<span class="popBubbles_tooltip">Pop bubbles</span></div>
+		<div class="toggle_bubblescale" id="scaleUp_btn" onclick="bubbleScaleUp()">+<span class="scaleUp_tooltip">Increase bubble size</span></div>
+		<div class="toggle_bubblescale" id="scaleDown_btn" onclick="bubbleScaleDown()">-<span class="scaleDown_tooltip">Decrease bubble size</span></div>
+		<ul>			
 			<li id="label_0"></li>
-			<li id="label_50"> 0-500 transactions</li>
-			<li id="label_100"> 1000 transactions</li>
-			<li id="label_200"> 2000 transactions</li>
-			<li id="label_300"> 3000 transactions</li>
-			<li id="label_400"> 4000 transactions</li>
-			<li id="label_500"> 5000 transactions</li>
-			<li id="label_600"> 6000 transactions</li>
+			<li id="label_50"> 0-5 transactions</li>
+			<li id="label_100"> 10 transactions</li>
+			<li id="label_200"> 20 transactions</li>
+			<li id="label_300"> 30 transactions</li>
+			<li id="label_400"> 40 transactions</li>
+			<li id="label_500"> 50 transactions</li>
+			<li id="label_600"> 60 transactions</li>
 	  </ul>
 	</div> 
 
@@ -80,12 +84,17 @@
 
 	<div class="statBorder" id="clientCountBorder" style="display: hidden; opacity:0;">&nbsp;</div>
 	<div class="statBorder" id="randomModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
-	<div class="sm_buttton" id="" style="position: absolute; top: 310px; left: 140px; margin:auto;"><a href="#" class="sm_off" style="margin: auto; width: 130px; text-align:center" id="sendMany_btn" onclick="toggleSendMany()">Transaction mode</a></div>
+
+	<div class="sm_off" id="tx_btn" onclick="transactionsMode()">Transaction mode<span class="tx_tooltip">Counts single transactions</span></div>
+	<div class="sm_off" id="pay_btn" onclick="paymentsMode()">Payment mode<span class="pay_tooltip">Calculates total payments from sendmany transactions</span></div>
+	<div class="randomDiv" id="random_btn" onclick="goRandom()">Random data<span class="random_tooltip">Generate random data</span></div>
+	<div class="liveDataDiv" id="liveData_btn" onclick="clearInterval(rand)">API data<span class="liveData_tooltip">Source live data</span></div>
+
 </div>
 
 <script src="colors.js"></script>
-<script src="global.js"></script>
 <script src="buttons.js"></script>
+<script src="global.js"></script>
 <script src="bubbles.js"></script>
 <script src="speedo.js"></script>
 <script src="statusbars.js"></script>

@@ -143,64 +143,63 @@
 
 @keyframes upDown3 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(3px); }
-  20% { transform: translatey(9px); }
-  30% { transform: translatey(3px); }
-  40% { transform: translatey(0px); }
-  50% { transform: translatey(-3px); }
-  60% { transform: translatey(-9px); }
-  70% { transform: translatey(-3px); }
-  80% { transform: translatey(0px); }
-  90% { transform: translatey(3px); }
+  10% { transform: translatey(4px); }
+  20% { transform: translatey(16px); }
+  30% { transform: translatey(32px); }
+  40% { transform: translatey(96px); }
+  50% { transform: translatey(64px); }
+  60% { transform: translatey(72px); }
+  70% { transform: translatey(64px); }
+  80% { transform: translatey(36px); }
+  90% { transform: translatey(18px); }
   100% { transform: translatey(0px); }
 }
 @-webkit-keyframes upDown3 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(3px); }
-  20% { transform: translatey(9px); }
-  30% { transform: translatey(3px); }
-  40% { transform: translatey(0px); }
-  50% { transform: translatey(-3px); }
-  60% { transform: translatey(-9px); }
-  70% { transform: translatey(-3px); }
-  80% { transform: translatey(0px); }
-  90% { transform: translatey(3px); }
+  10% { transform: translatey(4px); }
+  20% { transform: translatey(16px); }
+  30% { transform: translatey(32px); }
+  40% { transform: translatey(96px); }
+  50% { transform: translatey(64px); }
+  60% { transform: translatey(72px); }
+  70% { transform: translatey(64px); }
+  80% { transform: translatey(36px); }
+  90% { transform: translatey(18px); }
   100% { transform: translatey(0px); }
 }
 
 @keyframes upDown4 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(2px); }
-  20% { transform: translatey(4px); }
-  30% { transform: translatey(8px); }
+  10% { transform: translatey(9px); }
+  20% { transform: translatey(27px); }
+  30% { transform: translatey(6px); }
   40% { transform: translatey(16px); }
-  50% { transform: translatey(8px); }
-  60% { transform: translatey(4px); }
-  70% { transform: translatey(2px); }
-  80% { transform: translatey(0px); }
-  90% { transform: translatey(-2px); }
+  50% { transform: translatey(55px); }
+  60% { transform: translatey(42px); }
+  70% { transform: translatey(24px); }
+  80% { transform: translatey(12px); }
+  90% { transform: translatey(18px); }
   100% { transform: translatey(0px); }
 }
 @-webkit-keyframes upDown4 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(2px); }
-  20% { transform: translatey(4px); }
-  30% { transform: translatey(8px); }
+  10% { transform: translatey(9px); }
+  20% { transform: translatey(27px); }
+  30% { transform: translatey(6px); }
   40% { transform: translatey(16px); }
-  50% { transform: translatey(8px); }
-  60% { transform: translatey(4px); }
-  70% { transform: translatey(2px); }
-  80% { transform: translatey(0px); }
-  90% { transform: translatey(-2px); }
+  50% { transform: translatey(55px); }
+  60% { transform: translatey(42px); }
+  70% { transform: translatey(24px); }
+  80% { transform: translatey(12px); }
+  90% { transform: translatey(18px); }
   100% { transform: translatey(0px); }
-}
 
 @keyframes upDown5 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(1px); }
-  20% { transform: translatey(-1px); }
-  30% { transform: translatey(2px); }
-  40% { transform: translatey(-3px); }
+  10% { transform: translatey(34px); }
+  20% { transform: translatey(-21px); }
+  30% { transform: translatey(13px); }
+  40% { transform: translatey(-8px); }
   50% { transform: translatey(5px); }
   60% { transform: translatey(-8px); }
   70% { transform: translatey(13px); }
@@ -210,10 +209,10 @@
 }
 @-webkit-keyframes upDown5 {
   0% { transform: translatey(0px); }
-  10% { transform: translatey(1px); }
-  20% { transform: translatey(-1px); }
-  30% { transform: translatey(2px); }
-  40% { transform: translatey(-3px); }
+  10% { transform: translatey(34px); }
+  20% { transform: translatey(-21px); }
+  30% { transform: translatey(13px); }
+  40% { transform: translatey(-8px); }
   50% { transform: translatey(5px); }
   60% { transform: translatey(-8px); }
   70% { transform: translatey(13px); }
