@@ -37,7 +37,7 @@ html, body {
 }            
 #statsTable { 
   display:inline-block;
-  min-height:390px; 
+  min-height:410px; 
   width:360px; 
   min-width:300px; 
   position:absolute; 
@@ -62,7 +62,7 @@ html, body {
   left:-460px;
   top:10px;
   width :300px;
-  min-height  :390px;
+  min-height  :410px;
   min-width:300px; 
   background-image: linear-gradient(to bottom, rgba(130, 161, 161, .7), rgba(45, 90, 90, .7));
   border-radius: 30px 30px 30px 30px;

@@ -41,25 +41,25 @@ function updateStatusBar(id, stat) {
     //stat = Math.random() * totalNumChains;
       barSize = stat/totalNumChains;
       barSize = limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+" / "+totalNumChains+"</span> APIs connected";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+" / "+totalNumChains+"</span> APIs connected";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'numChainActive':         //  from socket
       barSize = stat/totalNumChains;
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+"/ "+totalNumChains+"</span> Asset Chains Active (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"/ "+totalNumChains+"</span> Asset Chains Active (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'numBlockSolved':         //  from socket
       barSize = stat/(totalNumChains*10);
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+"</span> Blocks Solved (last 5 minutes)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks Solved (last 5 minutes)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'txPerBlock':
       limitToOne(barSize);
       barSize = stat/maxTxPerBlock;
-      document.getElementById(label).innerHTML = " <span>"+stat+"</span> Transactions per block (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Transactions per block (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'ptPerBlock':
@@ -67,21 +67,21 @@ function updateStatusBar(id, stat) {
       limitToOne(barSize);
       console.log("PT Per Block: "+stat);
       barSize = stat/maxPtPerBlock;
-      document.getElementById(label).innerHTML = " <span>"+stat+"</span> Payments per block (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Payments per block (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'blockPerChain':
       barSize = numBlockSolved/(numChainActive*10);
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+stat+"</span> Blocks per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Blocks per active Asset Chain (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'tx5min':
       barSize = stat/(maxTxPerBlock*10);
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+"</span> Total transactions (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total transactions (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'pt5min':
@@ -89,14 +89,14 @@ function updateStatusBar(id, stat) {
       if (barSize !== barSize) { barSize = 0; }
       console.log("PT 5 min: "+stat);
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+"</span> Total payments (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total payments (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'aveChainTX':
       barSize = (tx5min)/(numChainActive*maxTxPerBlock);
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+stat+"</span> Transactions per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Transactions per active Asset Chain (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'aveChainPT':
@@ -104,14 +104,22 @@ function updateStatusBar(id, stat) {
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
       console.log("PT Per Chain: "+stat);
-      document.getElementById(label).innerHTML = " <span>"+stat+"</span> Payments per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Payments per active Asset Chain (last 5 min)";
+      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+      break;
+    case 'ptPerTx':
+      barSize = ptPerTx/100;
+      if (barSize !== barSize) { barSize = 0; }
+      limitToOne(barSize);
+      console.log("PT Per TX: "+stat);
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Average payments per transaction (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'peakGlobalTX':         //  from socket
       stat = stat*100;
       barSize = stat/1250000;
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span>"+Math.round(stat)+"</span> Peak Global "+tx_payment+" per second";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Peak Global "+tx_payment+" per second";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'randomMode':         //  from socket
@@ -126,20 +134,22 @@ function updateStatusBar(id, stat) {
 }
 var blockPerChain = 1;
 setInterval(function() { blockPerChain = numBlockSolved/numChainActive ; updateStatusBar('blockPerChain',blockPerChain); } ,11000);
-setInterval(function() { updateStatusBar('tx5min',tx5min); } ,2300);
+setInterval(function() { updateStatusBar('tx5min',tx5min); } ,7300);
 setInterval(function() { txPerBlock = tx5min/numBlockSolved ; updateStatusBar('txPerBlock',txPerBlock); } ,13040);
 setInterval(function() { aveChainTX = tx5min/numChainActive;  updateStatusBar('aveChainTX',aveChainTX); } ,7000);
-setInterval(function() { updateStatusBar('pt5min',pt5min); } ,2900);
+setInterval(function() { updateStatusBar('pt5min',pt5min); } ,6900);
 setInterval(function() { ptPerBlock = pt5min/numBlockSolved ; updateStatusBar('ptPerBlock',ptPerBlock); } ,8500);
 setInterval(function() { aveChainPT = pt5min/numChainActive;  updateStatusBar('aveChainPT',aveChainPT); } ,6600);
+setInterval(function() { ptPerTx = tx5min/pt5min;  updateStatusBar('ptPerTx',ptPerTx); } ,5600);
 
-setTimeout(function() { blockPerChain = numBlockSolved/numChainActive ; updateStatusBar('blockPerChain',blockPerChain); } ,11000);
-setTimeout(function() { updateStatusBar('tx5min',tx5min); } ,2300);
-setTimeout(function() { txPerBlock = tx5min/numBlockSolved ; updateStatusBar('txPerBlock',txPerBlock); } ,13040);
-setTimeout(function() { aveChainTX = tx5min/numChainActive;  updateStatusBar('aveChainTX',aveChainTX); } ,7000);
-setTimeout(function() { updateStatusBar('pt5min',pt5min); } ,2900);
-setTimeout(function() { ptPerBlock = pt5min/numBlockSolved ; updateStatusBar('ptPerBlock',ptPerBlock); } ,8500);
-setTimeout(function() { aveChainPT = pt5min/numChainActive;  updateStatusBar('aveChainPT',aveChainPT); } ,6600);
+setTimeout(function() { blockPerChain = numBlockSolved/numChainActive ; updateStatusBar('blockPerChain',blockPerChain); } ,1000);
+setTimeout(function() { updateStatusBar('tx5min',tx5min); } ,2000);
+setTimeout(function() { txPerBlock = tx5min/numBlockSolved ; updateStatusBar('txPerBlock',txPerBlock); } ,3000);
+setTimeout(function() { aveChainTX = tx5min/numChainActive;  updateStatusBar('aveChainTX',aveChainTX); } ,4000);
+setTimeout(function() { updateStatusBar('pt5min',pt5min); } ,5000);
+setTimeout(function() { ptPerBlock = pt5min/numBlockSolved ; updateStatusBar('ptPerBlock',ptPerBlock); } ,6000);
+setTimeout(function() { aveChainPT = pt5min/numChainActive;  updateStatusBar('aveChainPT',aveChainPT); } ,7000);
+setTimeout(function() { ptPerTx = tx5min/pt5min;  updateStatusBar('ptPerTx',ptPerTx); } ,8000);
 
 function limitToOne(val) {
   if (val > 1) {

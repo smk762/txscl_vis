@@ -137,7 +137,7 @@ function popBubbles() {
 
 var legendItemMargin = {top: 0, right: 0, bottom: 10, left: 40},
     legendItemWidth = 80 - legendItemMargin.left - legendItemMargin.right,
-    legendItemHeight = 280 - legendItemMargin.top - legendItemMargin.bottom;
+    legendItemHeight = 300 - legendItemMargin.top - legendItemMargin.bottom;
 
 var legendItems = [
 	{legendItem: "1", diameter: 5, color: "#FF0000"},
@@ -158,7 +158,7 @@ legendItems.forEach( function(d,i) {
 	if(i === 0) { 
 		d.offset = 0; 
 	} else {
-		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+10/i;
+		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+13/i;
 	}
 });
 

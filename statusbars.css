@@ -1,8 +1,8 @@
 .statLabel { 
   position: absolute;
   font-family: verdana;
-  color: #DDD;
-  font-weight: 900;
+  color: #0c2c2d;
+  font-weight: 400;
   text-shadow: 2px 2px 5px #2D5A5A;
   display:block;
   float:right;
@@ -10,13 +10,15 @@
   left:5%;
   margin:auto;
 }
+
 .statLabel span {
   margin:auto;
   font-size: 12px !important;
 }
+
 .statBorder { 
   margin:auto;
-  height:15px;
+  height:13px;
   width:90%;
   position: absolute;
   display:block;
@@ -27,9 +29,10 @@
   left: 5%;
   z-index: 60;
 }
+
 .statBar {
   margin:auto;
-  height:15px;
+  height:13px;
   position: absolute;
   left: 5%;
   display:block;
@@ -42,121 +45,134 @@
 }
 
 #numApiConnLabel {
-  top:20px;
+  top:15px;
 }
 #numApiConnBorder {
-  top:35px;
+  top:30px;
 }
 #numApiConnBar {
-  top:35px;
+  top:30px;
   background-image: linear-gradient(to bottom, #ffd65e, #CE9A01);
 }
 
 #numChainActiveLabel {
-  top:55px;
+  top:49px;
 }
 #numChainActiveBorder {
-  top:70px;
+  top:64px;
 }
 #numChainActiveBar {
-  top:70px;
+  top:64px;
   background-image: linear-gradient(to bottom, #4ba614, #005900);
 }
 
 #numBlockSolvedLabel {
-  top:90px;
+  top:83px;
 }
 #numBlockSolvedBorder {
-  top:105px;
+  top:98px;
 }
 #numBlockSolvedBar {
-  top:105px;
+  top:98px;
   background-image: linear-gradient(to bottom, #49c0f0, #1a92c2);
 }
 
 #blockPerChainLabel {
-  top:125px;
+  top:117px;
 }
 #blockPerChainBorder {
-  top:140px;  
+  top:132px;  
 
 }
 #blockPerChainBar {
-  top:140px;
+  top:132px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #aveChainTXLabel {
-  top:160px;
+  top:151px;
 }
 #aveChainTXBorder {
-  top:175px;  
+  top:164px;  
 
 }
 #aveChainTXBar {
-  top:175px;
+  top:164px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #aveChainPTLabel {
-  top:195px;
+  top:185px;
 }
 #aveChainPTBorder {
-  top:210px;  
+  top:200px;  
 
 }
 #aveChainPTBar {
-  top:210px;
+  top:200px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 
 #tx5minLabel {
-  top:230px;
+  top:219px;
 }
 #tx5minBorder {
-  top:245px;  
+  top:234px;  
 
 }
 #tx5minBar {
-  top:245px;
+  top:234px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #pt5minLabel {
-  top:265px;
+  top:253px;
 }
 #pt5minBorder {
-  top:280px;  
+  top:268px;  
 
 }
 #pt5minBar {
-  top:280px;
+  top:268px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 
 #txPerBlockLabel {
-  top:300px;
+  top:287px;
 }
 #txPerBlockBorder {
-  top:315px;  
+  top:302px;  
 
 }
 #txPerBlockBar {
-  top:315px;
+  top:302px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #ptPerBlockLabel {
-  top:335px;
+  top:321px;
 }
 #ptPerBlockBorder {
-  top:350px;  
+  top:336px;  
 
 }
 #ptPerBlockBar {
-  top:350px;
+  top:336px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
+
+
+
+#ptPerTxLabel {
+  top:355px;
+}
+#ptPerTxBorder {
+  top:370px;
+}
+#ptPerTxBar {
+  top:370px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
