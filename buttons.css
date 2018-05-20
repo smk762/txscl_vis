@@ -1,34 +1,49 @@
+.def_buttons {
+      font-size: 10px;
+      font-family:verdana;
+}
+.def_labels {
+      font-size: 10px;
+      font-family:verdana;
+      bottom: 40px;
+      position: absolute;
+      font-weight: 900;
+}
+#size_lbl {
+      right:25px;
+}
+#speed_lbl {
+      left:20px;      
+}
 
-#pay_btn {
+#speedUp_btn {
+      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
       -moz-border-radius:6px;
       -webkit-border-radius:6px;
       border-radius:6px;
+      border:1px solid #2D5A5A;
       text-align: center;
       display:inline-block;
       cursor:pointer;
       color:#ffffff;
-      font-family:verdana;
-      font-size:12px;
       font-weight:bold;
+      padding:4px 4px;
       text-decoration:none;
-      padding:6px 10px;
       text-shadow:0px 1px 0px #5b8a3c;
       margin:auto;
       position: absolute;
+      text-align: center;
       bottom:10px;
-      right: 40px;
+      left: 30px;
+      width:27px;
       z-index:200;
-      width:90px;
       opacity: 0.7;
-      border:1px solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      z-index:200;      
 }
-#pay_btn:hover {
+#speedUp_btn:hover {
       opacity:0.9;
 }
 
-.pay_tooltip {
+.speedUp_tooltip {
       visibility: hidden;
       width: 120px;
       background-color: black;
@@ -37,22 +52,23 @@
       padding: 5px 0;
       border-radius: 6px;
       position: absolute;
-      left:50px;
       opacity: 0.9;
-      top:-25px;
+      top:-18px;
       z-index: 1000;
-      font-family:verdana;
       font-size:9px;
+      top:-25px;
       text-decoration-style: none;
       text-shadow: none;
       font-weight: 400;
 }
 
-#pay_btn:hover .pay_tooltip {
+#speedUp_btn:hover .speedUp_tooltip {
     visibility: visible;
 }
 
-#tx_btn {
+#speedDown_btn {
+      border:1px solid #2D5A5A;
+      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
       -moz-border-radius:6px;
       -webkit-border-radius:6px;
       border-radius:6px;
@@ -60,28 +76,24 @@
       display:inline-block;
       cursor:pointer;
       color:#ffffff;
-      font-family:verdana;
-      font-size:12px;
       font-weight:bold;
+      padding:4px 4px;
       text-decoration:none;
-      padding:6px 10px;
       text-shadow:0px 1px 0px #5b8a3c;
       margin:auto;
       position: absolute;
+      text-align: center;
       bottom:10px;
-      left: 220px;
+      left: 64px;
+      width:27px;
       z-index:200;
-      width:95px;
       opacity: 0.7;
-      border:1px solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      z-index:200;      
 }
-#tx_btn:hover {
+#speedDown_btn:hover {
       opacity:0.9;
 }
 
-.tx_tooltip {
+.speedDown_tooltip {
       visibility: hidden;
       width: 120px;
       background-color: black;
@@ -90,147 +102,22 @@
       padding: 5px 0;
       border-radius: 6px;
       position: absolute;
-      left:50px;
       opacity: 0.9;
-      top:-25px;
+      top:-18px;
       z-index: 1000;
-      font-family:verdana;
       font-size:9px;
+      top:-25px;
       text-decoration-style: none;
       text-shadow: none;
       font-weight: 400;
 }
 
-#tx_btn:hover .pay_tooltip {
+#speedDown_btn:hover .speedDown_tooltip {
     visibility: visible;
 }
 
 
 
-
-
-
-#random_btn {
-      -moz-border-radius:6px;
-      -webkit-border-radius:6px;
-      border-radius:6px;
-      text-align: center;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:verdana;
-      font-size:12px;
-      font-weight:bold;
-      text-decoration:none;
-      padding:6px 10px;
-      text-shadow:0px 1px 0px #5b8a3c;
-      margin:auto;
-      position: absolute;
-      bottom:10px;
-      left: 120px;
-      z-index:200;
-      width:90px;
-      opacity: 0.7;
-      border:1px solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      z-index:200;      
-}
-#random_btn:hover {
-      opacity:0.9;
-}
-
-.random_tooltip {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      position: absolute;
-      left:50px;
-      opacity: 0.9;
-      top:-25px;
-      z-index: 1000;
-      font-family:verdana;
-      font-size:9px;
-      text-decoration-style: none;
-      text-shadow: none;
-      font-weight: 400;
-}
-
-#random_btn:hover .random_tooltip {
-    visibility: visible;
-}
-
-
-
-
-#liveData_btn {
-      -moz-border-radius:6px;
-      -webkit-border-radius:6px;
-      border-radius:6px;
-      text-align: center;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:verdana;
-      font-size:12px;
-      font-weight:bold;
-      text-decoration:none;
-      padding:6px 10px;
-      text-shadow:0px 1px 0px #5b8a3c;
-      margin:auto;
-      position: absolute;
-      bottom:10px;
-      left: 40px;
-      z-index:200;
-      width:70px;
-      opacity: 0.7;
-      border:1px solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      z-index:200;      
-}
-#liveData_btn:hover {
-      opacity:0.9;
-}
-
-.liveData_tooltip {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      position: absolute;
-      left:50px;
-      opacity: 0.9;
-      top:-25px;
-      z-index: 1000;
-      font-family:verdana;
-      font-size:9px;
-      text-decoration-style: none;
-      text-shadow: none;
-      font-weight: 400;
-}
-
-#liveData_btn:hover .liveData_tooltip {
-    visibility: visible;
-}
-
-
-
-
-
-
-
-
-
-#toggle_bubbles {
-      padding-top: 0px;
-      font-size: 14px;
-}
 #bubble_btn {
       -moz-border-radius:6px;
       -webkit-border-radius:6px;
@@ -239,8 +126,6 @@
       display:inline-block;
       cursor:pointer;
       color:#ffffff;
-      font-family:verdana;
-      font-size:11px;
       font-weight:bold;
       padding:4px 4px;
       text-decoration:none;
@@ -248,9 +133,9 @@
       margin:auto;
       position: absolute;
       bottom:10px;
-      left:20px;
+      left:98px;
       z-index:200;
-      width:95px;
+      width:40px;
       opacity: 0.7;
       border:1px solid #2D5A5A;
       background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
@@ -262,7 +147,7 @@
 
 .bubbleon_tooltip {
       visibility: hidden;
-      width: 120px;
+      width: 130px;
       background-color: black;
       color: #fff;
       text-align: center;
@@ -272,7 +157,6 @@
       opacity: 0.9;
       top:-25px;
       z-index: 1000;
-      font-family:verdana;
       font-size:9px;
       text-decoration-style: none;
       text-shadow: none;
@@ -294,7 +178,6 @@
       opacity: 0.9;
       top:-25px;
       z-index: 1000;
-      font-family:verdana;
       font-size:9px;
       text-decoration-style: none;
       text-shadow: none;
@@ -305,119 +188,7 @@
     visibility: visible;
 }
 
-#toggle_bubblescale {
-      padding-top: 0px;
-      font-size: 14px;
-}
-#scaleUp_btn {
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      -moz-border-radius:6px;
-      -webkit-border-radius:6px;
-      border-radius:6px;
-      border:1px solid #2D5A5A;
-      text-align: center;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:verdana;
-      font-size:11px;
-      font-weight:bold;
-      padding:4px 4px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #5b8a3c;
-      margin:auto;
-      position: absolute;
-      text-align: center;
-      bottom:10px;
-      right: 50px;
-      width:25px;
-      z-index:200;
-      opacity: 0.7;
-}
-#scaleUp_btn:hover {
-      opacity:0.9;
-}
 
-.scaleUp_tooltip {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      position: absolute;
-      opacity: 0.9;
-      top:-18px;
-      z-index: 1000;
-      font-family:verdana;
-      font-size:9px;
-      top:-25px;
-      text-decoration-style: none;
-      text-shadow: none;
-      font-weight: 400;
-}
-
-#scaleUp_btn:hover .scaleUp_tooltip {
-    visibility: visible;
-}
-#scaleDown_btn {
-      border:1px solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
-      -moz-border-radius:6px;
-      -webkit-border-radius:6px;
-      border-radius:6px;
-      text-align: center;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:verdana;
-      font-size:11px;
-      font-weight:bold;
-      padding:4px 4px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #5b8a3c;
-      margin:auto;
-      position: absolute;
-      text-align: center;
-      bottom:10px;
-      right: 20px;
-      width:25px;
-      z-index:200;
-      opacity: 0.7;
-}
-#scaleDown_btn:hover {
-      opacity:0.9;
-}
-
-.scaleDown_tooltip {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      position: absolute;
-      opacity: 0.9;
-      top:-18px;
-      z-index: 1000;
-      font-family:verdana;
-      font-size:9px;
-      top:-25px;
-      text-decoration-style: none;
-      text-shadow: none;
-      font-weight: 400;
-}
-
-#scaleDown_btn:hover .scaleDown_tooltip {
-    visibility: visible;
-}
-
-#toggle_bubblePop {
-      padding-top: 0px;
-      font-size: 14px;
-}
 #popBubbles_btn {
       border:1px solid #2D5A5A;
       background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
@@ -428,8 +199,6 @@
       display:inline-block;
       cursor:pointer;
       color:#ffffff;
-      font-family:verdana;
-      font-size:11px;
       font-weight:bold;
       padding:4px 4px;
       text-decoration:none;
@@ -438,7 +207,7 @@
       position: absolute;
       text-align: center;
       bottom:10px;
-      right: 85px;
+      left:145px;
       width:55px;
       z-index:200;
       opacity: 0.7;
@@ -459,7 +228,6 @@
       opacity: 0.9;
       top:-18px;
       z-index: 1000;
-      font-family:verdana;
       font-size:9px;
       top:-25px;
       text-decoration-style: none;
@@ -468,6 +236,108 @@
 }
 
 #popBubbles_btn:hover .popBubbles_tooltip {
+    visibility: visible;
+}
+
+
+
+
+#scaleUp_btn {
+      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:1px solid #2D5A5A;
+      text-align: center;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-weight:bold;
+      padding:4px 4px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #5b8a3c;
+      margin:auto;
+      position: absolute;
+      text-align: center;
+      bottom:10px;
+      left: 207px;
+      width:27px;
+      z-index:200;
+      opacity: 0.7;
+}
+#scaleUp_btn:hover {
+      opacity:0.9;
+}
+
+.scaleUp_tooltip {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      opacity: 0.9;
+      top:-18px;
+      z-index: 1000;
+      font-size:9px;
+      top:-25px;
+      text-decoration-style: none;
+      text-shadow: none;
+      font-weight: 400;
+}
+
+#scaleUp_btn:hover .scaleUp_tooltip {
+    visibility: visible;
+}
+#scaleDown_btn {
+      border:1px solid #2D5A5A;
+      background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      text-align: center;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-weight:bold;
+      padding:4px 4px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #5b8a3c;
+      margin:auto;
+      position: absolute;
+      text-align: center;
+      bottom:10px;
+      left: 241px;
+      width:27px;
+      z-index:200;
+      opacity: 0.7;
+}
+#scaleDown_btn:hover {
+      opacity:0.9;
+}
+
+.scaleDown_tooltip {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      opacity: 0.9;
+      top:-18px;
+      z-index: 1000;
+      font-size:9px;
+      top:-25px;
+      text-decoration-style: none;
+      text-shadow: none;
+      font-weight: 400;
+}
+
+#scaleDown_btn:hover .scaleDown_tooltip {
     visibility: visible;
 }
 

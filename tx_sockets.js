@@ -7,6 +7,7 @@ hoarder_socket.on('connect', function () {
     hoarder_socket.emit('subscribe', 'numChainActive');
     hoarder_socket.emit('subscribe', 'numBlockSolved');
     hoarder_socket.emit('subscribe', 'tx5min');
+    hoarder_socket.emit('subscribe', 'pt5min');
     hoarder_socket.emit('subscribe', 'numApiConn');
     hoarder_socket.emit('subscribe', 'randomMode');
     hoarder_socket.emit('subscribe', 'clientCount');
@@ -18,30 +19,29 @@ hoarder_socket.on('error', function () {
   //  console.log(conn_txt);
 });
 
-
 hoarder_socket.on('clientCount', function (data) {
     clientCount = data;
  //   updateStatusBar('clientCount', data);
-    conn_txt = "clientCount - "+data;
-    console.log(conn_txt);
+    //conn_txt = "clientCount - "+data;
+    //console.log(conn_txt);
 });
 hoarder_socket.on('numApiConn', function (data) {
     numApiConn = data;
     updateStatusBar('numApiConn', data);
-    //conn_txt = "Apis Connected - "+data;
-  //  console.log(conn_txt);
+   //conn_txt = "Apis Connected - "+data;
+    //console.log(conn_txt);
 });
 hoarder_socket.on('numChainActive', function (data) {
     numChainActive = data;
     updateStatusBar('numChainActive', data);
-    //conn_txt = "Active chains - "+data;
-  //  console.log(conn_txt);
+   //conn_txt = "Active chains - "+data;
+    //console.log(conn_txt);
 });
 hoarder_socket.on('numBlockSolved', function (data) {
     numBlockSolved = data;
     updateStatusBar('numBlockSolved', data);
     //conn_txt = "numBlockSolved - "+data;
-   // console.log(conn_txt);
+    //console.log(conn_txt);
 });
 hoarder_socket.on('peakGlobalTX', function (data) {
     peakGlobalTX = data;
@@ -53,15 +53,14 @@ hoarder_socket.on('peakGlobalTX', function (data) {
 hoarder_socket.on('tx5min', function (data) {
     tx5min = data;
     updateStatusBar('tx5min', data);
-    //conn_txt = "tx5min - "+data;
+  // conn_txt = "tx5min - "+data;
     //console.log("incoming tx5min = "+conn_txt+" --------------------------------------");
 });
-
-hoarder_socket.on('randomMode', function (data) {
-    randomMode = data;
-    updateStatusBar('randomMode', data);
-    conn_txt = "randomMode - "+data;
-    console.log("incoming randomMode = "+conn_txt+" --------------------------------------");
+hoarder_socket.on('pt5min', function (data) {
+    pt5min = data;
+    updateStatusBar('pt5min', data);
+    conn_txt = "pt5min - "+data;
+    console.log("incoming pt5min = "+conn_txt+" --------------------------------------");
 });
 
 hashArr = [];
@@ -75,18 +74,25 @@ hoarder_socket.on('block', function (data) {
         blockHeight = jdata['blockheight']
         blockCount = jdata['txcount'];
         blockTime = jdata['blocktime'];
+        blockSize = jdata['blocksize'];
+        sm_tx = jdata['sendmany'];
+        ptCount = jdata['ptcount'];
         numConn = numApiConn;
-        globalTX = jdata['globaltx'];                                                                                                          // function from hash_table.js
-        console.log("Recieved "+blockCount+" tx from "+blockChain+" at "+blockTime);
-        // changeCell(blockHash, blockCount, blockChain, blockHeight);
+        globalTX = jdata['globaltx'];  
+        globalPT = jdata['globalPT'];  
+       // console.log(jdata);
         if (typeof lastBlocktime[blockChain] === 'undefined') {
           blockSolveTime = 60; 
           }
         else {
           blockSolveTime = blockTime - lastBlocktime[blockChain]; 
+          //console.log("-------------------------------------------------");
+          //console.log("chain "+blockChain+" solved at "+blockTime+". Last block solved at "+lastBlocktime[blockChain]+", "+blockSolveTime+"s ago.");
+         // console.log("ptCount "+ptCount+" / pt5min "+pt5min+" / aveChainPT "+aveChainPT+", / pt per block "+ptPerBlock);
+          //console.log("-------------------------------------------------");
         }
         block_url="http://"+blockChain+".meshbits.io/block/"+blockHash
-        setBubble(blockChain, blockHeight, blockCount, blockSolveTime, block_url);
+        setBubble(blockChain, blockHeight, ptCount, blockSolveTime, block_url);
         lastBlocktime[blockChain] = blockTime;
         if (hashArr.length > 10) {
           hashArr.shift();
@@ -94,7 +100,7 @@ hoarder_socket.on('block', function (data) {
         hashArr.push(blockHash);
       }
 	    globalTX=globalTX.toFixed(3);
-      updateNeedle(globalTX);                                                                                                                                                  // function from tx_charts.js
+      // updateNeedle(globalTX);                                                                                                                   // function from tx_charts.js
     return globalTX;
   }
   else {
@@ -103,5 +109,5 @@ hoarder_socket.on('block', function (data) {
 });
 
 
-needle = setInterval(function() { updateNeedle(globalTX); } ,3050);
+needle = setInterval(function() { updateNeedle(globalTX); } ,2000);
 // needle = setInterval(function() { console.log("globalTX = "+globalTX); updateNeedle(globalTX); } ,3050);

@@ -16,7 +16,7 @@
 }
 .statBorder { 
   margin:auto;
-  height:20px;
+  height:15px;
   width:90%;
   position: absolute;
   display:block;
@@ -29,7 +29,7 @@
 }
 .statBar {
   margin:auto;
-  height:20px;
+  height:15px;
   position: absolute;
   left: 5%;
   display:block;
@@ -53,101 +53,110 @@
 }
 
 #numChainActiveLabel {
-  top:60px;
+  top:55px;
 }
 #numChainActiveBorder {
-  top:75px;
+  top:70px;
 }
 #numChainActiveBar {
-  top:75px;
+  top:70px;
   background-image: linear-gradient(to bottom, #4ba614, #005900);
 }
 
 #numBlockSolvedLabel {
-  top:100px;
+  top:90px;
 }
 #numBlockSolvedBorder {
-  top:115px;
+  top:105px;
 }
 #numBlockSolvedBar {
-  top:115px;
+  top:105px;
   background-image: linear-gradient(to bottom, #49c0f0, #1a92c2);
 }
 
 #blockPerChainLabel {
-  top:140px;
+  top:125px;
 }
 #blockPerChainBorder {
-  top:155px;  
+  top:140px;  
 
 }
 #blockPerChainBar {
-  top:155px;
+  top:140px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #aveChainTXLabel {
-  top:180px;
+  top:160px;
 }
 #aveChainTXBorder {
-  top:195px;  
+  top:175px;  
 
 }
 #aveChainTXBar {
-  top:195px;
+  top:175px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
+#aveChainPTLabel {
+  top:195px;
+}
+#aveChainPTBorder {
+  top:210px;  
+
+}
+#aveChainPTBar {
+  top:210px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
 
 
 #tx5minLabel {
-  top:220px;
+  top:230px;
 }
 #tx5minBorder {
-  top:235px;  
+  top:245px;  
 
 }
 #tx5minBar {
-  top:235px;
+  top:245px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
+#pt5minLabel {
+  top:265px;
+}
+#pt5minBorder {
+  top:280px;  
 
+}
+#pt5minBar {
+  top:280px;
+  background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
+}
 
 
 #txPerBlockLabel {
-  top:260px;
+  top:300px;
 }
 #txPerBlockBorder {
-  top:275px;  
+  top:315px;  
 
 }
 #txPerBlockBar {
-  top:275px;
+  top:315px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
-#peakGlobalTXLabel {
-  top:300px;  
-  opacity:0;
+#ptPerBlockLabel {
+  top:335px;
 }
-#peakGlobalTXBorder {
-  top:315px;  
-  opacity:0;
+#ptPerBlockBorder {
+  top:350px;  
+
 }
-#peakGlobalTXBar {
-  top:315px;  
-  opacity:0;
+#ptPerBlockBar {
+  top:350px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
-#randomModeLabel {
-  top:380px;
-  color:red;
-  font-size: 20px;
-}
-#sendManyModeLabel {
-  top:420px;
-  color:red;
-  font-size: 20px;
-  text-align: center;
-}
+

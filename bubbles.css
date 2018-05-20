@@ -2,15 +2,21 @@
 .bubble {
 	opacity: 0.75;	
 }
-#bubbleLegend img {
-	float:left;
+#legendBubbles {
+	display:inline;
+	position: absolute;
+	left:30px;
+	top:0px;
 	padding: 5px;
-	padding-top: 30px;
+	padding-top: 25px;
+	width: 80px;
+	height:280;
+	opacity:0.8;
 }
 #bubbleLegend ul {
     list-style-type: none;
     position:absolute;
-    right:20px;
+    right:25px;
     padding-top: 10px;
     width:200px;
 }
@@ -22,42 +28,40 @@
   color: #DDD;
   text-align: center;
 }
+.legendLabel {
+	font-size: 14px;
+}
 #label_0 {
 	padding-top: 8px;
-	font-size: 14px;
 }
 #label_50 {
 	padding-top: 8px;
-	font-size: 14px;
 }
 #label_100 {
 	padding-top: 4px;
-	font-size: 14px;
 }
 #label_200 {
 	padding-top: 7px;
-	font-size: 14px;
 }
 #label_300 {
 	padding-top: 15px;
-	font-size: 14px;
 }
 #label_400 {
 	padding-top: 21px;
-	font-size: 14px;
 }
 #label_500 {
 	padding-top: 29px;
-	font-size: 14px;
 }
 #label_600 {
 	padding-top: 41px;
-	font-size: 14px;
 }
 #bubbleText {
 	position:absolute;
+	font-size: 9px;
 	color:#2D5A5A;
-    text-shadow:0px 1px 0px #D5E0E0;
+	color: rgba(255,255,255,0.6);
+	text-shadow: 2px 8px 6px rgba(255,255,255,0.4),
+                 0px -5px 35px rgba(0,0,0,0.6);
 	left:-5px; 
 	display:inline-block;
 }

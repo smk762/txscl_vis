@@ -47,25 +47,17 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
 } );
 
 // set random value
-function updateNeedle(numTX) {
-  if (sendMany_state == 'on') {
-      sendMany_multiplier = 100;
-      tx_payment = "pymt";
+function updateNeedle(num) {
+  num = num * sendMany_multiplier;
+  if (num > 1) {
+    num =  parseFloat(num).toFixed(2);
   }
-  else {
-    sendMany_multiplier = 1;
-    tx_payment = "tx";
-  }
-  numTX = numTX * sendMany_multiplier;
-  if (numTX > 1) {
-    numTX =  parseFloat(numTX).toFixed(2);
-  }
-  else if (numTX > 10) {
-    numTX =  parseFloat(numTX).toFixed(1);
+  else if (num > 10) {
+    num =  parseFloat(num).toFixed(1);
 
   }
-  else if (numTX > 1000) {
-    numTX = Math.round(parseFloat(numTX));
+  else if (num > 1000) {
+    num = Math.round(parseFloat(num));
 
   }
   if ( gaugeChart ) {
@@ -73,8 +65,8 @@ function updateNeedle(numTX) {
       if ( gaugeChart.arrows[ 0 ] ) {
         if ( gaugeChart.arrows[ 0 ].setValue ) {
           // console.log('#########################    needle value - '+value);
-          gaugeChart.arrows[ 0 ].setValue( numTX );
-          gaugeChart.axes[ 0 ].setBottomText( numTX + " "+tx_payment+"/s" );
+          gaugeChart.arrows[ 0 ].setValue( num );
+          gaugeChart.axes[ 0 ].setBottomText( num + " Payments/s" );
         }
       }
     }

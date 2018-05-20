@@ -1,27 +1,29 @@
-function setBubble(chain, height, txCount, solveTime, url) {
+function setBubble(chain, height, ptCount, solveTime, url) {
 		//console.log(chain+", "+height+", "+txCount+", "+solveTime);
 	if (bubble_state == 'on') {
 		// set animation parameters
 		var floatTime = 5000;
 		var animWobble = wobbleArr[Math.floor(Math.random() * wobbleArr.length)];
-		var bubbleSpeed = solveTime/60*animBaseline;
+		var bubbleSpeed = solveTime/60*animBaseline*speedFactor;
 
-			console.log("txCount = "+txCount);
-			console.log("bubbleScaleFactor = "+bubbleScaleFactor);
-			console.log("scaleFactor = "+scaleFactor);
+			//console.log("solveTime = "+solveTime);
+			// console.log("bubbleSpeed = "+bubbleSpeed);
+			//console.log("txCount = "+txCount);
+			//console.log("txCount = "+txCount);
+			//console.log("bubbleScaleFactor = "+bubbleScaleFactor);
+			//console.log("scaleFactor = "+scaleFactor);
 		// set bubble parameters
-		var bubbleSize = txCount/legendScale*maxBubble*txModeScale;
-			console.log("bubbleSize = "+bubbleSize);
+		var bubbleSize = ptCount/legendScale*maxBubble/60;
+			//console.log("bubbleSize = "+bubbleSize);
 
 		var bubbleSize = bubbleSize * bubbleScaleFactor;
-			console.log("bubbleSize = "+bubbleSize);
+			//console.log("bubbleSize = "+bubbleSize);
 
-		bubbleTX = txCount;
 
 		var divId = chain+height+"_div";
 		var canvasId = chain+height+"_canvas";
 		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<a href="'+url+'" target="blank_"><div class="bubble" id="'+divId+'" style="position:absolute; left:0; "></div></a>');
-		document.getElementById(divId).insertAdjacentHTML('afterbegin', '<div class="" id="'+canvasId+'" style="position:absolute; width:60px"><span class="bubbleText" style="">'+chain+'<br />('+Math.round(bubbleTX)+txType+') </span></div>');
+		document.getElementById(divId).insertAdjacentHTML('afterbegin', '<div class="" id="'+canvasId+'" style="position:absolute; width:60px"><span class="bubbleText" style="">'+chain+'<br />('+Math.round(ptCount)+' pymnt) </span></div>');
 		var divObj = document.getElementById(divId);
 		var canvasObj = document.getElementById(canvasId);
 		var y = Math.random()*window.innerHeight;
@@ -130,3 +132,66 @@ function goRandom() {
 function popBubbles() {
 	document.getElementById("bubbleLayer").innerHTML = "";
 }
+
+// #######################  Create Bubbles for legend  ########################################
+
+var legendItemMargin = {top: 0, right: 0, bottom: 10, left: 40},
+    legendItemWidth = 80 - legendItemMargin.left - legendItemMargin.right,
+    legendItemHeight = 280 - legendItemMargin.top - legendItemMargin.bottom;
+
+var legendItems = [
+	{legendItem: "1", diameter: 5, color: "#FF0000"},
+	{legendItem: "10", diameter: 10, color: "#FFE100"},
+	{legendItem: "20", diameter: 20, color: "#00B621"},
+	{legendItem: "30", diameter: 30, color: "#7F006E"},
+	{legendItem: "40", diameter: 40, color: "#0094FF"},
+	{legendItem: "50", diameter: 50, color: "#C10000"},
+	{legendItem: "60", diameter: 60, color: "#719F00"}
+];
+  
+var legendItemScale = d3.scale.linear()
+	.domain([0, d3.max(legendItems, function(d) { return d.diameter; })])
+	.range([0, 60]);
+  
+var padding = 3;	
+legendItems.forEach( function(d,i) {
+	if(i === 0) { 
+		d.offset = 0; 
+	} else {
+		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+10/i;
+	}
+});
+
+var svg = d3.select("#legendBubbles")
+    .append("svg")
+        .attr("width", legendItemWidth + legendItemMargin.left + legendItemMargin.right)
+        .attr("height", legendItemHeight + legendItemMargin.top + legendItemMargin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + (legendItemMargin.left) + "," + legendItemMargin.top + ")");
+
+var gradientRadial = svg.append("defs").selectAll("radialGradient")
+	.data(legendItems)
+	.enter().append("radialGradient")
+	.attr("id", function(d){ return "gradient-" + d.legendItem; })
+	.attr("cx", "30%")
+	.attr("cy", "30%")
+	.attr("r", "65%");
+  
+gradientRadial.append("stop")
+	.attr("offset", "0%")
+	.attr("stop-color", function(d) { return d3.rgb(d.color).brighter(1); });
+gradientRadial.append("stop")
+	.attr("offset", "50%")
+	.attr("stop-color", function(d) { return d.color; });
+gradientRadial.append("stop")
+	.attr("offset",  "100%")
+	.attr("stop-color", function(d) { return d3.rgb(d.color).darker(1.5); });
+	
+svg.selectAll(".legendItemsGradient")
+	.data(legendItems)
+	.enter().append("circle")
+	.attr("class", "legendItemsGradient")
+	.attr("cx", 0)
+	.attr("cy", function(d, i) { return d.offset + legendItemScale(d.diameter)/2 + padding; })
+	.attr("r", function(d) { return legendItemScale(d.diameter)/2; })
+	.style("fill", function(d) { return "url(#gradient-" + d.legendItem + ")"; });
