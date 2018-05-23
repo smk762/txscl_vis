@@ -1,4 +1,3 @@
-
 // resize status bars on window size change
 function updateStatusBorder(className) {
   x = document.getElementsByClassName(className);
@@ -74,7 +73,7 @@ function updateStatusBar(id, stat) {
       barSize = numBlockSolved/(numChainActive*10);
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Blocks per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Blocks per Asset Chain (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'tx5min':
@@ -96,7 +95,7 @@ function updateStatusBar(id, stat) {
       barSize = (tx5min)/(numChainActive*maxTxPerBlock);
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
-      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Transactions per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Transactions per Asset Chain (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'aveChainPT':
@@ -104,7 +103,7 @@ function updateStatusBar(id, stat) {
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
       console.log("PT Per Chain: "+stat);
-      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Payments per active Asset Chain (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Payments per Asset Chain (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'ptPerTx':
@@ -112,7 +111,7 @@ function updateStatusBar(id, stat) {
       if (barSize !== barSize) { barSize = 0; }
       limitToOne(barSize);
       console.log("PT Per TX: "+stat);
-      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Average payments per transaction (last 5 min)";
+      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat+"</span> Payments per transaction (last 5 min)";
       document.getElementById(bar).style.width = barSize*borderWidth+"px";
       break;
     case 'peakGlobalTX':         //  from socket

@@ -115,64 +115,64 @@
 
 
 #tx5minLabel {
-  top:219px;
+  top:15px;
 }
 #tx5minBorder {
-  top:234px;  
+  top:30px;  
 
 }
 #tx5minBar {
-  top:234px;
+  top:30px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #pt5minLabel {
-  top:253px;
+  top:49px;
 }
 #pt5minBorder {
-  top:268px;  
+  top:64px;  
 
 }
 #pt5minBar {
-  top:268px;
+  top:64px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 
 #txPerBlockLabel {
-  top:287px;
+  top:83px;
 }
 #txPerBlockBorder {
-  top:302px;  
+  top:98px;  
 
 }
 #txPerBlockBar {
-  top:302px;
+  top:98px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 #ptPerBlockLabel {
-  top:321px;
+  top:117px;
 }
 #ptPerBlockBorder {
-  top:336px;  
+  top:132px;  
 
 }
 #ptPerBlockBar {
-  top:336px;
+  top:132px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 
 
 
 #ptPerTxLabel {
-  top:355px;
+  top:151px;
 }
 #ptPerTxBorder {
-  top:370px;
+  top:164px;
 }
 #ptPerTxBar {
-  top:370px;
+  top:164px;
   background-image: linear-gradient(to bottom, #B29AF8, #6d47e7);
 }
 

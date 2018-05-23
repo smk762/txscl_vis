@@ -71,7 +71,7 @@ hoarder_socket.on('block', function (data) {
       blockHash = jdata['blockhash'];
       if (hashArr.indexOf(blockHash) < 0) {
         blockChain = jdata['chainname'];
-        blockHeight = jdata['blockheight']
+        blockHeight = jdata['blockheight'];
         blockCount = jdata['txcount'];
         blockTime = jdata['blocktime'];
         blockSize = jdata['blocksize'];

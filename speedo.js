@@ -35,7 +35,7 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     } ],
     "bottomText": " tx/s",
     "bottomTextYOffset": 20,
-    "bottomTextFontSize":24,
+    "bottomTextFontSize":18,
     "bottomTextColor":'#000000',
     "bottomTextBold":true,
     "endValue": 1250000

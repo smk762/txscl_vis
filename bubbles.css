@@ -2,22 +2,22 @@
 .bubble {
 	opacity: 0.75;	
 }
-#legendBubbles {
+#scalebarBubbles {
 	display:inline;
 	position: absolute;
-	left:30px;
-	top:0px;
+	left:10px;
+	top:15px;
 	padding: 5px;
-	padding-top: 35px;
-	width: 80px;
-	height:300;
+	padding-top: 5px;
+	width: 300px;
+	height:80px;
 	opacity:0.8;
 }
 #bubbleLegend ul {
     list-style-type: none;
     position:absolute;
-    right:25px;
-    padding-top: 15px;
+    left:0px;
+    top: 20px;
     width:200px;
 }
 #bubbleLegend li {
@@ -28,11 +28,44 @@
   color: #0c2c2d;
   text-align: center;
 }
-.legendLabel {
-	font-size: 14px;
+#bubbleLegend span {
+	padding: 11px;
+	font-size: 11px;
+	font-weight: 400: 
 }
-#label_0 {
-	padding-top: 7px;
+#bubbleScalebar  {
+    position:absolute;
+    left:30px;
+    top: 220px;
+    width:200px;
+}
+#bubbleScalebar ul {
+    list-style-type: none;
+    position:absolute;
+    left:0px;
+    top: 0px;
+    width:200px;
+}
+#bubbleScalebar li {
+	display: block;
+  font-family: verdana;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px #2D5A5A;
+  color: #0c2c2d;
+  text-align: center;
+}
+#bubbleScalebar span {
+	padding: 11px;
+	font-size: 11px;
+	font-weight: 400: 
+}
+.legendLabel {
+}
+#label_values {
+	padding-top: 35px;
+}
+#label_title {
+	font-size: 14px;
 }
 #label_50 {
 	padding-top: 6px;

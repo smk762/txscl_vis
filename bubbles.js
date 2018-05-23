@@ -86,9 +86,8 @@ function setBubble(chain, height, ptCount, solveTime, url) {
 			.style("fill", function(d) { return "url(#gradient-" + divId + ")"; });
 
 		divObj.style.left = (winWidth*1.1)+"px";
-		divObj.addEventListener("webkitAnimationEnd", function() { unsetBubble(divId);});
-		divObj.addEventListener("animationend", function() { unsetBubble(divId);});
-		setTimeout(function() { unsetBubble(divId); },4000);
+		divObj.addEventListener("webkitTransitionEnd", function() { document.getElementById(divId).outerHTML =  ""; });
+		divObj.addEventListener("transitionend", function() { document.getElementById(divId).outerHTML =  ""; });
 		console.log("num bubbles - "+document.getElementById('bubbleLayer').childElementCount);
 	}
 }
@@ -135,39 +134,37 @@ function popBubbles() {
 
 // #######################  Create Bubbles for legend  ########################################
 
-var legendItemMargin = {top: 0, right: 0, bottom: 10, left: 40},
-    legendItemWidth = 80 - legendItemMargin.left - legendItemMargin.right,
-    legendItemHeight = 300 - legendItemMargin.top - legendItemMargin.bottom;
+var legendItemMargin = {top: 10, right: 0, bottom: 20, left: 40},
+    legendItemWidth = 300 - legendItemMargin.left - legendItemMargin.right,
+    legendItemHeight = 80 - legendItemMargin.top - legendItemMargin.bottom;
 
 var legendItems = [
-	{legendItem: "1", diameter: 5, color: "#FF0000"},
-	{legendItem: "10", diameter: 10, color: "#FFE100"},
-	{legendItem: "20", diameter: 20, color: "#00B621"},
-	{legendItem: "30", diameter: 30, color: "#7F006E"},
-	{legendItem: "40", diameter: 40, color: "#0094FF"},
-	{legendItem: "50", diameter: 50, color: "#C10000"},
-	{legendItem: "60", diameter: 60, color: "#719F00"}
+	{legendItem: "2", diameter: 2, color: getRandColor()},
+	{legendItem: "4", diameter: 4, color: getRandColor()},
+	{legendItem: "6", diameter: 6, color: getRandColor()},
+	{legendItem: "8", diameter: 8, color: getRandColor()},
+	{legendItem: "10", diameter: 10, color: getRandColor()}
 ];
   
 var legendItemScale = d3.scale.linear()
 	.domain([0, d3.max(legendItems, function(d) { return d.diameter; })])
-	.range([0, 60]);
+	.range([0, maxBubble]);
   
 var padding = 3;	
 legendItems.forEach( function(d,i) {
 	if(i === 0) { 
 		d.offset = 0; 
 	} else {
-		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+13/i;
+		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+14/i;
 	}
 });
 
-var svg = d3.select("#legendBubbles")
+var svg = d3.select("#scalebarBubbles")
     .append("svg")
         .attr("width", legendItemWidth + legendItemMargin.left + legendItemMargin.right)
         .attr("height", legendItemHeight + legendItemMargin.top + legendItemMargin.bottom)
     .append("g")
-        .attr("transform", "translate(" + (legendItemMargin.left) + "," + legendItemMargin.top + ")");
+        .attr("transform", "translate(" + (legendItemMargin.left) + "," + legendItemMargin.bottom + ")");
 
 var gradientRadial = svg.append("defs").selectAll("radialGradient")
 	.data(legendItems)
@@ -191,7 +188,7 @@ svg.selectAll(".legendItemsGradient")
 	.data(legendItems)
 	.enter().append("circle")
 	.attr("class", "legendItemsGradient")
-	.attr("cx", 0)
-	.attr("cy", function(d, i) { return d.offset + legendItemScale(d.diameter)/2 + padding; })
+	.attr("cx", function(d, i) { return d.offset + legendItemScale(d.diameter)/2 - padding; })
+	.attr("cy", 0)
 	.attr("r", function(d) { return legendItemScale(d.diameter)/2; })
 	.style("fill", function(d) { return "url(#gradient-" + d.legendItem + ")"; });

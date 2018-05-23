@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<meta charset="utf-8"> 
+<html>
+<head>
 
 <link rel="stylesheet" href="main.css" />
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
@@ -9,10 +11,13 @@
 <link rel="stylesheet" href="hash_table.css" />
 <link rel="stylesheet" href="animations.css" />
 <link rel="stylesheet" href="bubbles.css" />
+<link rel="stylesheet" href="buttons.css" />
+<link rel="stylesheet" href="graph.css" />
 
 <script src="https://d3js.org/d3-color.v1.min.js"></script>
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
@@ -21,71 +26,103 @@
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
 
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+</head>
+<body>
+
 	<div id="bubbleLayer"></div>
 	<div id="bubbleLegend">
-		<img src="img/bubble_legend.gif" />
-		<ul>
-			<li id="label_0"><a href="#" class="sm_off" id="sendMany_btn" onclick="toggleSendMany()">SendMany is off</a></li>
-			<li id="label_50"> 0-500 transactions</li>
-			<li id="label_100"> 1000 transactions</li>
-			<li id="label_200"> 2000 transactions</li>
-			<li id="label_300"> 3000 transactions</li>
-			<li id="label_400"> 4000 transactions</li>
-			<li id="label_500"> 5000 transactions</li>
-			<li id="label_600"> 6000 transactions</li>
-			<li id="label_5000"><a href="#" class="scale_off" id="bubbleScale_btn" onclick="toggleBubbleScale()">Scale bubbles down</a></li>
+		<div id="legendBubbles" style=""></div>
+		<div class="def_buttons" id="scaleDown_btn" onclick="bubbleScaleUp()">-<span class="scaleDown_tooltip">Decrease bubble size</span></div>
+		<div class="def_buttons" id="scaleUp_btn" onclick="bubbleScaleDown()">+<span class="scaleUp_tooltip">Increase bubble size</span></div>
+		<div class="def_buttons" id="popBubbles_btn" onclick="popBubbles()">*pop*<span class="popBubbles_tooltip">Pop bubbles</span></div>
+		<div class="def_buttons" id="bubble_btn" onclick="toggleBubble()">Off<span class="bubbleon_tooltip">Turn bubbles on</span></div>
+		<div class="def_buttons" id="speedDown_btn" onclick="bubbleSpeedUp()">-<span class="speedDown_tooltip">Decrease bubble speed</span></div>
+		<div class="def_buttons" id="speedUp_btn" onclick="bubbleSpeedDown()">+<span class="speedUp_tooltip">Increase bubble speed</span></div>
+		<div class="def_labels" id="speed_lbl">Bubble speed</div>
+		<div class="def_labels" id="size_lbl">Bubble size</div>
+		<ul>			
+			<li class="legendLabel" id="label_0"></li>
+			<li class="legendLabel" id="label_50"> 0-5 payments</li>
+			<li class="legendLabel" id="label_100"> 10 payments</li>
+			<li class="legendLabel" id="label_200"> 20 payments</li>
+			<li class="legendLabel" id="label_300"> 30 payments</li>
+			<li class="legendLabel" id="label_400"> 40 payments</li>
+			<li class="legendLabel" id="label_500"> 50 payments</li>
+			<li class="legendLabel" id="label_600"> 60 payments</li>
 	  </ul>
 	</div> 
 
 
-<div id="speedo"></div>    
+<div id="speedo"></div>
+<div class="" id="kmdLogo">
+	<a href="https://komodoplatform.com/" target="_blank"><img src="img/kmd_logo.gif" /> </a>
+</div>    
 <div class="" id="connBars"></div>
 <div id="statsTable">
 	<div class="statLabel" id="numApiConnLabel">No APIs connected! </div>
 	<div class="statBar" id="numApiConnBar">&nbsp;</div>
 	<div class="statBorder" id="numApiConnBorder">&nbsp;</div>
 	
-	<div class="statLabel" id="numChainActiveLabel">Asset Chains Active in last 5 minutes</div>
+	<div class="statLabel" id="numChainActiveLabel">Asset Chains Active (last 5 min)</div>
 	<div class="statBar" id="numChainActiveBar">&nbsp;</div>
 	<div class="statBorder" id="numChainActiveBorder">&nbsp;</div>
 
-	<div class="statLabel" id="numBlockSolvedLabel">Blocks Solved in last 5 minutes</div>
+	<div class="statLabel" id="numBlockSolvedLabel">Blocks Solved (last 5 min)</div>
 	<div class="statBar" id="numBlockSolvedBar">&nbsp;</div>
 	<div class="statBorder" id="numBlockSolvedBorder">&nbsp;</div>
 
-	<div class="statLabel" id="blockPerChainLabel">Average Blocks per active Asset Chain in last 5 minutes</div>
+	<div class="statLabel" id="blockPerChainLabel">Blocks per active Asset Chain (last 5 min)</div>
 	<div class="statBar" id="blockPerChainBar">&nbsp;</div>
 	<div class="statBorder" id="blockPerChainBorder">&nbsp;</div>
 
-	<div class="statLabel" id="tx5minLabel">Total TX in the last 5 minutes</div>
+	<div class="statLabel" id="tx5minLabel">Transactions in the (last 5 min)</div>
 	<div class="statBar" id="tx5minBar">&nbsp;</div>
 	<div class="statBorder" id="tx5minBorder">&nbsp;</div>
 
-	<div class="statLabel" id="aveChainTXLabel">Average TX per active Asset Chain in last 5 minutes</div>
+	<div class="statLabel" id="pt5minLabel">Payments in the (last 5 min)</div>
+	<div class="statBar" id="pt5minBar">&nbsp;</div>
+	<div class="statBorder" id="pt5minBorder">&nbsp;</div>
+
+	<div class="statLabel" id="aveChainTXLabel">Transactions per active Asset Chain in (last 5 min)</div>
 	<div class="statBar" id="aveChainTXBar">&nbsp;</div>
 	<div class="statBorder" id="aveChainTXBorder">&nbsp;</div>
 
-	<div class="statLabel" id="peakGlobalTXLabel">Peak Global TX</div>
-	<div class="statBar" id="peakGlobalTXBar">&nbsp;</div>
-	<div class="statBorder" id="peakGlobalTXBorder">&nbsp;</div>
+	<div class="statLabel" id="aveChainPTLabel">Payments per active Asset Chain (last 5 min)</div>
+	<div class="statBar" id="aveChainPTBar">&nbsp;</div>
+	<div class="statBorder" id="aveChainPTBorder">&nbsp;</div>
 
-	<div class="statLabel" id="txPerBlockLabel">Average TX per block</div>
+	<div class="statLabel" id="txPerBlockLabel">Transactions per block (last 5 min)</div>
 	<div class="statBar" id="txPerBlockBar">&nbsp;</div>
 	<div class="statBorder" id="txPerBlockBorder">&nbsp;</div>
 
-	<div class="statLabel" id="randomModeLabel">&nbsp;</div>
-	<div class="statLabel" id="sendManyModeLabel">&nbsp;</div>
-	<div class="statLabel" id="clientCountLabel">&nbsp;</div>
+	<div class="statLabel" id="ptPerBlockLabel">Payments per block (last 5 min)</div>
+	<div class="statBar" id="ptPerBlockBar">&nbsp;</div>
+	<div class="statBorder" id="ptPerBlockBorder">&nbsp;</div>
 
-	<div class="statBorder" id="sendManyModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+	<div class="statLabel" id="ptPerTxLabel">Average Payments per transaction (last 5 min)</div>
+	<div class="statBar" id="ptPerTxBar">&nbsp;</div>
+	<div class="statBorder" id="ptPerTxBorder">&nbsp;</div>
+
+	<div class="statLabel" id="clientCountLabel">&nbsp;</div>
 	<div class="statBorder" id="clientCountBorder" style="display: hidden; opacity:0;">&nbsp;</div>
-	<div class="statBorder" id="randomModeBorder" style="display: hidden; opacity:0;">&nbsp;</div>
+
+	<div class="def_buttons" style="display:none;" id="random_btn" onclick="goRandom()">Random data<span class="random_tooltip">Generate random data</span></div>
+
 </div>
 
+<div id="txscl_graph" style="position:absolute; z-index:9001; height: 300px; min-width: 310px"></div>
 <script src="colors.js"></script>
+<script src="buttons.js"></script>
 <script src="global.js"></script>
-<script src="bubbles_2.js"></script>
+<script src="bubbles.js"></script>
 <script src="speedo.js"></script>
 <script src="statusbars.js"></script>
 <script src="hash_table.js"></script>
-<script src="tx_sockets_2.js"></script>
+<script src="tx_sockets.js"></script>
+<script src="graph.js"></script>
+</body>
+</html>
