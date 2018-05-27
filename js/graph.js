@@ -7,12 +7,6 @@
  * @author Torstein Honsi
  */
 
-Highcharts.createElement('link', {
-    href: 'https://fonts.googleapis.com/css?family=Unica+One',
-    rel: 'stylesheet',
-    type: 'text/css'
-}, null, document.getElementsByTagName('head')[0]);
-
 Highcharts.theme = {
     colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
         '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -25,7 +19,7 @@ Highcharts.theme = {
             ]
         },
         style: {
-            fontFamily: '\'Unica One\', sans-serif'
+            fontFamily: 'verdana, geneva, sans-serif'
         },
         plotBorderColor: '#606063'
     },
@@ -83,12 +77,21 @@ Highcharts.theme = {
         }
     },
     plotOptions: {
+        area: {  
+        },
         series: {
             dataLabels: {
                 color: '#B0B0B3'
             },
             marker: {
                 lineColor: '#333'
+            },            
+            fillColor: {
+                linearGradient: [0, 0, 0, 300],
+                stops: [
+                    [0, Highcharts.getOptions().colors[0]],
+                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                ]
             }
         },
         boxplot: {
@@ -233,9 +236,9 @@ Highcharts.stockChart('txscl_graph', {
         var series = this.series[0];
         setInterval(function () {
           var x = (new Date()).getTime(), // current time
-            y = globalPT;
+            y = Math.random()*1115638;
           series.addPoint([x, y], true, true);
-        }, 1000);
+        }, 5000);
       }
     }
   },
@@ -258,7 +261,7 @@ Highcharts.stockChart('txscl_graph', {
   },
 
   title: {
-    text: 'Global Payments per second (60 second average)'
+    text: 'Global Payments per second (60 second average) RANDOM TEST DATA'
   },
 
   exporting: {
@@ -266,7 +269,14 @@ Highcharts.stockChart('txscl_graph', {
   },
 
   series: [{
-    name: 'liveData',
+    name: 'liveData',        
+    fillColor: {
+        linearGradient: [0, 0, 0, 300],
+        stops: [
+            [0, Highcharts.getOptions().colors[0]],
+            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+        ]
+    },
     data: (function () {
       // generate an array of random data
 
@@ -278,8 +288,8 @@ Highcharts.stockChart('txscl_graph', {
 
       for (i = -999; i <= 0; i += 1) {
         data.push([
-          time + i * 1000,
-          globalPT
+          time + i * 5000,
+          Math.random()*1115638
         ]);
       }
       return data;

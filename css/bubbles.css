@@ -1,6 +1,12 @@
-
 .bubble {
 	opacity: 0.75;	
+	z-index:20;
+}
+.bubble:hover {
+	opacity: 1;	
+	color:#00FF21;
+	transition: 'left' 20s ease-in 3s ;
+	cursor:crosshair;
 }
 #scalebarBubbles {
 	display:inline;
@@ -25,13 +31,13 @@
   font-family: verdana;
   font-weight: 900;
   text-shadow: 2px 2px 5px #2D5A5A;
-  color: #0c2c2d;
+  color: #C0C0C0;
   text-align: center;
 }
 #bubbleLegend span {
 	padding: 11px;
 	font-size: 11px;
-	font-weight: 400: 
+	font-weight: 400;
 }
 #bubbleScalebar  {
     position:absolute;
@@ -51,13 +57,13 @@
   font-family: verdana;
   font-weight: 900;
   text-shadow: 2px 2px 5px #2D5A5A;
-  color: #0c2c2d;
+  color: #C0C0C0;
   text-align: center;
 }
 #bubbleScalebar span {
 	padding: 11px;
 	font-size: 11px;
-	font-weight: 400: 
+	font-weight: 400; 
 }
 .legendLabel {
 }
@@ -88,13 +94,20 @@
 #label_600 {
 	padding-top: 44px;
 }
-#bubbleText {
+.bubbleText {
 	position:absolute;
-	font-size: 9px;
-	color:#2D5A5A;
-	color: rgba(255,255,255,0.6);
-	text-shadow: 2px 8px 6px rgba(255,255,255,0.4),
-                 0px -5px 35px rgba(0,0,0,0.6);
+	font-size: 8px;
 	left:-5px; 
 	display:inline-block;
+	opacity:0;
+}
+#bubbleLayer {
+	color:#404040;
+	font-size: 0.4em;
+	z-index:1;
+	width: 110%;
+	height: 100%;
+	position:absolute;
+	left:-5%;
+	top:0%;
 }

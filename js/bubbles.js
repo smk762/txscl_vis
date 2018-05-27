@@ -1,32 +1,26 @@
-function setBubble(chain, height, ptCount, solveTime, url) {
-		//console.log(chain+", "+height+", "+txCount+", "+solveTime);
-	if (bubble_state == 'on') {
+function setBubble(chain, height, ptCount, solveTime) {
+	let maxNumBubbles = parseInt(document.getElementById("bubbleNumberOf").value) * 100;
+	let bubbleSpeed = 1/parseInt(document.getElementById("bubbleSpeed").value) * (Math.random()*40+80);
+	let bubbleSize =  ptCount*10/(Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
+
+	console.log("bscale = "+Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
+	console.log("num bubbles - "+document.getElementById('bubbleLayer').childElementCount+"/"+maxNumBubbles);
+	//console.log("slider val "+document.getElementById("bubbleNumberOf").value);
+	if (maxNumBubbles == 0) {
+		document.getElementById('bubbleLayer').innerHTML = "";		
+	}
+	if (document.getElementById('bubbleLayer').childElementCount < maxNumBubbles ) {
+		var winWidth = window.innerWidth;
 		// set animation parameters
-		var floatTime = 5000;
 		var animWobble = wobbleArr[Math.floor(Math.random() * wobbleArr.length)];
-		var bubbleSpeed = solveTime/60*animBaseline*speedFactor;
-
-			//console.log("solveTime = "+solveTime);
-			// console.log("bubbleSpeed = "+bubbleSpeed);
-			//console.log("txCount = "+txCount);
-			//console.log("txCount = "+txCount);
-			//console.log("bubbleScaleFactor = "+bubbleScaleFactor);
-			//console.log("scaleFactor = "+scaleFactor);
 		// set bubble parameters
-		var bubbleSize = ptCount/legendScale*maxBubble/60;
-			//console.log("bubbleSize = "+bubbleSize);
-
-		var bubbleSize = bubbleSize * bubbleScaleFactor;
-			//console.log("bubbleSize = "+bubbleSize);
-
 
 		var divId = chain+height+"_div";
 		var canvasId = chain+height+"_canvas";
-		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<a href="'+url+'" target="blank_"><div class="bubble" id="'+divId+'" style="position:absolute; left:0; "></div></a>');
-		document.getElementById(divId).insertAdjacentHTML('afterbegin', '<div class="" id="'+canvasId+'" style="position:absolute; width:60px"><span class="bubbleText" style="">'+chain+'<br />('+Math.round(ptCount)+' pymnt) </span></div>');
+		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<div class="bubble" id="'+divId+'" onclick="shootBubble("'+divId+'");" style="position:absolute; left:0; "></div>');
 		var divObj = document.getElementById(divId);
-		var canvasObj = document.getElementById(canvasId);
 		var y = Math.random()*window.innerHeight;
+
 		divObj.style.transition =  'left '+bubbleSpeed+'s linear 1s';
 	 	divObj.style.animation = animWobble+' '+(Math.random()*20+20)+'s  ease-in-out';
 		divObj.style.left = '0px';
@@ -34,19 +28,15 @@ function setBubble(chain, height, ptCount, solveTime, url) {
 
 		divObj.style.width = bubbleSize+'px';
 		divObj.style.height = bubbleSize+'px';
-		canvasObj.style.left = "0px";
-		canvasObj.style.top = '0px';
-		canvasObj.width = bubbleSize+"px";
-		canvasObj.height = bubbleSize+"px";
 		var margin = {top: 0, right: 0, bottom: 0, left: 0};
-		var width = canvasObj.clientWidth - margin.left - margin.right;	
-		var height = canvasObj.clientHeight - margin.top - margin.bottom;
+		var width = divObj.clientWidth - margin.left - margin.right;	
+		var height = divObj.clientHeight - margin.top - margin.bottom;
 		var bubbleColor = getRandColor();
 		var xPos = 0;
 		var blockBubble = [	{ chainName: chain, diameter: bubbleSize, color: bubbleColor, offset: 0 } ];
 		
 		//Add the svg canvas
-			var svg = d3.select("#"+canvasId)
+			var svg = d3.select("#"+divId)
 		    .append("svg")
 		        .attr("width", bubbleSize)
 		        .attr("height", bubbleSize)
@@ -88,49 +78,18 @@ function setBubble(chain, height, ptCount, solveTime, url) {
 		divObj.style.left = (winWidth*1.1)+"px";
 		divObj.addEventListener("webkitTransitionEnd", function() { document.getElementById(divId).outerHTML =  ""; });
 		divObj.addEventListener("transitionend", function() { document.getElementById(divId).outerHTML =  ""; });
-		console.log("num bubbles - "+document.getElementById('bubbleLayer').childElementCount);
+		
 	}
 }
 // Code for Chrome, Safari and Opera
 // Standard syntax
 
-function stopAnimation(divObj) {
-	divObj.style.animation = '';
+function shootBubble(div) {
+	document.getElementById(div).innerHTML = "";
 }
+bubble_state = 'on';
+randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*2222)), (Math.random()*300)); } ,30);
 
-function unsetBubble(chain, height) {
-//	var divId = chain+height+"_div";
-//	document.getElementById(divId).outerHTML = "";
-}
-
-function popBubble() {
-	numBubbles = document.getElementById('bubbleLayer').childElementCount;
-	if (numBubbles > 400) {
-		for (var i = 0; i < numBubbles - maxNumBubbles; i++) {
-			document.getElementById("bubbleLayer").lastChild.outerHTML = "";
-		}
-	}
-}
-setInterval(function() { popBubble(); } ,5000);
-
-function goRandom() {
-	if (randomState == 'off') {
-		randomState = 'on';
-											// setBubble(chain, height, txCount, solveTime, url)
-		randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*2222)), (Math.random()*6000), (20+Math.random()*60)); } ,15);
-	}
-	else {
-		randomState = 'off';
-		popBubbles();
-		clearInterval(randomInterval);
-	}
-		
-}
- // goRandom();
-
-function popBubbles() {
-	document.getElementById("bubbleLayer").innerHTML = "";
-}
 
 // #######################  Create Bubbles for legend  ########################################
 

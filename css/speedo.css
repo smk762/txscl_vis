@@ -1,0 +1,44 @@
+.amcharts-chart-div a {
+  opacity:0 !important;
+}
+.export-main {
+  opacity:0 !important;
+}
+ 
+
+#speedo {
+  position:absolute;
+  top:100%;
+  left:40%;
+  width: 20%;
+  height: 32%;
+  border: 2px solid #2D5A5A;
+  border-radius: 16px 16px 16px 16px;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  transition: top 3s ease-out 1s;
+  background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
+  z-index: 25;
+
+}    
+#kmdLogo {
+  position:absolute;
+  top:160%;
+  transition: top 3s ease-out 1s;
+  z-index: 25;
+  opacity: 0.8;
+}
+#logoImg {
+  max-width: 90%;
+  height: auto;
+}
+.amcharts-gauge-axis  {
+  border:hidden;
+  background: transparent;
+}
+.amcharts-axis-label {
+  font-size: 0.5em !important;
+}
+.amcharts-export-menu {
+  display: none;
+}
