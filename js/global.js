@@ -1,3 +1,13 @@
+window.requestAnimationFrame = window.requestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.msRequestAnimationFrame
+    || function(f){return setTimeout(f, 1000/60)} // simulate calling code 60 
+ 
+window.cancelAnimationFrame = window.cancelAnimationFrame
+    || window.mozCancelAnimationFrame
+    || function(requestID){clearTimeout(requestID)} //fall back
+
 function getWidth() {
   return Math.max(
     document.body.scrollWidth,
@@ -36,22 +46,11 @@ var bubbleScale = 1;
 var speedFactor = 1;
 var legendScale = 1;
 
-var maxTxPerBlock = 10000;
-var maxPtPerBlock = 60000;
-var txPerBlock = 0;
-var ptPerBlock = 0;
-var aveChainTX = 0;
-var aveChainPT = 0;
-var tx5min = 0;
-var pt5min = 0;
 var globalTX = 0;
 var globalPT = 0;
 
 var lastHash = "";
-var totalNumChains = 1024;
-var blockPerChain = 0;
 var numBlockSolved = 0;
-var numChainActive = 0;
 var sendMany_multiplier = 10;
 var clientCount =0;
 
@@ -59,4 +58,31 @@ var winWidth = window.innerWidth;
 var winHeight = window.innerHeight;
 var padding = 0;
 var wobbleArr = ['upDown1','upDown2','upDown3','upDown4','upDown5'];
-var stats_Arr = ['numApiConn', 'numChainActive', 'numBlockSolved', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock'];
+var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock', 'ptPerTx'];
+
+  let maxTx5min = 300*10000;
+  let maxTxPerBlock = 10000;
+  let maxAveChainTx = 10000;
+
+  let maxPt5min = maxTx5min*100;
+  let maxPtPerBlock = maxTxPerBlock*100;
+  let maxAveChainPt = maxAveChainTx*100;
+  
+  let totalNumChains = 1024;
+  let maxBlock5min = 10*totalNumChains;
+  let maxBlockPerChain = 10;
+  let maxPtPerTx = 100;
+
+  let numApiConn = 0;
+  let numChainActive = 0;
+  let block5min = 0;
+  let blockPerChain = 0;
+  // transaction and payment metrics
+  let tx5min = 0;
+  let txPerBlock = 0;
+  let aveChainTX = 0;
+  let pt5min = 0;
+  let ptPerBlock = 0;
+  let aveChainPT = 0;
+  // payment to transaction ratio
+  let ptPerTx = 0;

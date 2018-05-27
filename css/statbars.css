@@ -84,6 +84,7 @@ body {
 	padding-bottom: 0.2em;
 	text-align:left;
 	position: relative;
+	letter-spacing: -0.1em;
 }
 .statLabel span {
 	margin:auto;
@@ -94,6 +95,7 @@ body {
 	-webkit-border-radius: 0.1em 0.1em 0.1em 0.1em;
 	-moz-border-radius: 0.1em 0.1em 0.1em 0.1em;
 	position: relative;
+	margin:0px !important;
 }
 .statBorder{
 	height:1.1em;
@@ -111,7 +113,7 @@ body {
   background-image: linear-gradient(to bottom, #FFFF00, #FFD000);
 
 }
-#numBlockSolvedBar {  /* orange */
+#block5minBar {  /* orange */
   background-image: linear-gradient(to bottom, #FF1900, #FF5000);
 }
 #blockPerChainBar {  /* orange */

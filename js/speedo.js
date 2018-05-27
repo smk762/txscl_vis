@@ -58,8 +58,6 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
 let speedoVal = 0;
 // set random value
 function updateNeedle() {
-  speedoVal = speedoVal+(Math.random()-Math.random())*100000;
-  console.log(speedoVal);
   if (speedoVal < 0) { speedoVal = 0 };
   if (speedoVal > 12500000) { speedoVal = 12500000 };
   speedoVal = Math.floor(speedoVal);
@@ -77,4 +75,3 @@ function updateNeedle() {
   }
 }
 
-setInterval(function() { updateNeedle(); },5000);

@@ -86,3 +86,155 @@ function blowScalebarBubbles() {
 	 } 
 }
 blowScalebarBubbles();
+
+
+
+function updateStatusBar(id, stat) {
+	let barSize = 0;
+	let label = id+"Label";
+	let bar = id+"Bar";
+	let border = id+"Border";
+	let borderWidth = document.getElementById(border).clientWidth;
+
+
+	if (stat < 0) { stat = 0; }
+	switch(id) {
+	    case 'tx5min':
+	      barSize = stat/maxTx5min;
+	      if (barSize !== barSize) { barSize = 0; }
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total transactions (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'txPerBlock':
+	      barSize = stat/maxTxPerBlock;
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Transactions per block (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'aveChainTX':
+	      barSize = stat/maxAveChainTx;
+	      if (barSize !== barSize) { barSize = 0; }
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Transactions per Asset Chain (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'pt5min':
+	      barSize = stat/maxPt5min;
+	      if (barSize !== barSize) { barSize = 0; }
+	      console.log("PT 5 min: "+stat);
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total payments (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'ptPerBlock':
+	      console.log("PT Per Block: "+stat);
+	      barSize = stat/maxPtPerBlock;
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Payments per block (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+			console.log("ID: "+id);
+			console.log("Value: "+stat);
+			console.log("Max: "+maxPtPerBlock);
+			console.log("barSize: "+barSize);
+			console.log("------------------------");
+	      break;
+	    case 'aveChainPT':
+	      barSize = stat/maxAveChainPt;
+	      if (barSize !== barSize) { barSize = 0; }
+	      barSize = limitToOne(barSize);
+	      console.log("PT Per Chain: "+stat);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Payments per Asset Chain (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'numApiConn':
+	      barSize = stat/totalNumChains;
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+" / "+totalNumChains+"</span> APIs connected";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'numChainActive':
+	      barSize = stat/numApiConn;
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"/ "+numApiConn+"</span> Asset Chains Active (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'block5min':
+	      barSize = stat/maxBlock5min;
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks Solved (last 5 minutes)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'blockPerChain':
+	      barSize = stat/maxBlockPerChain;
+	      if (barSize !== barSize) { barSize = 0; }
+	      barSize = limitToOne(barSize);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Blocks per Asset Chain (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    case 'ptPerTx':
+	      barSize = stat/maxPtPerTx;
+	      if (barSize !== barSize) { barSize = 0; }
+	      barSize = limitToOne(barSize);
+	      console.log("PT Per TX: "+stat);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+stat.toFixed(2)+"</span> Payments per transaction (last 5 min)";
+	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
+	      break;
+	    default:
+	      barSize = 0;
+  }
+}
+
+function setRandomStats() {
+	// block and network metrics
+	numApiConn = Math.floor(numApiConn+8);
+	if (numApiConn > totalNumChains) { numApiConn = totalNumChains; }
+	numChainActive = Math.floor(numChainActive+Math.random()*4+4);
+	if (numChainActive > numApiConn) { numChainActive = numApiConn; }
+	maxBlock5min = 10*numChainActive;
+	block5min = Math.abs((block5min+Math.random()*5*numChainActive-Math.random()*5*numChainActive));
+	if (block5min > maxBlock5min) { block5min = maxBlock5min; }
+	blockPerChain = (block5min / numChainActive);
+	maxBlockPerChain = 10;
+	if (blockPerChain > maxBlockPerChain) { blockPerChain = maxBlockPerChain; }
+	// transaction and payment metrics
+	maxTx5min = block5min*maxTxPerBlock;
+	tx5min = Math.abs((tx5min+Math.random()*maxTx5min/10-Math.random()*maxTx5min/10));
+	if (tx5min > maxTx5min) { tx5min = maxTx5min; }
+	txPerBlock = Math.abs((tx5min / block5min));
+	aveChainTX = Math.abs((tx5min / numChainActive));
+	maxPt5min = block5min*maxTxPerBlock*10;
+	pt5min = Math.abs(pt5min+tx5min*Math.random()*10);
+	if (pt5min > maxPt5min) { pt5min = maxPt5min; }
+	ptPerBlock = Math.abs((pt5min / block5min));
+	aveChainPT = Math.abs((pt5min / numChainActive));
+	// payment to transaction ratio
+	ptPerTx = (pt5min / tx5min); if (ptPerTx < 1) { ptPerTx = 1 };
+	// payment per second, 60 sec average
+	speedoVal = speedoVal+(Math.random()-Math.random())*10000;
+
+
+	updateStatusBar('numApiConn',numApiConn); 
+	updateStatusBar('numChainActive',numChainActive); 
+	updateStatusBar('block5min',block5min); 
+	updateStatusBar('blockPerChain',blockPerChain); 
+	updateStatusBar('tx5min',tx5min);
+	updateStatusBar('txPerBlock',txPerBlock);
+	updateStatusBar('aveChainTX',aveChainTX); 
+	updateStatusBar('pt5min',pt5min);
+	updateStatusBar('ptPerBlock',ptPerBlock);
+	updateStatusBar('aveChainPT',aveChainPT);
+	updateStatusBar('ptPerTx',ptPerTx);
+	updateNeedle();
+	
+}
+setInterval(function() { setRandomStats() }, 3000);
+//requestAnimationFrame(function() { setRandomStats() });
+
+function limitToOne(val) {
+  if (val > 1) {
+    val = 1;
+  }
+  return val;
+};
+

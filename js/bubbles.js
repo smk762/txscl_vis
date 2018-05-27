@@ -88,6 +88,7 @@ function shootBubble(div) {
 	document.getElementById(div).innerHTML = "";
 }
 bubble_state = 'on';
+//randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*2222)), (Math.random()*300)); } ,30);
 randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*2222)), (Math.random()*300)); } ,30);
 
 
