@@ -47,13 +47,13 @@ A graph (using https://www.highcharts.com/) tracks combined payments per second,
 
 ## Inspiration and thanks to ##
 
-Mike Bostock - https://bost.ocks.org/mike/ / https://twitter.com/mbostock
+Mike Bostock - https://bost.ocks.org/mike/ | https://twitter.com/mbostock
 
-Torstein Hønsi - https://www.highcharts.com/ / https://twitter.com/torsteinhonsi?lang=en
+Torstein Hønsi - https://www.highcharts.com/ | https://twitter.com/torsteinhonsi?lang=en
 
-Antanas Marcelionis - https://www.amcharts.com/ / https://twitter.com/marcelionis?lang=en
+Antanas Marcelionis - https://www.amcharts.com/ | https://twitter.com/marcelionis?lang=en
 
-Nadieh Bremer - https://www.visualcinnamon.com / https://twitter.com/NadiehBremer
+Nadieh Bremer - https://www.visualcinnamon.com | https://twitter.com/NadiehBremer
 
 
 
