@@ -1,4 +1,4 @@
-# txscl_vis - Visualisation and metrics for Komodo World Record payments per second scale testing
+# Visualisation and metrics for Komodo World Record payments per second scale testing
 
 Komodo is testing the limits of payment processing per second, and has already achieved rates faster than Visa and Mastercard.
 This is achieved through "Grandmother of Merkle" notarisation via linked assetchains, with atomic swap capability allowing parallel chains to act as a single cryptocurrency.
