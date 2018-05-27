@@ -55,7 +55,7 @@ Antanas Marcelionis - https://www.amcharts.com/ | https://twitter.com/marcelioni
 
 Nadieh Bremer - https://www.visualcinnamon.com | https://twitter.com/NadiehBremer
 
-Komodo - https://komodoplatform.com/
+Komodo - https://komodoplatform.com/ | https://twitter.com/KomodoPlatform
 
 
 
