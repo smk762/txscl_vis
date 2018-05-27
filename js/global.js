@@ -27,6 +27,30 @@ function getHeight() {
     document.documentElement.clientHeight
   );
 }
+
+
+function limitToOne(val) {
+  if (val > 1) {
+    val = 1;
+  }
+  return val;
+};
+
+window.rInterval=function(callback,delay) {
+  var dateNow=Date.now,
+    requestAnimation=window.requestAnimationFrame,
+    start=dateNow(),
+    stop,
+    intervalFunc=function() {
+      dateNow()-start<delay||(start+=delay, callback());
+      stop||requestAnimation(intervalFunc)
+    }
+  requestAnimation(intervalFunc);
+  return {
+    clear: function(){ stop=1 }
+  }
+}
+
 hoarder_url = "http://209.250.235.172:9762/";  
 var jsonHistory = 'https://cryptogeology.com/globalpt.json';
 
@@ -65,7 +89,7 @@ var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', '
   let maxAveChainTx = 10000;
 
   let maxPt5min = maxTx5min*100;
-  let maxPtPerBlock = maxTxPerBlock*100;
+  let maxPtPerBlock = maxTxPerBlock*10;
   let maxAveChainPt = maxAveChainTx*100;
   
   let totalNumChains = 1024;

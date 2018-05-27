@@ -228,13 +228,16 @@ function setRandomStats() {
 	updateNeedle();
 	
 }
-setInterval(function() { setRandomStats() }, 3000);
-//requestAnimationFrame(function() { setRandomStats() });
+// setInterval(function() { setRandomStats() }, 3000);
+ window.rInterval(function(){ setRandomStats(); },3000);
 
-function limitToOne(val) {
-  if (val > 1) {
-    val = 1;
-  }
-  return val;
-};
 
+var interval1,timeout1;
+//window.onload=function(){
+ //timeout1=window.rtimeOut(function(){console.log('timeout1')},5000);
+//}
+
+/* to clear
+interval1.clear();
+timeout1.clear();
+*/
