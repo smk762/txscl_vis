@@ -34,7 +34,7 @@ Changes the time taken for a bubble to travel across the screen (and self destru
 ### Bubble Scale ###
 Changes the size of bubbles, and the legend values indicating payments relative to bubble size. Allows user to resize bubbles to more appropriate sizes for the current network payments per transaction values. This is like zooming in, so you can see bubbles with low payments, or zooming out, so individual bubbles do not flood the screen.
 
-*Note: Smaller bubbles are less resource heavy to render and animate.
+ *Note: Smaller bubbles are less resource heavy to render and animate.*
 
 ## Other Metrics ##
 
