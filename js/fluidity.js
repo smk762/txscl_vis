@@ -1,25 +1,3 @@
-
-function positionElements() {
-	document.getElementsByTagName("BODY")[0].fontSize = winHeight*0.02+"px";
-	logoWidth = speedoWidth*0.8;
-	logoHeight = speedoHeight*0.8;
-	statsHeight = winHeight*420/1080;
-	statsWidth = winWidth*300/1920;
-	legendHeight = winHeight*420/1080;
-	legendWidth = winWidth*300/1920;
-	speedoWidth = document.getElementById('speedo').offsetWidth;
-	document.getElementById('speedo').style.left = (winWidth/2-speedoWidth/2)+"px";
-	statsWidth = document.getElementById('statsTable').offsetWidth;
-	document.getElementById('statsTable').style.left = (winWidth/2+speedoWidth/2)+"px";
-	legendWidth = document.getElementById('statsTableLeft').offsetWidth;
-	for (var i = stats_Arr.length - 1; i >= 0; i--) {
-		if (document.getElementById(stats_Arr[i]+"Bar").offsetWidth > document.getElementById(stats_Arr[i]+"Border").offsetWidth ) {
-			document.getElementById(stats_Arr[i]+"Bar").style.width = document.getElementById(stats_Arr[i]+"Border").offsetWidth+"px";
-		}
-		
-	} 
-}
-
 function slideIn() {
 	var winHeight = window.innerHeight;
 	var winWidth = window.innerWidth;
@@ -37,17 +15,9 @@ function slideIn() {
 }
 
 window.onresize = function() {
-	//positionElements();
-	scaleElements();
+	scaleStats();
 	slideIn();
 };
-
-function scaleElements() {
-	var winHeight = window.innerHeight;
-	var winWidth = window.innerWidth;	
-	blowScalebarBubbles();
-	scaleStats();
-}
 
 function scaleStats() {
 	var winHeight = window.innerHeight;
@@ -62,6 +32,5 @@ function scaleStats() {
 	// document.getElementById('statsTableRight').setAttribute("style","height:"+document.getElementById('statsTableLeft').offsetHeight+"px");
 }
 
-
-scaleElements();
+scaleStats();
 slideIn();

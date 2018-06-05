@@ -106,40 +106,34 @@ body {
 	top:-1.1em;
 	position: relative;
 }
-#numApiConnBar {  /* yellow */
+#ac_active_5minBar { /* yellow */
   background-image: linear-gradient(to bottom, #FFFF00, #FFD000);
 }
-#numChainActiveBar { /* yellow */
-  background-image: linear-gradient(to bottom, #FFFF00, #FFD000);
-
-}
-#block5minBar {  /* orange */
+#blk_5minBar {  /* orange */
   background-image: linear-gradient(to bottom, #FF1900, #FF5000);
 }
-#blockPerChainBar {  /* orange */
+#block_per_chainBar {  /* orange */
   background-image: linear-gradient(to bottom, #FF1900, #FF5000);
 }
-#ptPerTxBar {  /* magenta */
+#pt_per_txBar {  /* magenta */
   background-image: linear-gradient(to bottom, #7F0000, #FF0000);
 }
-
-
-#tx5minBar { /* green */
+#tx_5minBar { /* green */
   background-image: linear-gradient(to bottom, #0066AF, #0094FF);
 }
-#txPerBlockBar {  /* green */
+#tx_per_blockBar {  /* green */
   background-image: linear-gradient(to bottom, #0066AF, #0094FF);
 }
-#aveChainTXBar {  /* green */
+#tx_per_chainBar {  /* green */
   background-image: linear-gradient(to bottom, #0066AF, #0094FF);
 }
-#pt5minBar { /* dark green */
+#pt_5minBar { /* dark green */
   background-image: linear-gradient(to bottom, #005866, #1A9100);
 }
-#ptPerBlockBar { /* dark green */
+#pt_per_blockBar { /* dark green */
   background-image: linear-gradient(to bottom, #005866, #1A9100);
 }
-#aveChainPTBar {  /* dark green */
+#pt_per_chainBar {  /* dark green */
   background-image: linear-gradient(to bottom, #005866, #1A9100);
 }
 

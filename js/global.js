@@ -1,3 +1,5 @@
+'use strict'
+let color = "";
 window.requestAnimationFrame = window.requestAnimationFrame
     || window.mozRequestAnimationFrame
     || window.webkitRequestAnimationFrame
@@ -28,13 +30,61 @@ function getHeight() {
   );
 }
 
-
 function limitToOne(val) {
   if (val > 1) {
     val = 1;
   }
   return val;
 };
+
+function getRandColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function getRandMidColor() {
+  var letters = '3456789';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 7)];
+  }
+  return color;
+}
+
+function getRandGreen() {
+  color = "";
+  //var letters = '0123456789ABCDEF';
+  var letters = '34567';
+  for (var i = 0; i < 2; i++) {
+    color += letters[Math.floor(Math.random() * 5)];
+    console.log(color);
+  }
+  color="#00"+color+"00";
+    console.log(color);
+  return color;
+}
+function getRandBlue() {
+  color = "";
+  var letters = '0123456789ABCDEF';
+  for (var i = 0; i < 2; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  color="#0000"+color;
+  return color;
+}
+function getRandRed() {
+  color = "";
+  var letters = '0123456789ABCDEF';
+  for (var i = 0; i < 2; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  color="#"+color+"0000";
+  return color;
+}
 
 window.rInterval=function(callback,delay) {
   var dateNow=Date.now,
@@ -50,63 +100,46 @@ window.rInterval=function(callback,delay) {
     clear: function(){ stop=1 }
   }
 }
-
-hoarder_url = "http://209.250.235.172:9762/";  
-var jsonHistory = 'https://cryptogeology.com/globalpt.json';
-
-var sendMany_multiplier = 1;
-var sendMany_state = 'off';
-var bubble_state = 'off';
-var bubble_scale = 'off';
-var bubbleScale_state = 'off';
-var randomState = 'off';
-var bubbleScaleFactor = 1;
-var scaleFactor = 1;
-var legendLabelScale = 10;
-var maxBubble = 30;
-var maxNumBubbles = 600;
-var animBaseline = 30;
-var bubbleScale = 1;
-var speedFactor = 1;
-var legendScale = 1;
-
-var globalTX = 0;
-var globalPT = 0;
-
-var lastHash = "";
-var numBlockSolved = 0;
-var sendMany_multiplier = 10;
-var clientCount =0;
+function unique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
 
 var winWidth = window.innerWidth;
 var winHeight = window.innerHeight;
+
+let hoarder_url = "http://cryptocartography.io:9762/";
+let tx_5min = 0;
+let pt_5min = 0;
+let blk_5min = 0;
+let tx_per_block = 0;
+let pt_per_block = 0;
+let tx_per_chain = 0;
+let pt_per_chain = 0;
+let pt_per_tx = 0;
+let block_per_chain = 0;
+let tx_60sec = 0;
+let pt_60sec = 0;
+let max_time = 0;
+let ac_active_5min = 0;
+
+
+
+var jsonHistory = 'https://cryptogeology.com/globalpt.json';
 var padding = 0;
+
+let sbLbl_Arr = ['lbl_1','lbl_2','lbl_3','lbl_4','lbl_5'];
 var wobbleArr = ['upDown1','upDown2','upDown3','upDown4','upDown5'];
 var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock', 'ptPerTx'];
 
-  let maxTx5min = 300*10000;
-  let maxTxPerBlock = 10000;
-  let maxAveChainTx = 10000;
+let maxTx5min = 300*10000;
+let maxTxPerBlock = 10000;
+let maxAveChainTx = 10000;
 
-  let maxPt5min = maxTx5min*100;
-  let maxPtPerBlock = maxTxPerBlock*10;
-  let maxAveChainPt = maxAveChainTx*100;
-  
-  let totalNumChains = 1024;
-  let maxBlock5min = 10*totalNumChains;
-  let maxBlockPerChain = 10;
-  let maxPtPerTx = 100;
+let maxPt5min = maxTx5min*100;
+let maxPtPerBlock = maxTxPerBlock*10;
+let maxAveChainPt = maxAveChainTx*100;
 
-  let numApiConn = 0;
-  let numChainActive = 0;
-  let block5min = 0;
-  let blockPerChain = 0;
-  // transaction and payment metrics
-  let tx5min = 0;
-  let txPerBlock = 0;
-  let aveChainTX = 0;
-  let pt5min = 0;
-  let ptPerBlock = 0;
-  let aveChainPT = 0;
-  // payment to transaction ratio
-  let ptPerTx = 0;
+let totalNumChains = 8192;
+let maxBlock5min = 10*totalNumChains;
+let maxBlockPerChain = 10;
+let maxPtPerTx = 100;

@@ -2,40 +2,40 @@ function setBubble(chain, height, ptCount, solveTime) {
 	let maxNumBubbles = parseInt(document.getElementById("bubbleNumberOf").value) * 100;
 	let numBubbles = document.getElementById('bubbleLayer').childElementCount;
 
-	console.log("bscale = "+Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
-	console.log("num bubbles - "+document.getElementById('bubbleLayer').childElementCount+"/"+maxNumBubbles);
+	//console.log("bscale = "+Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
+	//console.log("num bubbles - "+document.getElementById('bubbleLayer').childElementCount+"/"+maxNumBubbles);
 	//console.log("slider val "+document.getElementById("bubbleNumberOf").value);
 	if (maxNumBubbles == 0) {
 		document.getElementById('bubbleLayer').innerHTML = "";		
 	}
 	if (numBubbles < maxNumBubbles ) {
-		let bubbleSpeed = 1/parseInt(document.getElementById("bubbleSpeed").value) * (Math.random()*40+80);
+		var margin = {top: 0, right: 0, bottom: 0, left: 0};
+		let bubbleSpeed = 1/parseInt(document.getElementById("bubbleSpeed").value) * (Math.random()*80+40);
+		// let bubbleSize =  ptCount*10/(Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
 		let bubbleSize =  ptCount*10/(Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
-		let bubbleColor = getRandColor();
+		let bubbleColor = getRandMidColor();
 		let winWidth = window.innerWidth;
 		// set animation parameters
-		var animWobble = wobbleArr[Math.floor(Math.random() * wobbleArr.length)];
+		// var animWobble = wobbleArr[Math.floor(Math.random() * wobbleArr.length)];
 		// set bubble parameters
 
 		var divId = chain+height+"_div";
 		var canvasId = chain+height+"_canvas";
-		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<div class="bubble" id="'+divId+'" onclick="shootBubble("'+divId+'");" style="position:absolute; left:0; "></div>');
+		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<div class="bubble" id="'+divId+'"></div>');
 		var divObj = document.getElementById(divId);
-		var y = Math.random()*window.innerHeight;
+		var x = Math.random()*winWidth;
 
 		
-		divObj.style.transition =  'left '+bubbleSpeed+'s linear 1s';
-	 	divObj.style.animation = animWobble+' '+(Math.random()*20+20)+'s  ease-in-out';
-		divObj.style.left = '0px';
-		divObj.style.top = y+'px';
-	
-
+		// divObj.style.animation = animWobble+' '+(Math.random()*20+20)+'s  ease-in-out';
+		divObj.style.transition =  'top '+bubbleSpeed+'s linear 1s';
+	 	divObj.style.left = x+'px';
+		divObj.style.top = winHeight+'px';
 		divObj.style.width = bubbleSize+'px';
 		divObj.style.height = bubbleSize+'px';
-		var margin = {top: 0, right: 0, bottom: 0, left: 0};
-		var width = divObj.clientWidth - margin.left - margin.right;	
-		var height = divObj.clientHeight - margin.top - margin.bottom;
-		var xPos = 0;
+//		console.log(divObj.clientWidth);
+
+		var width = Math.round(bubbleSize) - margin.left - margin.right;	
+		var height = Math.round(bubbleSize) - margin.top - margin.bottom;
 		var blockBubble = [	{ chainName: chain, diameter: bubbleSize, color: bubbleColor, offset: 0 } ];
 		
 		//Add the svg canvas
@@ -78,80 +78,40 @@ function setBubble(chain, height, ptCount, solveTime) {
 			.attr("r", function(d) { return d.diameter/2; })
 			.style("fill", function(d) { return "url(#gradient-" + divId + ")"; });
 
-		divObj.style.left = (winWidth*1.1)+"px";
+		divObj.style.top = -(winHeight*1.1)+"px";
 		divObj.addEventListener("webkitTransitionEnd", function() { document.getElementById(divId).outerHTML =  ""; });
 		divObj.addEventListener("transitionend", function() { document.getElementById(divId).outerHTML =  ""; });
 		
 	}
 }
-// Code for Chrome, Safari and Opera
-// Standard syntax
 
-function shootBubble(div) {
-	document.getElementById(div).innerHTML = "";
+function dropBlok() {
+		var divId = "div_"+Math.floor(Math.random()*100000);
+		var canvasId = "canvas_"+Math.floor(Math.random()*100000);
+		document.getElementById('bubbleLayer').insertAdjacentHTML('afterbegin', '<div class="bubble" id="'+divId+'"><img src="img/kmd_b.svg" /></div>');
+		var divObj = document.getElementById(divId);
+		let winWidth = window.innerWidth;
+		var x = Math.random()*winWidth;
+
+		var margin = {top: 0, right: 0, bottom: 0, left: 0};
+		let bubbleSpeed = 1/parseInt(document.getElementById("bubbleSpeed").value) * (Math.random()*80+40);
+		// let bubbleSize =  ptCount*10/(Math.pow(10,parseInt(document.getElementById("bubbleScale").value)));
+		let bubbleColor = getRandMidColor();
+
+		divObj.style.transition =  'top '+bubbleSpeed+'s linear 1s';
+	 	divObj.style.left = x+'px';
+		divObj.style.top = winHeight+'px';
+		console.log(divObj.clientWidth);
+
+		divObj.style.top = -(winHeight*1.1)+"px";
+		divObj.addEventListener("webkitTransitionEnd", function() { document.getElementById(divId).outerHTML =  ""; });
+		divObj.addEventListener("transitionend", function() { document.getElementById(divId).outerHTML =  ""; });		
 }
-bubble_state = 'on';
- randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); } ,30);
-//window.rInterval(function(){ setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); },100);
+
+//randomInterval = setInterval(function() { setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); } ,40);
+//window.rInterval(function(){ setBubble(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); },47);
+
+//randomInterval2 = setInterval(function() { dropBlok(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); } ,52);
+//window.rInterval(function(){ dropBlok(("sa"+Math.floor(Math.random()*666)), (Math.floor(Math.random()*100)), (Math.random()*100), (Math.random()*60)); },35);
 
 
-// #######################  Create Bubbles for legend  ########################################
-
-var legendItemMargin = {top: 10, right: 0, bottom: 20, left: 40},
-    legendItemWidth = 300 - legendItemMargin.left - legendItemMargin.right,
-    legendItemHeight = 80 - legendItemMargin.top - legendItemMargin.bottom;
-
-var legendItems = [
-	{legendItem: "2", diameter: 2, color: getRandColor()},
-	{legendItem: "4", diameter: 4, color: getRandColor()},
-	{legendItem: "6", diameter: 6, color: getRandColor()},
-	{legendItem: "8", diameter: 8, color: getRandColor()},
-	{legendItem: "10", diameter: 10, color: getRandColor()}
-];
-  
-var legendItemScale = d3.scale.linear()
-	.domain([0, d3.max(legendItems, function(d) { return d.diameter; })])
-	.range([0, maxBubble]);
-  
-var padding = 3;	
-legendItems.forEach( function(d,i) {
-	if(i === 0) { 
-		d.offset = 0; 
-	} else {
-		d.offset = legendItems[i-1].offset + legendItemScale(legendItems[i-1].diameter) + padding*2+14/i;
-	}
-});
-
-var svg = d3.select("#scalebarBubbles")
-    .append("svg")
-        .attr("width", legendItemWidth + legendItemMargin.left + legendItemMargin.right)
-        .attr("height", legendItemHeight + legendItemMargin.top + legendItemMargin.bottom)
-    .append("g")
-        .attr("transform", "translate(" + (legendItemMargin.left) + "," + legendItemMargin.bottom + ")");
-
-var gradientRadial = svg.append("defs").selectAll("radialGradient")
-	.data(legendItems)
-	.enter().append("radialGradient")
-	.attr("id", function(d){ return "gradient-" + d.legendItem; })
-	.attr("cx", "30%")
-	.attr("cy", "30%")
-	.attr("r", "65%");
-  
-gradientRadial.append("stop")
-	.attr("offset", "0%")
-	.attr("stop-color", function(d) { return d3.rgb(d.color).brighter(1); });
-gradientRadial.append("stop")
-	.attr("offset", "50%")
-	.attr("stop-color", function(d) { return d.color; });
-gradientRadial.append("stop")
-	.attr("offset",  "100%")
-	.attr("stop-color", function(d) { return d3.rgb(d.color).darker(1.5); });
-	
-svg.selectAll(".legendItemsGradient")
-	.data(legendItems)
-	.enter().append("circle")
-	.attr("class", "legendItemsGradient")
-	.attr("cx", function(d, i) { return d.offset + legendItemScale(d.diameter)/2 - padding; })
-	.attr("cy", 0)
-	.attr("r", function(d) { return legendItemScale(d.diameter)/2; })
-	.style("fill", function(d) { return "url(#gradient-" + d.legendItem + ")"; });

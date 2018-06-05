@@ -1,12 +1,6 @@
-/**
- * (c) 2010-2017 Torstein Honsi
- *
- * License: www.highcharts.com/license
- *
- * Dark theme for Highcharts JS
- * @author Torstein Honsi
- */
 
+
+/* STYLING */
 Highcharts.theme = {
     colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
         '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -14,12 +8,12 @@ Highcharts.theme = {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
+                [0, '#012621'],
+                [1, '#000000']
             ]
         },
         style: {
-            fontFamily: 'verdana, geneva, sans-serif'
+            fontFamily: 'verdana, sans-serif'
         },
         plotBorderColor: '#606063'
     },
@@ -77,25 +71,16 @@ Highcharts.theme = {
         }
     },
     plotOptions: {
-        area: {  
-        },
         series: {
             dataLabels: {
                 color: '#B0B0B3'
             },
             marker: {
                 lineColor: '#333'
-            },            
-            fillColor: {
-                linearGradient: [0, 0, 0, 300],
-                stops: [
-                    [0, Highcharts.getOptions().colors[0]],
-                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                ]
             }
         },
         boxplot: {
-            fillColor: '#505053'
+            fillColor: '#505069'
         },
         candlestick: {
             lineColor: 'white'
@@ -139,7 +124,7 @@ Highcharts.theme = {
         buttonOptions: {
             symbolStroke: '#DDDDDD',
             theme: {
-                fill: '#505053'
+                fill: '#566839'
             }
         }
     },
@@ -171,7 +156,7 @@ Highcharts.theme = {
         },
         inputBoxBorderColor: '#505053',
         inputStyle: {
-            backgroundColor: '#333',
+            backgroundColor: '#726B27',
             color: 'silver'
         },
         labelStyle: {
@@ -188,7 +173,8 @@ Highcharts.theme = {
         maskFill: 'rgba(255,255,255,0.1)',
         series: {
             color: '#7798BF',
-            lineColor: '#A6C7ED'
+            lineColor: '#A6C7ED',
+            fill: '#566839'
         },
         xAxis: {
             gridLineColor: '#505053'
@@ -201,7 +187,7 @@ Highcharts.theme = {
         buttonArrowColor: '#CCC',
         buttonBackgroundColor: '#606063',
         buttonBorderColor: '#606063',
-        rifleColor: '#FFF',
+        rifleColor: '#111',
         trackBackgroundColor: '#404043',
         trackBorderColor: '#404043'
     },
@@ -224,20 +210,17 @@ Highcharts.setOptions({
   }
 });
 
-
 // Create the chart
 Highcharts.stockChart('txscl_graph', {
   chart: {
     events: {
       load: function () {
 
-
         // set up the updating of the chart each second
         var series = this.series[0];
-
-        window.rInterval(function () {
+        setInterval(function () {
           var x = (new Date()).getTime(), // current time
-            y = Math.random()*1115638;
+            y =pt_60sec;
           series.addPoint([x, y], true, true);
         }, 5000);
       }
@@ -262,7 +245,7 @@ Highcharts.stockChart('txscl_graph', {
   },
 
   title: {
-    text: 'Global Payments per second (60 second average) RANDOM TEST DATA'
+    text: 'Live random data'
   },
 
   exporting: {
@@ -270,27 +253,21 @@ Highcharts.stockChart('txscl_graph', {
   },
 
   series: [{
-    name: 'liveData',        
-    fillColor: {
-        linearGradient: [0, 0, 0, 300],
-        stops: [
-            [0, Highcharts.getOptions().colors[0]],
-            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-        ]
-    },
+    type: 'area',
+            color: '#7798BF',
+            lineColor: '#A6C7ED',
+            fill: '#566839',
+    name: 'Random data',
     data: (function () {
       // generate an array of random data
-
-
-
       var data = [],
         time = (new Date()).getTime(),
         i;
 
-      for (i = -999; i <= 0; i += 1) {
+      for (i = -99; i <= 0; i += 1) {
         data.push([
-          time + i * 5000,
-          Math.random()*1115638
+          time + i * 3000,
+          Math.round(Math.random() * 100000)
         ]);
       }
       return data;
