@@ -3,6 +3,7 @@
 Komodo is testing the limits of payment processing per second, and has already achieved rates faster than Visa and Mastercard.
 This is achieved through "Grandmother of Merkle" notarisation via linked assetchains, with crypto-conditions (https://tools.ietf.org/html/draft-thomas-crypto-conditions-04) instituting a burn protocol, allowing parallel chains to act as a single cryptocurrency.
 
+Demo at - http://cryptocartography.io/txscl_vis/
 
 # Note: readme pending update - no more bubbles. # 
 
