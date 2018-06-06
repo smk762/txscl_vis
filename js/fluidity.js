@@ -27,7 +27,6 @@ function scaleStats() {
 	document.getElementById('speedo').style.height = document.getElementById('statsTableLeft').clientWidth*0.8+"px";
 	speedoWidth = document.getElementById('statsTableLeft').clientWidth;
 	document.getElementById('speedo').style.width = speedoWidth+"px";
-	document.getElementById('scalebarBubbles').style.width = document.getElementById('label_values').clientWidth+"px";
 	document.getElementById('logoImg').style.width = speedoWidth+"px";
 	// document.getElementById('statsTableRight').setAttribute("style","height:"+document.getElementById('statsTableLeft').offsetHeight+"px");
 }
