@@ -104,6 +104,20 @@ function unique(value, index, self) {
     return self.indexOf(value) === index;
 }
 
+
+function sortProperties(obj) {
+  // convert object into array
+    var sortable=[];
+    for(var key in obj)
+        if(obj.hasOwnProperty(key))
+            sortable.push([key, obj[key]]); 
+    // sort items by value
+    sortable.sort(function(a, b) {
+      return a[0]-b[0]; 
+    });
+    return sortable; 
+}
+
 var winWidth = window.innerWidth;
 var winHeight = window.innerHeight;
 
@@ -124,18 +138,14 @@ let ac_active_5min = 0;
 
 
 
-var jsonHistory = 'https://cryptogeology.com/globalpt.json';
 var padding = 0;
-
-let sbLbl_Arr = ['lbl_1','lbl_2','lbl_3','lbl_4','lbl_5'];
-var wobbleArr = ['upDown1','upDown2','upDown3','upDown4','upDown5'];
 var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock', 'ptPerTx'];
 
 let maxTx5min = 300*10000;
 let maxTxPerBlock = 10000;
 let maxAveChainTx = 10000;
 
-let maxPt5min = maxTx5min*100;
+let maxPt5min = maxTx5min*1000;
 let maxPtPerBlock = maxTxPerBlock*10;
 let maxAveChainPt = maxAveChainTx*100;
 

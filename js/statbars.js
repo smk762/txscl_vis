@@ -13,27 +13,30 @@ function updateStatusBar(id, stat) {
 	      barSize = stat/maxTx5min;
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total transactions (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total transactions (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_5min':
-	      barSize = stat/maxPt5min;
+	      barSize = parseInt(stat)/maxPt5min;
 	      if (barSize !== barSize) { barSize = 0; }
 	      console.log("PT 5 min: "+stat);
+	      console.log("PT 5 min bar: "+barSize);
+	      console.log("PT 5 min bord: "+borderWidth);
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total payments (last 5 min)";
+	      console.log("PT 5 min d: "+barSize*borderWidth);
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Total payments (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'blk_5min':
 	      barSize = stat/maxBlock5min;
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks Solved (last 5 minutes)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks Solved (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'tx_per_block':
 	      barSize = stat/maxTxPerBlock;
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Transactions per block (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Transactions per block (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'tx_per_chain':
@@ -43,14 +46,14 @@ function updateStatusBar(id, stat) {
 	      barSize = stat/maxAveChainTx;
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Transactions per Asset Chain (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Transactions per Asset Chain (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_block':
 	      console.log("PT Per Block: "+stat);
 	      barSize = stat/maxPtPerBlock;
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per block (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per block (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_chain':
@@ -58,20 +61,20 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      console.log("PT Per Chain: "+stat);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per Asset Chain (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per Asset Chain (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'ac_active_5min':
 	      barSize = stat/8192;
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"/ "+8192+"</span> Asset Chains Active (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"/"+8192+"</span> Asset Chains Active (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'block_per_chain':
 	      barSize = stat/maxBlockPerChain;
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks per Asset Chain (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Blocks per Asset Chain (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_tx':
@@ -79,7 +82,7 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      console.log("PT Per TX: "+stat);
-	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per transaction (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span style='font-weight:900;'>"+Math.round(stat)+"</span> Payments per transaction (5 min)";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    default:

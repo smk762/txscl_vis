@@ -1,25 +1,36 @@
-
+'use strict'
+var j_5min = [];
+function setHistory(json) {
+    $.getJSON("http://cryptocartography.io/json/recent.json")
+        .done(function (data) {
+            data.forEach(function(element) {
+                j_5min.push(element);
+            });   
+        return j_5min; 
+    });
+}
+setHistory();
 
 /* STYLING */
 Highcharts.theme = {
-    colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
-        '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+    colors: ['#3258FF', '#FF0000', '#FF0000', '#FF0000', '#FF0000', '#ff0066', '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
     chart: {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-                [0, '#012621'],
-                [1, '#000000']
+                [0, 'rgba(1, 28, 22, .2)'],
+                [1, 'rgba(1, 28, 22, .8)']
+
             ]
         },
         style: {
             fontFamily: 'verdana, sans-serif'
         },
-        plotBorderColor: '#606063'
+        plotBorderColor: '#FF0000'  // ?
     },
     title: {
         style: {
-            color: '#E0E0E3',
+            color: '#4272B2', //graph title text color
             textTransform: 'uppercase',
             fontSize: '20px'
         }
@@ -31,36 +42,35 @@ Highcharts.theme = {
         }
     },
     xAxis: {
-        gridLineColor: '#707073',
+        gridLineColor: '#4272B2', // ?
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#4272B2' // top graph x-labels
             }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
+        lineColor: '#4272B2',  // top graph baseline
+        minorGridLineColor: '#4272B2', // ?
+        tickColor: '#4272B2', // ?
         title: {
             style: {
-                color: '#A0A0A3'
-
+                color: '#4272B2' // ?
             }
         }
     },
     yAxis: {
-        gridLineColor: '#707073',
+        gridLineColor: '#4272B2', // top graph inner lines
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#4272B2'  // top graph y-labels
             }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
+        lineColor: '#4272B2', // ?
+        minorGridLineColor: '#4272B2', // ?
+        tickColor: '#4272B2', // ?
         tickWidth: 1,
         title: {
             style: {
-                color: '#A0A0A3'
+                color: '#4272B2' // ?
             }
         }
     },
@@ -73,88 +83,92 @@ Highcharts.theme = {
     plotOptions: {
         series: {
             dataLabels: {
-                color: '#B0B0B3'
+                color: '#4272B2' // ?
             },
             marker: {
-                lineColor: '#333'
+                lineColor: '#4272B2' // ?
             }
         },
         boxplot: {
-            fillColor: '#505069'
+            fillColor: '#4272B2' // ?
         },
         candlestick: {
-            lineColor: 'white'
+            lineColor: '#4272B2' // ?
         },
         errorbar: {
-            color: 'white'
+            color: '4272B2' // ?
         }
     },
     legend: {
         itemStyle: {
-            color: '#E0E0E3'
+            color: '#4272B2' // ?
         },
         itemHoverStyle: {
-            color: '#FFF'
+            color: '#4272B2' // ?
         },
         itemHiddenStyle: {
-            color: '#606063'
+            color: '#4272B2' // ?
         }
     },
     credits: {
         style: {
-            color: '#666'
+            color: '#4272B2' // ?
         }
     },
     labels: {
         style: {
-            color: '#707073'
+            color: '#4272B2' // ?
         }
     },
 
     drilldown: {
         activeAxisLabelStyle: {
-            color: '#F0F0F3'
+            color: '#4272B2' // ?
         },
         activeDataLabelStyle: {
-            color: '#F0F0F3'
+            color: '#4272B2' // ?
         }
     },
 
     navigation: {
         buttonOptions: {
-            symbolStroke: '#DDDDDD',
+            symbolStroke: '#4272B2', // ?
             theme: {
-                fill: '#566839'
+                fill: '#4272B2' // ?
             }
         }
+    },
+
+    boost: {
+        useGPUTranslations: true
     },
 
     // scroll charts
     rangeSelector: {
         buttonTheme: {
-            fill: '#505053',
-            stroke: '#000000',
+            fill: '#2D5A5A', // range buttons
+            stroke: '#0137de', // ?
             style: {
-                color: '#CCC'
+                color: '#CDDDEA' // button text
             },
             states: {
                 hover: {
                     fill: '#707073',
                     stroke: '#000000',
                     style: {
-                        color: 'white'
+                        color: '#CDDDEA' // button text
                     }
                 },
                 select: {
-                    fill: '#000003',
+                    fill: '#28840E',
                     stroke: '#000000',
                     style: {
-                        color: 'white'
+                        color: '#CDDDEA' // button text
                     }
                 }
             }
         },
-        inputBoxBorderColor: '#505053',
+        inputBoxBorderColor: '#CDDDEA', 
         inputStyle: {
             backgroundColor: '#726B27',
             color: 'silver'
@@ -166,23 +180,23 @@ Highcharts.theme = {
 
     navigator: {
         handles: {
-            backgroundColor: '#666',
-            borderColor: '#AAA'
+            backgroundColor: '#CDDDEA', // ?
+            borderColor: '#CDDDEA' // ?
         },
-        outlineColor: '#CCC',
-        maskFill: 'rgba(255,255,255,0.1)',
+        outlineColor: '#CDDDEA',
+        maskFill: 'rgba(255,237,158,0.2)',  //yellow
         series: {
-            color: '#7798BF',
-            lineColor: '#A6C7ED',
-            fill: '#566839'
+            color: '#CDDDEA', // ?
+            lineColor: '#00C416', // lower graph line
+            fill: '#CDDDEA' // ?
         },
         xAxis: {
-            gridLineColor: '#505053'
+            gridLineColor: '#505053' // lower graph interval outlines
         }
     },
 
     scrollbar: {
-        barBackgroundColor: '#808083',
+        barBackgroundColor: '#0F173E', // lower graph scrollbar
         barBorderColor: '#808083',
         buttonArrowColor: '#CCC',
         buttonBackgroundColor: '#606063',
@@ -192,86 +206,107 @@ Highcharts.theme = {
         trackBorderColor: '#404043'
     },
 
-    // special colors for some of the
     legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
     background2: '#505053',
     dataLabelsColor: '#B0B0B3',
-    textColor: '#C0C0C0',
+    textColor: '#FFD800',
     contrastTextColor: '#F0F0F3',
     maskColor: 'rgba(255,255,255,0.3)'
 };
 
-// Apply the theme
-Highcharts.setOptions(Highcharts.theme);
 
-Highcharts.setOptions({
-  global: {
-    useUTC: false
-  }
-});
+function drawGraph() {
+    // Apply the theme
+    Highcharts.setOptions(Highcharts.theme);
 
-// Create the chart
-Highcharts.stockChart('txscl_graph', {
-  chart: {
-    events: {
-      load: function () {
-
-        // set up the updating of the chart each second
-        var series = this.series[0];
-        setInterval(function () {
-          var x = (new Date()).getTime(), // current time
-            y =pt_60sec;
-          series.addPoint([x, y], true, true);
-        }, 5000);
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
       }
-    }
-  },
+    });
+    // Create the chart
+    Highcharts.stockChart('txscl_graph', {
+      chart: {
+        events: {
+          load: function () {
 
-  rangeSelector: {
-    buttons: [{
-      count: 1,
-      type: 'minute',
-      text: '1M'
-    }, {
-      count: 5,
-      type: 'minute',
-      text: '5M'
-    }, {
-      type: 'all',
-      text: 'All'
-    }],
-    inputEnabled: false,
-    selected: 0
-  },
+            // set up the updating of the chart each second
+            var series = this.series[0];
+            setInterval(function () {
+              var x = (new Date()).getTime(), // current time
+                y = pt_60sec;
+              series.addPoint([x, y], true, true);
+            }, 5000);
+          }
+        }
+      },
 
-  title: {
-    text: 'Live random data'
-  },
+      rangeSelector: {
+        buttons: [{
+          count: 5,
+          type: 'minute',
+          text: '5M'
+        }, {
+          count: 30,
+          type: 'minute',
+          text: '30M'
+        }, {
+          type: 'all',
+          text: 'All'
+        }],
+        inputEnabled: false,
+        selected: 0
+      },
 
-  exporting: {
-    enabled: false
-  },
+      title: {
+        text: ''
+      },
 
-  series: [{
-    type: 'area',
-            color: '#7798BF',
-            lineColor: '#A6C7ED',
-            fill: '#566839',
-    name: 'Random data',
-    data: (function () {
-      // generate an array of random data
-      var data = [],
-        time = (new Date()).getTime(),
-        i;
+      exporting: {
+        enabled: false
+      },
 
-      for (i = -99; i <= 0; i += 1) {
-        data.push([
-          time + i * 3000,
-          Math.round(Math.random() * 100000)
-        ]);
-      }
-      return data;
-    }())
-  }]
-});
-
+      series: [{ // top graph
+        type: 'area',
+        color: '#062D14', // fill area color
+        lineColor: 'rgba(60,101,101,0.9)', // line color
+        name: 'Payments per second', 
+        data: (function () {
+            var j_xy = [];
+            let p_total = 0;
+            j_5min.sort(function(a, b){ return a.max_time-b.max_time });
+            j_5min.forEach(function(element) {
+                console.log("check - "+JSON.stringify(j_5min[0])+" -------------------------------------------")
+                j_5min.push(element);
+                j_xy.push([
+                    element.max_time,
+                    element.sum_pt
+                ]);
+            });   
+            console.log(j_xy);
+            for (var i = 0; i <= j_xy.length-1; i++) {
+                let m = 0;
+                for (var j = 6; j >= -5; j--) {
+                    let k = 0;
+                    if (j+i<0) {
+                        k=0;
+                    }
+                    else if (j+i>j_xy.length-1) {
+                        k=j_xy.length-1;
+                    }
+                    else {
+                        k=j+i;
+                    }
+                    m = m + j_xy[k][1];
+                }
+                j_xy[i][1] = m/60;
+                console.log(i+"/"+j_xy.length);
+                console.log(j_xy[i][1]);
+            }
+            return j_xy;
+        }())
+      }]
+    });
+}
+setTimeout(function() { drawGraph(); }, 5000);
+     

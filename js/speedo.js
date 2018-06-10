@@ -7,7 +7,7 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     "endValue": 1250000,
     "startValue":0,
     "axisThickness": 2,
-    "color": '#ffffff',
+    "color": '#1A9100',
     "boldLabels": true,
     "usePrefixes": true,
     "axisAlpha": 1,
@@ -43,14 +43,17 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
       "innerRadius": '90%',
       "startValue": 1000000
     } ],
-    "bottomText": " tx/s",
-    "bottomTextYOffset": 20,
+    "bottomText": "",
+    "bottomTextYOffset": 0,
     "bottomTextFontSize":14,
-    "bottomTextColor":'#FFFFFF',
+    "bottomTextColor":'#0094FF',
     "bottomTextBold":true,
     "endValue": 1250000
   } ],
-  "arrows": [ {} ],
+  "arrows": [ {
+      "color": "#004760",
+      "radius": '75%'
+  } ],
   "export": {
     "enabled": true
   }
@@ -67,7 +70,7 @@ function updateNeedle(speedoVal) {
       if ( gaugeChart.arrows[ 0 ] ) {
         if ( gaugeChart.arrows[ 0 ].setValue ) {
           gaugeChart.arrows[ 0 ].setValue( speedoVal );
-          gaugeChart.axes[ 0 ].setBottomText( speedoVal + " Payments/s" );
+          gaugeChart.axes[ 0 ].setBottomText( speedoVal  );
           gaugeChart.axes[ 0 ].fontSize = 8;
         }
       }

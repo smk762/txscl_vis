@@ -8,7 +8,7 @@
 
 #speedo {
   position:absolute;
-  top:100%;
+  bottom: -100%;
   left:40%;
   width: 20%;
   height: 32%;
@@ -17,7 +17,8 @@
   -moz-border-radius: 16px 16px 16px 16px;
   -webkit-border-radius: 16px 16px 16px 16px;
   transition: top 3s ease-out 1s;
-  background-image: linear-gradient(to top, rgba(5, 56, 56, .8), rgba(59, 104, 104, .7));
+  /* background-image: linear-gradient(to top, rgba(5, 56, 56, .9), rgba(59, 104, 104, .9)); */
+    background-image: linear-gradient(to top, rgba(1, 28, 22, .8), rgba(1, 24, 18, .8));
   z-index: 25;
 
 }    
@@ -26,11 +27,14 @@
   top:160%;
   transition: top 3s ease-out 1s;
   z-index: 25;
-  opacity: 0.8;
+  opacity: 1;
+  font-weight: 900;
+  color: #82A1A1;
+  text-shadow: 
+  filter: 1px 1px 16px #111111;
 }
 #logoImg {
-  max-width: 90%;
-  height: auto;
+  filter: drop-shadow(1px 1px 16px #111111);
 }
 .amcharts-gauge-axis  {
   border:hidden;

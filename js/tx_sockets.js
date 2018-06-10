@@ -14,42 +14,34 @@ hoarder_socket.on('connect', function () {
 
 hoarder_socket.on('max_time', function (data) {
   max_time = parseInt(data);
-  //console.log('maxtime: '+data);
 });
 
 hoarder_socket.on('ac_active_5min', function (data) {
-  //console.log('ac_active_5min: '+data);
-  ac_active_5min = parseInt(data);
+    ac_active_5min = parseInt(data);
+    maxBlock5min = 10*ac_active_5min;
     updateStatusBar('ac_active_5min',parseInt(ac_active_5min));
 });
 
 hoarder_socket.on('tx_60sec', function (data) {
-  //console.log('tx_60sec: '+data);
-  //updateNeedle();
-  tx_60sec = parseInt(data/60);
+  tx_60sec = parseInt(data/300);
 });
 
 hoarder_socket.on('pt_60sec', function (data) {
-  //console.log('pt_60sec: '+data);
-  pt_60sec = parseInt(data/60);
-  console.log(pt_60sec);
+  pt_60sec = parseInt(data/300);
   updateNeedle(pt_60sec);
 });
 
 hoarder_socket.on('tx_5min', function (data) {
-  //console.log('tx_5min: '+data);
     tx_5min = parseInt(data);
     updateStatusBar('tx_5min',tx_5min);
 });
 
 hoarder_socket.on('pt_5min', function (data) {
-  //console.log('pt_5min: '+data);
     pt_5min = parseInt(data);
     updateStatusBar('pt_5min',pt_5min);
 });
 
 hoarder_socket.on('blk_5min', function (data) {
-  //console.log('blk_5min: '+data);
     blk_5min = parseInt(data);
     updateStatusBar('blk_5min',blk_5min);
 });
