@@ -15,5 +15,7 @@
   transition: bottom 4s ease-out 1s;
   transition-delay: 6s;
 }
-.highcharts-root {z-index: 9;}
-.highcharts-area-series {background-color: #06263F;}
+.highcharts-root { z-index: 9; }
+.highcharts-area-series { background-color: #06263F; }
+.highcharts-navigator-mask-outside { background-color: #06263F; }
+.highcharts-navigator { background-color: #06263F; }

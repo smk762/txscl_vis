@@ -42,7 +42,7 @@ Highcharts.theme = {
         }
     },
     xAxis: {
-        gridLineColor: '#4272B2', // ?
+        gridLineColor: '#E5001E', // ?
         labels: {
             style: {
                 color: '#4272B2' // top graph x-labels
@@ -58,7 +58,7 @@ Highcharts.theme = {
         }
     },
     yAxis: {
-        gridLineColor: '#4272B2', // top graph inner lines
+        gridLineColor: 'rgba(139, 139, 139, .3)', // top graph inner lines
         labels: {
             style: {
                 color: '#4272B2'  // top graph y-labels
@@ -188,7 +188,7 @@ Highcharts.theme = {
         series: {
             color: '#CDDDEA', // ?
             lineColor: '#00C416', // lower graph line
-            fill: '#CDDDEA' // ?
+            fill: '#E800D4' // ?
         },
         xAxis: {
             gridLineColor: '#505053' // lower graph interval outlines
