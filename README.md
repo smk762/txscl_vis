@@ -9,7 +9,7 @@ This visualisation uses -
 Highcharts (live data graph)
 amCharts (speedometer)
 particle.js (floating KMD)
-socket.io (collects data from <link to server side pending> )
+socket.io (collects data from `<link to server side pending>` )
 
  *Note: Transactions may contain multiple payments. Payments per transaction are determined by calculating the ratio of transactions to the size of the solve block in bytes, and comapring the ratio to a look up table of known reference values)*
  
