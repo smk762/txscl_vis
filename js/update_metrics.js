@@ -6,21 +6,6 @@
 
 //updateNeedle(); // two writes, no DOM reads.
 
-function calcRatios() {
-    tx_per_block = Math.round(tx_5min/blk_5min);
-    pt_per_block = Math.round(pt_5min/blk_5min); 
-    tx_per_chain = Math.round(tx_5min/ac_active_5min);
-    pt_per_chain = Math.round(pt_5min/ac_active_5min);
-    pt_per_tx = Math.round(pt_5min/tx_5min);
-    block_per_chain = Math.round(blk_5min/ac_active_5min);
-    updateStatusBar('tx_per_block',tx_per_block);
-    updateStatusBar('pt_per_block',pt_per_block);
-    updateStatusBar('tx_per_chain',tx_per_chain);
-    updateStatusBar('pt_per_chain',pt_per_chain);
-    updateStatusBar('pt_per_tx',pt_per_tx);
-    updateStatusBar('block_per_chain',block_per_chain);
-}
-setInterval(function() { calcRatios(); },3000 );
 
 var j_5min = [];
 function setHistory(json) {

@@ -133,6 +133,8 @@ let pt_per_tx = 0;
 let block_per_chain = 0;
 let tx_60sec = 0;
 let pt_60sec = 0;
+let tx_sec = 0;
+let pt_sec = 0;
 let max_time = 0;
 let ac_active_5min = 0;
 
@@ -141,15 +143,17 @@ let ac_active_5min = 0;
 var padding = 0;
 var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock', 'ptPerTx'];
 
-let maxTx5min = 300*10000;
-let maxTxPerBlock = 10000;
-let maxAveChainTx = 10000;
-
-let maxPt5min = maxTx5min*1000;
-let maxPtPerBlock = maxTxPerBlock*10;
-let maxAveChainPt = maxAveChainTx*100;
-
+// left stat bars
 let totalNumChains = 8192;
-let maxBlock5min = 10*totalNumChains;
-let maxBlockPerChain = 10;
+let maxBlock5min = 10*totalNumChains; // flexible based on connected clients
+let maxPtPerBlock = 56000;  // based on block byte size max, 100 payments per tx, 557 tx maximum
+let maxAveChainPt = 56000;
+
+// right stat bars
 let maxPtPerTx = 100;
+let maxTxPerBlock = 8860;  // based on block byte size max, 1 payments per tx, 8860 tx maximum
+let maxAveChainTx = 8860;
+
+let maxBlockPerChain = 8; // assumed average of 1 block per minute over 5 min, with overflow for periods of reduced block time
+let maxTx5min = maxTxPerBlock*totalNumChains*8;
+let maxPt5min = maxPtPerBlock*totalNumChains*8;

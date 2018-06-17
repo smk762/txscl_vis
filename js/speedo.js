@@ -4,7 +4,7 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
   "theme": "light",
   "axes": [ {
     "fontSize": 8,
-    "endValue": 1250000,
+    "endValue": 10000000,
     "startValue":0,
     "axisThickness": 2,
     "color": '#1A9100',
@@ -13,42 +13,42 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     "axisAlpha": 1,
     "tickAlpha": 1,
     "tickColor": '#000000',
-    "valueInterval": 125000,
+    "valueInterval": 2000000,
     "bands": [ {
       "color": "#008141",
-      "endValue": 250000,
+      "endValue": 2000000,
       "innerRadius": '90%',
       "startValue": 0
     }, {
       "color": "#67C700",
-      "endValue": 500000,
+      "endValue": 4000000,
       "innerRadius": '92%',
-      "startValue": 250000
+      "startValue": 2000000
     }, {
       "color": "#fdd400",
-      "endValue": 750000,
+      "endValue": 6000000,
       "innerRadius": 0,
       "innerRadius": '92%',
-      "startValue": 500000
+      "startValue": 4000000
     }, {
       "color": "#EFA510",
-      "endValue": 1000000,
+      "endValue": 8000000,
       "innerRadius": 0,
       "innerRadius": '92%',
-      "startValue": 750000
+      "startValue": 6000000
     }, {
       "color": "#cc4748",
-      "endValue": 1250000,
+      "endValue": 10000000,
       "innerRadius": 0,
       "innerRadius": '90%',
-      "startValue": 1000000
+      "startValue": 8000000
     } ],
     "bottomText": "",
-    "bottomTextYOffset": 0,
-    "bottomTextFontSize":14,
+    "bottomTextYOffset": 25,
+    "bottomTextFontSize":28,
     "bottomTextColor":'#0094FF',
     "bottomTextBold":true,
-    "endValue": 1250000
+    "endValue": 10000000
   } ],
   "arrows": [ {
       "color": "#004760",
@@ -64,7 +64,6 @@ function updateNeedle(speedoVal) {
   if (speedoVal < 0) { speedoVal = 0 };
   if (speedoVal > 12500000) { speedoVal = 12500000 };
   speedoVal = Math.floor(speedoVal);
-  console.log(speedoVal);
   if ( gaugeChart ) {
     if ( gaugeChart.arrows ) {
       if ( gaugeChart.arrows[ 0 ] ) {

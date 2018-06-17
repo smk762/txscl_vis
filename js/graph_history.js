@@ -1,11 +1,13 @@
 'use strict'
 var j_5min = [];
 function setHistory(json) {
-    $.getJSON("http://cryptocartography.io/json/recent.json")
+    $.getJSON("http://cryptocartography.io/json/sorted_history.json")
         .done(function (data) {
             data.forEach(function(element) {
                 j_5min.push(element);
-            });   
+                
+            }); 
+            console.log(j_5min);  
         return j_5min; 
     });
 }
@@ -231,11 +233,13 @@ function drawGraph() {
           load: function () {
 
             // set up the updating of the chart each second
-            var series = this.series[0];
+            var seriesTx = this.series[0];
+            var seriesChains = this.series[1];
             setInterval(function () {
-              var x = (new Date()).getTime(), // current time
-                y = pt_60sec;
-              series.addPoint([x, y], true, true);
+              var x = (new Date()).getTime(); // current time
+              seriesTx.addPoint([x, pt_sec], true, true);              
+              seriesChains.addPoint([x, parseInt(ac_active_5min)], true, true);
+
             }, 5000);
           }
         }
@@ -267,7 +271,7 @@ function drawGraph() {
       },
 
       series: [{ // top graph
-        type: 'area',
+        type: 'areaspline',
         color: '#062D14', // fill area color
         lineColor: 'rgba(60,101,101,0.9)', // line color
         name: 'Payments per second', 
@@ -304,9 +308,13 @@ function drawGraph() {
                 console.log(j_xy[i][1]);
             }
             return j_xy;
-        }())
-      }]
+        }()) },
+        {
+            lineColor: 'rgba(60,101,101,0.9)', // line color
+            name: 'Chains Active (5 min average)',
+            data: []
+        }]
     });
 }
-setTimeout(function() { drawGraph(); }, 5000);
+setTimeout(function() { drawGraph(); }, 15000);
      

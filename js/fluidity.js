@@ -24,10 +24,11 @@ function scaleStats() {
 	var winWidth = window.innerWidth;	
 	document.getElementById("statsTableLeft").style.height = document.getElementById('barsLeft').clientHeight+20+"px";
 	document.getElementById('statsTableRight').style.height = document.getElementById('statsTableLeft').clientHeight+"px";
-	document.getElementById('speedo').style.height = document.getElementById('statsTableLeft').clientWidth*0.8+"px";
+	document.getElementById('speedo').style.height = document.getElementById('statsTableLeft').clientWidth+"px";
 	speedoWidth = document.getElementById('statsTableLeft').clientWidth;
 	document.getElementById('speedo').style.width = speedoWidth+"px";
 	document.getElementById('logoImg').style.width = speedoWidth+"px";
+	document.getElementById('speedoText').style.bottom = 80+document.getElementById('speedo').offsetHeight+"px";
 	// document.getElementById('statsTableRight').setAttribute("style","height:"+document.getElementById('statsTableLeft').offsetHeight+"px");
 }
 
