@@ -8,6 +8,7 @@ function setHistory(json) {
                 
             }); 
             console.log(j_5min);  
+            drawGraph();
         return j_5min; 
     });
 }
@@ -20,9 +21,8 @@ Highcharts.theme = {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-                [0, 'rgba(1, 28, 22, .2)'],
-                [1, 'rgba(1, 28, 22, .8)']
-
+                [0, 'rgba(1, 28, 22, 0)'],
+                [1, 'rgba(1, 28, 22, 0.8)']
             ]
         },
         style: {
@@ -208,7 +208,7 @@ Highcharts.theme = {
         trackBorderColor: '#404043'
     },
 
-    legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+    legendBackgroundColor: 'rgba(0, 0, 0, 0.9)',
     background2: '#505053',
     dataLabelsColor: '#B0B0B3',
     textColor: '#FFD800',
@@ -219,8 +219,8 @@ Highcharts.theme = {
 
 function drawGraph() {
     // Apply the theme
-    Highcharts.setOptions(Highcharts.theme);
 
+    Highcharts.setOptions(Highcharts.theme);
     Highcharts.setOptions({
       global: {
         useUTC: false
@@ -233,12 +233,10 @@ function drawGraph() {
           load: function () {
 
             // set up the updating of the chart each second
-            var seriesTx = this.series[0];
-            var seriesChains = this.series[1];
+            var seriesPt = this.series[0];
             setInterval(function () {
               var x = (new Date()).getTime(); // current time
-              seriesTx.addPoint([x, pt_sec], true, true);              
-              seriesChains.addPoint([x, parseInt(ac_active_5min)], true, true);
+              seriesPt.addPoint([x, Math.round(pt_sec)], true, true);
 
             }, 5000);
           }
@@ -272,15 +270,14 @@ function drawGraph() {
 
       series: [{ // top graph
         type: 'areaspline',
-        color: '#062D14', // fill area color
-        lineColor: 'rgba(60,101,101,0.9)', // line color
+        color: 'rgba(25,55,55,0.05)', // fill area color
+        lineColor: 'rgba(247,225,187,0.25)', // line color
         name: 'Payments per second', 
         data: (function () {
             var j_xy = [];
             let p_total = 0;
             j_5min.sort(function(a, b){ return a.max_time-b.max_time });
             j_5min.forEach(function(element) {
-                console.log("check - "+JSON.stringify(j_5min[0])+" -------------------------------------------")
                 j_5min.push(element);
                 j_xy.push([
                     element.max_time,
@@ -303,18 +300,18 @@ function drawGraph() {
                     }
                     m = m + j_xy[k][1];
                 }
-                j_xy[i][1] = m/60;
-                console.log(i+"/"+j_xy.length);
-                console.log(j_xy[i][1]);
+                j_xy[i][1] =Math.round(m/60);
             }
             return j_xy;
         }()) },
         {
-            lineColor: 'rgba(60,101,101,0.9)', // line color
+            lineColor: 'rgba(60,101,101,0.95)', // line color
             name: 'Chains Active (5 min average)',
             data: []
         }]
     });
+     document.getElementById("txscl_graph").style.opacity = "0.95";
+     
 }
-setTimeout(function() { drawGraph(); }, 15000);
+//setTimeout(function() { drawGraph(); }, 15000);
      

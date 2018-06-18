@@ -1,66 +1,6 @@
-.sliderDiv {
-    text-align:left;
-}
 
-#bubbleScale {
-}
-#bubbleSpeed {
-}
-
-#bubbleNumberOf {
-}
-.sliderDiv {
-    margin:1.6em !important;
-}
-.slide_labels {
-    font-weight: 900;
-    position:relative;
-    top:0px;
-    left:10%;
-    width: 35%;
-    vertical-align: middle;
-    display: inline-block;
-    text-align:left !important;
-}   
-.slider {
-    width: 45%; 
-    height: 2px; 
-    position:relative;
-    top:0px;
-    left:10%;
-    background: #d3d3d3; 
-    outline: none; 
-    opacity: 0.7; 
-    -webkit-transition: .2s; 
-    transition: opacity .2s;
-    display: inline;
-    -moz-appearance: none; /* Override default look */
-    appearance: none;
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-}
-
-.slider:hover {
-    opacity: 1; 
-}
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 0.3em; /* Set a specific slider handle width */
-    height: 0.6em; /* Slider handle height */
-    background: #00FF00; /* Green background */ 
-    cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-    -moz-appearance: none; /* Override default look */
-    appearance: none;
-    width: 0.3em; /* Set a specific slider handle width */
-    height: 0.6em; /* Slider handle height */
-    background: #00FF00; /* Green background */
-    cursor: pointer; /* Cursor on hover */ 
-}
 .def_buttons {
+      font-size: 0.6em;
       border:0.1em solid #2D5A5A;
       background-image: linear-gradient(to top, rgba(5, 5, 5, .9), rgba(74, 74, 74, .7));
       -moz-border-radius:0.2em;
@@ -71,19 +11,24 @@
       cursor:pointer;
       color:#C0C0C0;
       font-weight:bold;
-      padding:0.5em;
+      padding:1%;
       text-decoration:none;
-      margin:1em;
+      margin:1%;
       text-align: center;
-      left:0%;
-      width:20%;
-      z-index:200;
-      opacity: 0.7;    
+      right:0%;
+      width:16%;
+      z-index:200;   
 }
-
+.links {
+   width:30%;
+   position:absolute;
+   top:10px;
+   right:10px;
+   z-index: 9000;
+}
 .tooltip {
       visibility: hidden;
-      width: 60%;
+      width: 50%;
       background-color: black;
       color: #fff;
       text-align: center;
@@ -91,7 +36,8 @@
       border-radius: 0.3em;
       position: absolute;
       opacity: 0.9;
-      bottom:2em;
+      top:3em;
+      left:25%;
       z-index: 1000;
       font-size:1em;
       text-decoration-style: none;
@@ -109,47 +55,5 @@
 
 
 #code_btn:hover #code_tooltip {
-    visibility: visible;
-}
-
-
-
-#bubble_btn {
-      border:0.1em solid #2D5A5A;
-      background-image: linear-gradient(to top, rgba(5, 5, 5, .9), rgba(74, 74, 74, .7));
-      -moz-border-radius:0.2em;
-      -webkit-border-radius:0.2em;
-      border-radius:0.2em;
-      text-align: center;
-      display:inline-block;
-      cursor:pointer;
-      color:#C0C0C0;
-      font-weight:bold;
-      padding:0.5em;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #5b8a3c;
-      margin:1em;
-      text-align: center;
-      left:0%;
-      width:20%;
-      z-index:200;
-      opacity: 0.7;
-      
-}
-#bubble_btn:hover {
-      opacity:1;
-      color:#ffffff;
-}
-
-#bubbleOn_tooltip {
-}
-
-#bubble_btn:hover .bubbleOn_tooltip {
-    visibility: visible;
-}
-#bubbleOff_tooltip {
-}
-
-#bubble_btn:hover .bubbleOff_tooltip {
     visibility: visible;
 }

@@ -7,7 +7,7 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     "endValue": 10000000,
     "startValue":0,
     "axisThickness": 2,
-    "color": '#1A9100',
+    "color": '#4A8282',
     "boldLabels": true,
     "usePrefixes": true,
     "axisAlpha": 1,
@@ -15,43 +15,43 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     "tickColor": '#000000',
     "valueInterval": 2000000,
     "bands": [ {
-      "color": "#008141",
+      "color": "#B4C7C7",
       "endValue": 2000000,
       "innerRadius": '90%',
       "startValue": 0
     }, {
-      "color": "#67C700",
+      "color": "#82A1A1",
       "endValue": 4000000,
       "innerRadius": '92%',
       "startValue": 2000000
     }, {
-      "color": "#fdd400",
+      "color": "#4A8282",
       "endValue": 6000000,
       "innerRadius": 0,
       "innerRadius": '92%',
       "startValue": 4000000
     }, {
-      "color": "#EFA510",
+      "color": "#3B6868",
       "endValue": 8000000,
       "innerRadius": 0,
       "innerRadius": '92%',
       "startValue": 6000000
     }, {
-      "color": "#cc4748",
+      "color": "#2D5A5A",
       "endValue": 10000000,
       "innerRadius": 0,
       "innerRadius": '90%',
       "startValue": 8000000
     } ],
     "bottomText": "",
-    "bottomTextYOffset": 25,
-    "bottomTextFontSize":28,
-    "bottomTextColor":'#0094FF',
+    "bottomTextYOffset": 16,
+    "bottomTextFontSize":18,
+    "bottomTextColor":'#4A8282',
     "bottomTextBold":true,
     "endValue": 10000000
   } ],
   "arrows": [ {
-      "color": "#004760",
+      "color": "#2D5A5A",
       "radius": '75%'
   } ],
   "export": {

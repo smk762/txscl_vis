@@ -1,7 +1,7 @@
 // setInterval(function() {  pJS.fn.particles.number.value = Math.round(Math.random()*60); pJS.fn.particlesEmpty(); pJS.fn.particlesCreate(); pJS.fn.particlesDraw(); pJS.fn.vendors.densityAutoParticles(); },5000 );
 particlesJS("particles-js", {
   particles: {
-    number: { value: 1024, density: { enable: false, value_area: 1000 } },
+    number: { value: 819, density: { enable: false, value_area: 1000 } },
     color: { value: "#00AD59" },
     shape: {
       type: "star",
@@ -20,9 +20,9 @@ particlesJS("particles-js", {
       anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
     },
     size: {
-      value: 8,
+      value: 6,
       random: true,
-      anim: { enable: true, speed: 3, size_min: 4, sync: false }
+      anim: { enable: true, speed: 3, size_min: 3, sync: false }
     },
     line_linked: {
       enable: false,

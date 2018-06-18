@@ -16,11 +16,12 @@ body {
 	font-family: Verdana, Geneva, sans-serif; */
     font-family: 'Raleway', sans-serif;
 	font-size: 1.2vw;
-	color:#0094FF;
+	color:#4A8282;
 	text-align: center;
 	backface-visibility:hidden;
 	-webkit-backface-visibility:hidden; 
 	-moz-backface-visibility:hidden; 
+	text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }
 #reserved {
     font-family: 'Roboto', sans-serif;
@@ -37,16 +38,9 @@ body {
 	bottom:120px;
 	height: 32%;
 	width:16%;
-	opacity: 0.9;
-	border: 2px solid #2D5A5A;
-	border-radius: 16px 16px 16px 16px;
-	-moz-border-radius: 16px 16px 16px 16px;
-	-webkit-border-radius: 16px 16px 16px 16px;
-	transition: left 3s ease-out 1s;
-  	background-image: linear-gradient(to top, rgba(1, 28, 22, .9), rgba(1, 24, 18, .9));
-	/* background-image: linear-gradient(to bottom, rgba(130, 161, 161, .9), rgba(45, 90, 90, .9)); */
 	font-size: 0.5em;
 	z-index:50;
+	transition: left 1s;
 }
 #statsTableLeft div {
   	display:block;
@@ -67,15 +61,8 @@ body {
 	min-width: 200px;
 	bottom:120px;
 	width:16%;
-	opacity: 0.9;
-	border: 2px solid #2D5A5A;
-	border-radius: 16px 16px 16px 16px;
-	-moz-border-radius: 16px 16px 16px 16px;
-	-webkit-border-radius: 16px 16px 16px 16px;
-	transition: left 3s ease-out 1s;
-  	background-image: linear-gradient(to top, rgba(1, 28, 22, .9), rgba(1, 24, 18, .9));
-	/* background-image: linear-gradient(to bottom, rgba(130, 161, 161, .9), rgba(45, 90, 90, .9)); */
 	font-size: 0.5em;
+	transition: left 1s;
 }
 #statsTableRight div {
   	display:block;
@@ -116,56 +103,39 @@ body {
 	top:-1.1em;
 	position: relative;
 }
+.statVal {
+	font-weight: 900;
+	font-size: 1.3em;
+}
 #ac_active_5minBar { /* yellow */
-  background-image: linear-gradient(to bottom, #FFFF00, #FFD000);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #blk_5minBar {  /* orange */
-  background-image: linear-gradient(to bottom, #FF1900, #FF5000);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #block_per_chainBar {  /* orange */
-  background-image: linear-gradient(to bottom, #FF1900, #FF5000);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #pt_per_txBar {  /* yellow */
-  background-image: linear-gradient(to bottom, #FFFF00, #FFD000);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #tx_5minBar { /* green */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #tx_per_blockBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #tx_per_chainBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #pt_5minBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #pt_per_blockBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #pt_per_chainBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #1A9100);
-}
-
-#bubbleLegend  {
-    position:relative;
-    width:90%;
-    bottom: 0px;
-    margin: auto;
-	font-weight: 900;
-	color: #C0C0C0;
-	text-shadow: 2px 2px 5px #2D5A5A;
-}
-#bubbleLegend span {
-	word-spacing: 0.2em;
-}
-#scalebarBubbles {
-	display:block;
-	top:0.8em;
-	width: 90%;
-	opacity:0.8;
-    margin: 0 auto;
-    padding-left:1.4em;
+  background-image: linear-gradient(to bottom, #005866, #4A8282);
 }
 #label_values {
 	padding-top: 2em;

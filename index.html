@@ -29,74 +29,72 @@
 		<link rel="stylesheet" href="css/animations.css" />
 		<link rel="stylesheet" href="css/pie.css" />
 	</head>
+	<body>
 		<div id="txscl_graph" style=""></div>
 	<div class="" id="kmdLogo">
 		<a href="https://komodoplatform.com/" target="_blank"><img id='logoImg' src="img/kmd_logo_dark.gif" /> </a><br />
-		Payments/sec Scale Test <br />(random test data)
+		Payments per Second Scale Test <span style="font-size:0.7em"><br />real data 64 chains < 14th July<br />random test data > 15 July</span>
 	</div>    
-	<div id="speedo">
-	</div>
-	<div id='speedoText'>
-		Payments per second
-	</div>
-	<body>
+	<div id="speedoDiv">
+		<div id='speedoText'>Payments per second</div>
+		<div id="speedo"></div>
+	</div>  
 		<div id="particles-js"></div>
 		<div id="statsTableLeft">
 			<div id="barsLeft">
-				<div class="statLabel" id="ac_active_5minLabel">Asset Chains Active (last 5 min)</div>
+				<div class="statLabel" id="ac_active_5minLabel"><span class='statVal'>0</span> Asset Chains Active (last 5 min)</div>
 				<div class="statBar" id="ac_active_5minBar">&nbsp;</div>
 				<div class="statBorder" id="ac_active_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="blk_5minLabel">Blocks Solved (last 5 min)</div>
+				<div class="statLabel" id="blk_5minLabel"><span class='statVal'>0</span> Blocks Solved (last 5 min)</div>
 				<div class="statBar" id="blk_5minBar">&nbsp;</div>
 				<div class="statBorder" id="blk_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_5minLabel">Payments in the (last 5 min)</div>
+				<div class="statLabel" id="pt_5minLabel"><span class='statVal'>0</span> Payments in the (last 5 min)</div>
 				<div class="statBar" id="pt_5minBar">&nbsp;</div>
 				<div class="statBorder" id="pt_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_per_blockLabel">Payments per block (last 5 min)</div>
+				<div class="statLabel" id="pt_per_blockLabel"><span class='statVal'>0</span> Payments per block (last 5 min)</div>
 				<div class="statBar" id="pt_per_blockBar">&nbsp;</div>
 				<div class="statBorder" id="pt_per_blockBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_per_chainLabel">Payments per Asset Chain (last 5 min)</div>
+				<div class="statLabel" id="pt_per_chainLabel"><span class='statVal'>0</span> Payments per Asset Chain (last 5 min)</div>
 				<div class="statBar" id="pt_per_chainBar">&nbsp;</div>
 				<div class="statBorder" id="pt_per_chainBorder">&nbsp;</div>
-
-				<a href="https://dexstats.info/" target="_blank"><div class="def_buttons" id="code_btn" onclick="">DEXstats<span class="tooltip" id="code_tooltip">More statistics (BarterDEX and Komodo)</span></div></a>
-				<a href="https://www.youtube.com/watch?v=FzjXRiwKvRQ" target="_blank"><div class="def_buttons" id="info_btn" onclick="">Timeline<span class="tooltip" id="info_tooltip">Animated history of Komodo's technology</span></div></a>
-
 			</div>
 		</div> 
 
 		<div id="statsTableRight"> 
 			<div id="barsRight">
 
-				<div class="statLabel" id="pt_per_txLabel">Payments per transaction (last 5 min)</div>
+				<div class="statLabel" id="pt_per_txLabel"><span class='statVal'>0</span> Payments per transaction (last 5 min)</div>
 				<div class="statBar" id="pt_per_txBar">&nbsp;</div>
 				<div class="statBorder" id="pt_per_txBorder">&nbsp;</div>
 
-				<div class="statLabel" id="block_per_chainLabel">Blocks per Asset Chain (last 5 min)</div>
+				<div class="statLabel" id="block_per_chainLabel"><span class='statVal'>0</span> Blocks per Asset Chain (last 5 min)</div>
 				<div class="statBar" id="block_per_chainBar">&nbsp;</div>
 				<div class="statBorder" id="block_per_chainBorder">&nbsp;</div>	
 
-				<div class="statLabel" id="tx_5minLabel">Transactions in the (last 5 min)</div>
+				<div class="statLabel" id="tx_5minLabel"><span class='statVal'>0</span> Transactions in the (last 5 min)</div>
 				<div class="statBar" id="tx_5minBar">&nbsp;</div>
 				<div class="statBorder" id="tx_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="tx_per_blockLabel">Transactions per block (last 5 min)</div>
+				<div class="statLabel" id="tx_per_blockLabel"><span class='statVal'>0</span> Transactions per block (last 5 min)</div>
 				<div class="statBar" id="tx_per_blockBar">&nbsp;</div>
 				<div class="statBorder" id="tx_per_blockBorder">&nbsp;</div>
 				
-				<div class="statLabel" id="tx_per_chainLabel">Transactions per Asset Chain in (last 5 min)</div>
+				<div class="statLabel" id="tx_per_chainLabel"><span class='statVal'>0</span> Transactions per Asset Chain in (last 5 min)</div>
 				<div class="statBar" id="tx_per_chainBar">&nbsp;</div>
 				<div class="statBorder" id="tx_per_chainBorder">&nbsp;</div>
-				<a href="https://github.com/smk762/txscl_vis" target="_blank"><div class="def_buttons" id="code_btn" onclick="">code<span class="tooltip" id="code_tooltip">View code on GitHub</span></div></a>
-
-				<a href="https://www.reddit.com/r/komodoplatform/comments/8mhzj1/komodo_scalability_story_this_is_how_i_like_to/" target="_blank"><div class="def_buttons" id="info_btn" onclick="">info<span class="tooltip" id="info_tooltip">More information about Komodo's World Record scaling tests</span></div></a>
 			</div>
 		</div>
 
+	<div class="links">
+		<a href="https://dexstats.info/" target="_blank"><div class="def_buttons" id="code_btn" onclick="">DEXstats<span class="tooltip" id="code_tooltip">More statistics <br />(BarterDEX and Komodo)</span></div></a>
+		<a href="https://www.youtube.com/watch?v=FzjXRiwKvRQ" target="_blank"><div class="def_buttons" id="info_btn" onclick="">Timeline<span class="tooltip" id="info_tooltip">Animated history of <br /> Komodo's technology</span></div></a>
+		<a href="https://github.com/smk762/txscl_vis" target="_blank"><div class="def_buttons" id="code_btn" onclick="">Code<span class="tooltip" id="code_tooltip">View code on GitHub</span></div></a>
+		<a href="https://www.reddit.com/r/komodoplatform/comments/8mhzj1/komodo_scalability_story_this_is_how_i_like_to/" target="_blank"><div class="def_buttons" id="info_btn" onclick="">Info<span class="tooltip" id="info_tooltip">More information about  <br />Komodo's World Record scaling tests</span></div></a>
+	</div>
 		<!-- Custom JS -->
 		<script src="js/global.js"></script>
 		<script src="js/graph_history.js"></script>
