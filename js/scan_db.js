@@ -10,7 +10,6 @@ dynogels.AWS.config.loadFromPath('creds.json');
 
 let clientCount = 0;
 
-// **************************************************** create outgoing socket connection tosend stats to visualiser
 function connSocketOut() {
     const server = http.createServer(function(req, res) {
         fs.readFile('./res.html', 'utf-8', function(error, content) {
@@ -57,13 +56,10 @@ var txsc_table = dynogels.define('kmd-blocknotify-blackjok3r-2-v0', {
   hashKey : 'chain',
   rangeKey : 'timestamp',
 
-  // enable timestamps support
   timestamps : false,
 
-  // I don't want createdAt
   createdAt: false,
 
-  // I want updatedAt to actually be called updateTimestamp
   updatedAt: false,
 
   schema : {
@@ -79,9 +75,3 @@ setInterval(function() {
     .where('timestamp').gte(0)
     .exec(printResults);
 },5000)
-
-  // mkdir ~/dynoscan; cd ~/dynoscan
-  //npm init
-  //npm install joi
-  //npm install dynogels
-  //npm install socket.io
