@@ -21,26 +21,21 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:700|Oswald|Raleway|Roboto" rel="stylesheet"> 
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/speedo.css" />
-		<link rel="stylesheet" href="css/statbars.css" />
-		<link rel="stylesheet" href="css/graph.css" />
+		<link rel="stylesheet" href="css/tx_statbars.css" />
+		<link rel="stylesheet" href="css/tx_graph.css" />
 		<link rel="stylesheet" href="css/controls.css" />
 		<link rel="stylesheet" href="css/animations.css" />
 		<link rel="stylesheet" href="css/pie.css" />
 	</head>
 	<body>
 		<div id="txscl_graph" style=""></div>
-		<div id="ptscl_graph" style=""></div>
 	<div class="" id="kmdLogo">
 		<a href="https://komodoplatform.com/" target="_blank"><img id='logoImg' src="img/kmd_logo_dark.gif" /> </a><br />
-		Payments per Second Scale Test <span style="font-size:0.7em"><br />64 ASSET CHAIN TEST PHASE DATA</span>
+		Transactions per Second Scale Test <span style="font-size:0.7em"><br />64 ASSET CHAIN TEST PHASE DATA</span>
 	</div>    
-	<div id="speedoDiv_pt">
-		<div id='speedoText_pt'>Payments per second</div>
-		<div id="speedo_pt"></div>
-	</div>  
-	<div id="speedoDiv_tx">
-		<div id='speedoText_tx'>Transactions per second</div>
-		<div id="speedo_tx"></div>
+	<div id="speedoDiv">
+		<div id='speedoText'>Transactions per second</div>
+		<div id="speedo"></div>
 	</div>  
 		<div id="particles-js"></div>
 		<div id="statsTableLeft">
@@ -52,17 +47,18 @@
 				<div class="statLabel" id="blk_5minLabel"><span class='statVal'>0</span> Blocks Solved per minute</div>
 				<div class="statBar" id="blk_5minBar">&nbsp;</div>
 				<div class="statBorder" id="blk_5minBorder">&nbsp;</div>
-				<div class="statLabel" id="tx_5minLabel"><span class='statVal'>0</span> Transactions in the (last 5 min)</div>
-				<div class="statBar" id="tx_5minBar">&nbsp;</div>
-				<div class="statBorder" id="tx_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="tx_per_blockLabel"><span class='statVal'>0</span> Transactions per block (last 5 min)</div>
-				<div class="statBar" id="tx_per_blockBar">&nbsp;</div>
-				<div class="statBorder" id="tx_per_blockBorder">&nbsp;</div>
-				
-				<div class="statLabel" id="tx_per_chainLabel"><span class='statVal'>0</span> Transactions per Asset Chain in (last 5 min)</div>
-				<div class="statBar" id="tx_per_chainBar">&nbsp;</div>
-				<div class="statBorder" id="tx_per_chainBorder">&nbsp;</div>
+				<div class="statLabel" id="pt_5minLabel"><span class='statVal'>0</span> Payments in the (last 5 min)</div>
+				<div class="statBar" id="pt_5minBar">&nbsp;</div>
+				<div class="statBorder" id="pt_5minBorder">&nbsp;</div>
+
+				<div class="statLabel" id="pt_per_blockLabel"><span class='statVal'>0</span> Payments per block (last 5 min)</div>
+				<div class="statBar" id="pt_per_blockBar">&nbsp;</div>
+				<div class="statBorder" id="pt_per_blockBorder">&nbsp;</div>
+
+				<div class="statLabel" id="pt_per_chainLabel"><span class='statVal'>0</span> Payments per Asset Chain (last 5 min)</div>
+				<div class="statBar" id="pt_per_chainBar">&nbsp;</div>
+				<div class="statBorder" id="pt_per_chainBorder">&nbsp;</div>
 			</div>
 		</div> 
 
@@ -77,18 +73,17 @@
 				<div class="statBar" id="block_per_chainBar">&nbsp;</div>
 				<div class="statBorder" id="block_per_chainBorder">&nbsp;</div>	
 
-				<div class="statLabel" id="pt_5minLabel"><span class='statVal'>0</span> Payments in the (last 5 min)</div>
-				<div class="statBar" id="pt_5minBar">&nbsp;</div>
-				<div class="statBorder" id="pt_5minBorder">&nbsp;</div>
+				<div class="statLabel" id="tx_5minLabel"><span class='statVal'>0</span> Transactions in the (last 5 min)</div>
+				<div class="statBar" id="tx_5minBar">&nbsp;</div>
+				<div class="statBorder" id="tx_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_per_blockLabel"><span class='statVal'>0</span> Payments per block (last 5 min)</div>
-				<div class="statBar" id="pt_per_blockBar">&nbsp;</div>
-				<div class="statBorder" id="pt_per_blockBorder">&nbsp;</div>
-
-				<div class="statLabel" id="pt_per_chainLabel"><span class='statVal'>0</span> Payments per Asset Chain (last 5 min)</div>
-				<div class="statBar" id="pt_per_chainBar">&nbsp;</div>
-				<div class="statBorder" id="pt_per_chainBorder">&nbsp;</div>
-
+				<div class="statLabel" id="tx_per_blockLabel"><span class='statVal'>0</span> Transactions per block (last 5 min)</div>
+				<div class="statBar" id="tx_per_blockBar">&nbsp;</div>
+				<div class="statBorder" id="tx_per_blockBorder">&nbsp;</div>
+				
+				<div class="statLabel" id="tx_per_chainLabel"><span class='statVal'>0</span> Transactions per Asset Chain in (last 5 min)</div>
+				<div class="statBar" id="tx_per_chainBar">&nbsp;</div>
+				<div class="statBorder" id="tx_per_chainBorder">&nbsp;</div>
 			</div>
 		</div>
 
@@ -100,14 +95,14 @@
 	</div>
 		<!-- Custom JS -->
 		<script src="js/global.js"></script>
+		<script src="js/tx_graph_history.js"></script>
 		<script src="js/statbars.js"></script>
-		<script src="js/sockets.js"></script>
-		<script src="js/graph_history.js"></script>
+		<script src="js/controls.js"></script>
 		<script src="js/speedo.js"></script>
+		<script src="js/tx_sockets.js"></script>
 		<script src="js/fluidity.js"></script>
 		<script src="js/particles.js"></script>
 		<script src="js/pie.js" /> 
-		<script src="js/controls.js"></script>
 		<script src="js/update_metrics.js" /> 
 		<!-- stats.js lib for particles -->
 		<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>

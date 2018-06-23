@@ -25,3 +25,26 @@
 .highcharts-navigator-mask-outside { background-color: #06263F; }
 .highcharts-navigator { background-color: #06263F; }
 .highcharts-area { opacity:0.60 !important; }
+
+#ptscl_graph {
+  position: absolute;
+  bottom:-1em;
+  left:0%;
+  opacity: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(1, 28, 22, .6);
+  padding: 0.4em;
+  margin-top: 20px;
+  font-family: verdana;
+  color: white;
+  font-size: 10px;
+  z-index:7;
+  /* transition: bottom 4s ease-out 1s; */
+  transition-delay: 5s;
+  -webkit-transition: all 18s ease-out 0s;
+  -moz-transition: all 18s ease-out 0s;
+  -ms-transition: all 18s ease-out 0s;
+  -o-transition: all 18s ease-out 0s;
+  transition: all 18s ease-out 0s;
+}

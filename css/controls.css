@@ -47,6 +47,7 @@
 .def_buttons:hover {
       opacity:1;
       color:#ffffff;
+      background-image: linear-gradient(to top, rgba(25, 25, 25, .9), rgba(104, 104, 104, .8));
 }
 
 #info_btn:hover #info_tooltip {

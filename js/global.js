@@ -30,6 +30,25 @@ function getHeight() {
   );
 }
 
+function prettifyValue(val) {
+  if (val > 10000000000000) {
+    val = 0;
+  }
+  if (val > 1000000000) {
+    val = (val/1000000000).toFixed(2)+" Bil";
+  }
+  else if (val > 1000000) {
+    val = (val/1000000).toFixed(2)+" Mil";
+  }
+  else if (val > 10000) {
+    val = (val/1000).toFixed(2)+" K";
+  }
+  else {
+    val = val.toFixed(2);
+  }
+  return val;
+}
+
 function limitToOne(val) {
   if (val > 1) {
     val = 1;
@@ -137,8 +156,7 @@ let tx_sec = 0;
 let pt_sec = 0;
 let max_time = 0;
 let ac_active_5min = 0;
-
-
+let init_time = Date.now();
 
 var padding = 0;
 var stats_Arr = ['numApiConn', 'numChainActive', 'block5min', 'blockPerChain', 'tx5min', 'pt5min', 'aveChainTX', 'aveChainPT', 'txPerBlock', 'ptPerBlock', 'ptPerTx'];
@@ -157,3 +175,7 @@ let maxAveChainTx = 8860;
 let maxBlockPerChain = 8; // assumed average of 1 block per minute over 5 min, with overflow for periods of reduced block time
 let maxTx5min = maxTxPerBlock*totalNumChains*8;
 let maxPt5min = maxPtPerBlock*totalNumChains*8;
+
+let speedoVal_pt = 0;
+let speedoVal_tx = 0;
+let client_count = 0;

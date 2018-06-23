@@ -1,28 +1,44 @@
-.amcharts-chart-div a {
-  opacity:0 !important;
-}
-.export-main {
-  opacity:0 !important;
-}
-#speedoDiv {
+#speedoDiv_pt {
   position:absolute;
   bottom: -100%;
-  padding-top:2%;
-  left:40%;
+  left:50%;
   width: 20%;
   height: 32%;
-  transition: top 3s ease-out 1s;
+  transition: top 1s ease-out 1s;
   z-index: 24;
+  overflow: visible;
 }
-#speedoText {
+#speedoText_pt {
   z-index: 26;
   font-weight: 900;
   font-size:0.9em;
 }
-#speedo {
+#speedo_pt {
   z-index: 25;
   width: 100%;
   height: 100%;
+  overflow: visible;
+}    
+#speedoDiv_tx {
+  position:absolute;
+  bottom: -100%;
+  left:30%;
+  width: 20%;
+  height: 32%;
+  transition: top 1s ease-out 1s;
+  z-index: 24;
+  overflow: visible;
+}
+#speedoText_tx {
+  z-index: 26;
+  font-weight: 900;
+  font-size:0.9em;
+}
+#speedo_tx {
+  z-index: 25;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }    
 #kmdLogo {
   position:absolute;
@@ -46,4 +62,10 @@
 }
 .amcharts-export-menu {
   display: none;
+}
+.amcharts-chart-div a {
+  opacity:0 !important;
+}
+.export-main {
+  opacity:0 !important;
 }

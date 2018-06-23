@@ -1,5 +1,5 @@
 // #################### Speedometer #########################
-var gaugeChart = AmCharts.makeChart( "speedo", {
+var gaugeChart_pt = AmCharts.makeChart( "speedo_pt", {
   "type": "gauge",
   "theme": "light",
   "axes": [ {
@@ -44,7 +44,7 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
       "startValue": 8000000
     } ],
     "bottomText": "",
-    "bottomTextYOffset": 16,
+    "bottomTextYOffset": 0,
     "bottomTextFontSize":18,
     "bottomTextColor":'#4A8282',
     "bottomTextBold":true,
@@ -58,19 +58,101 @@ var gaugeChart = AmCharts.makeChart( "speedo", {
     "enabled": true
   }
 } );
-let speedoVal = 0;
+
+  // #################### Speedometer #########################
+var gaugeChart_tx = AmCharts.makeChart( "speedo_tx", {
+  "type": "gauge",
+  "theme": "light",
+  "axes": [ {
+    "fontSize": 8,
+    "endValue": 1250000,
+    "startValue":0,
+    "axisThickness": 2,
+    "color": '#4A8282',
+    "boldLabels": true,
+    "usePrefixes": true,
+    "axisAlpha": 1,
+    "tickAlpha": 1,
+    "tickColor": '#000000',
+    "valueInterval": 250000,
+    "bands": [ {
+      "color": "#B4C7C7",
+      "endValue": 250000,
+      "innerRadius": '90%',
+      "startValue": 0
+    }, {
+      "color": "#82A1A1",
+      "endValue": 500000,
+      "innerRadius": '92%',
+      "startValue": 250000
+    }, {
+      "color": "#4A8282",
+      "endValue": 750000,
+      "innerRadius": 0,
+      "innerRadius": '92%',
+      "startValue": 500000
+    }, {
+      "color": "#3B6868",
+      "endValue": 1000000,
+      "innerRadius": 0,
+      "innerRadius": '92%',
+      "startValue": 750000
+    }, {
+      "color": "#2D5A5A",
+      "endValue": 1250000,
+      "innerRadius": 0,
+      "innerRadius": '90%',
+      "startValue": 1000000
+    } ],
+    "bottomText": "",
+    "bottomTextYOffset": 0,
+    "bottomTextFontSize":18,
+    "bottomTextColor":'#4A8282',
+    "bottomTextBold":true,
+    "endValue": 1250000
+  } ],
+  "arrows": [ {
+      "color": "#2D5A5A",
+      "radius": '75%'
+  } ],
+  "export": {
+    "enabled": true
+  }
+} );
+
+
 // set random value
-function updateNeedle(speedoVal) {
+function updateNeedlePt(speedoVal) {
+  console.log("******************************************************** updating needle to "+speedoVal)
   if (speedoVal < 0) { speedoVal = 0 };
   if (speedoVal > 12500000) { speedoVal = 12500000 };
   speedoVal = Math.floor(speedoVal);
-  if ( gaugeChart ) {
-    if ( gaugeChart.arrows ) {
-      if ( gaugeChart.arrows[ 0 ] ) {
-        if ( gaugeChart.arrows[ 0 ].setValue ) {
-          gaugeChart.arrows[ 0 ].setValue( speedoVal );
-          gaugeChart.axes[ 0 ].setBottomText( speedoVal  );
-          gaugeChart.axes[ 0 ].fontSize = 8;
+  if ( gaugeChart_pt ) {
+    if ( gaugeChart_pt.arrows ) {
+      if ( gaugeChart_pt.arrows[ 0 ] ) {
+        if ( gaugeChart_pt.arrows[ 0 ].setValue ) {
+          gaugeChart_pt.arrows[ 0 ].setValue( speedoVal );
+          gaugeChart_pt.axes[ 0 ].setBottomText( speedoVal  );
+          gaugeChart_pt.axes[ 0 ].fontSize = 8;
+        }
+      }
+    }
+  }
+}
+
+// set random value
+function updateNeedleTx(speedoVal) {
+  console.log("******************************************************** updating needle to "+speedoVal)
+  if (speedoVal < 0) { speedoVal = 0 };
+  if (speedoVal > 12500000) { speedoVal = 12500000 };
+  speedoVal = Math.floor(speedoVal);
+  if ( gaugeChart_tx ) {
+    if ( gaugeChart_tx.arrows ) {
+      if ( gaugeChart_tx.arrows[ 0 ] ) {
+        if ( gaugeChart_tx.arrows[ 0 ].setValue ) {
+          gaugeChart_tx.arrows[ 0 ].setValue( speedoVal );
+          gaugeChart_tx.axes[ 0 ].setBottomText( speedoVal  );
+          gaugeChart_tx.axes[ 0 ].fontSize = 8;
         }
       }
     }

@@ -2,7 +2,8 @@
 function updateStatusBar(id, stat) {
 	console.log("id: "+id);
 	console.log("stat: "+stat);
-	console.log("------------------");
+	//console.log("type: "+typeof stat);
+	//console.log("------------------");
 	let barSize = 0;
 	let label = id+"Label";
 	let bar = id+"Bar";
@@ -17,9 +18,7 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      console.log(stat+" / "+value)
-	      console.log(typeof stat+" / "+typeof value)
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions per minute";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_5min':
@@ -27,21 +26,23 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments (last 5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per minute";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'blk_5min':
 	      barSize = stat/maxBlock5min;
 	      barSize = limitToOne(barSize);
+	console.log("id: "+id);
+	console.log("stat: "+stat);
 	      value = stat;
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Blocks Solved (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Blocks Solved per minute";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'tx_per_block':
 	      barSize = stat/maxTxPerBlock;
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions per block (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions per block";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'tx_per_chain':
@@ -49,15 +50,14 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions per Asset Chain (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Transactions per Asset Chain";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_block':
-	      console.log("PT Per Block: "+stat);
 	      barSize = stat/maxPtPerBlock;
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per block (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per block";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_chain':
@@ -65,14 +65,14 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per Asset Chain (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per Asset Chain";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'ac_active_5min':
 	      barSize = stat/8192;
 	      barSize = limitToOne(barSize);
 	      value = stat;
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Asset Chains Active (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Asset Chains Active";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'block_per_chain':
@@ -80,7 +80,7 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Blocks per Asset Chain (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Blocks per Asset Chain";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    case 'pt_per_tx':
@@ -88,26 +88,10 @@ function updateStatusBar(id, stat) {
 	      if (barSize !== barSize) { barSize = 0; }
 	      barSize = limitToOne(barSize);
 	      value = prettifyValue(stat);
-	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per transaction (5 min)";
+	      document.getElementById(label).innerHTML = " <span class='statVal'>"+value+"</span> Payments per transaction";
 	      document.getElementById(bar).style.width = barSize*borderWidth+"px";
 	      break;
 	    default:
 	      barSize = 0;
   }
-}
-
-function prettifyValue(val) {
-	if (val > 1000000000) {
-		val = (val/1000000000).toFixed(2)+" Bil";
-	}
-	else if (val > 1000000) {
-		val = (val/1000000).toFixed(2)+" Mil";
-	}
-	else if (val > 10000) {
-		val = (val/1000).toFixed(2)+" K";
-	}
-	else {
-		val = val.toFixed(2);
-	}
-	return val;
 }

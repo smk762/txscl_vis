@@ -8,9 +8,18 @@ hoarder_socket.on('connect', function () {
     hoarder_socket.emit('subscribe', 'tx_60sec');
     hoarder_socket.emit('subscribe', 'pt_60sec');
     hoarder_socket.emit('subscribe', 'tx_5min');
+    hoarder_socket.emit('subscribe', 'blastoff');
     hoarder_socket.emit('subscribe', 'pt_5min');
     hoarder_socket.emit('subscribe', 'blk_5min');
     hoarder_socket.emit('subscribe', 'client_count');
+    hoarder_socket.emit('subscribe', 'txscl_table');
+});
+
+hoarder_socket.on('blastoff', function (data) {
+    console.log("blastoff "+data+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+});
+hoarder_socket.on('txscl_table', function (data) {
+    console.log("txscl_table "+data);
 });
 
 hoarder_socket.on('max_time', function (data) {
@@ -24,24 +33,27 @@ hoarder_socket.on('ac_active_5min', function (data) {
 
 hoarder_socket.on('tx_60sec', function (data) {
   tx_60sec = parseInt(data); // per second, averaged over 1 minute
-  tx_sec = tx_60sec/60; 
+  tx_sec = tx_60sec/12; 
 });
 
 hoarder_socket.on('pt_60sec', function (data) {
   pt_60sec = parseInt(data);
-  pt_sec = pt_60sec/60;
-  console.log(pt_sec+" ************************")
-  updateNeedle(pt_sec); // per second, averaged over 1 minute
+  //pt_sec = pt_60sec/12;
+  //updateNeedle(Math.ceil(pt_sec)); // per second, averaged over 1 minute
 });
 
 hoarder_socket.on('tx_5min', function (data) {
     tx_5min = parseInt(data);
     updateStatusBar('tx_5min',tx_5min);
+    tx_sec = tx_5min/60;
+    updateNeedleTx(Math.round(tx_sec)); // per second, averaged over 5 minute
 });
 
 hoarder_socket.on('pt_5min', function (data) {
     pt_5min = parseInt(data);
     updateStatusBar('pt_5min',pt_5min);
+    pt_sec = pt_5min/60;
+    updateNeedlePt(Math.round(pt_sec)); // per second, averaged over 5 minute
 });
 
 hoarder_socket.on('blk_5min', function (data) {
@@ -51,10 +63,21 @@ hoarder_socket.on('blk_5min', function (data) {
 
 hoarder_socket.on('client_count', function (data) {
     client_count = parseInt(data);
+    console.log(client_count+" Users Connected")
     //updateStatusBar('client_count',client_count);
 });
 
 function calcRatios() {
+    //console.log("............................................................");
+    //console.log(tx_5min);
+    //console.log(typeof tx_5min);
+    //console.log(pt_5min);
+    //console.log(typeof pt_5min);
+    //console.log(blk_5min);
+    //console.log(typeof blk_5min);
+    //console.log(ac_active_5min);
+    //console.log(typeof ac_active_5min);
+    //console.log("............................................................");
     tx_per_block = tx_5min/blk_5min;
     pt_per_block = pt_5min/blk_5min; 
     tx_per_chain = tx_5min/ac_active_5min;
@@ -73,6 +96,6 @@ function calcRatios() {
     updateStatusBar('pt_per_tx',pt_per_tx);
     updateStatusBar('block_per_chain',block_per_chain);
 }
-setInterval(function() { calcRatios(); },5000 );
+setInterval(function() { calcRatios();  },3000 );
 // let needle = setInterval(function() { updateNeedle(globalTX); } ,2000);
 // needle = setInterval(function() { console.log("globalTX = "+globalTX); updateNeedle(globalTX); } ,3050);
