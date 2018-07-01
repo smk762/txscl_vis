@@ -7,7 +7,7 @@ var gaugeChart_pt = AmCharts.makeChart( "speedo_pt", {
     "endValue": 10000000,
     "startValue":0,
     "axisThickness": 2,
-    "color": '#4A8282',
+    "color": '#BBF9E6',
     "boldLabels": true,
     "usePrefixes": true,
     "axisAlpha": 1,
@@ -44,14 +44,14 @@ var gaugeChart_pt = AmCharts.makeChart( "speedo_pt", {
       "startValue": 8000000
     } ],
     "bottomText": "",
-    "bottomTextYOffset": 0,
+    "bottomTextYOffset": 10,
     "bottomTextFontSize":18,
-    "bottomTextColor":'#4A8282',
+    "bottomTextColor":'#52FAC7',
     "bottomTextBold":true,
     "endValue": 10000000
   } ],
   "arrows": [ {
-      "color": "#2D5A5A",
+      "color": "#18ADA3",
       "radius": '75%'
   } ],
   "export": {
@@ -68,7 +68,7 @@ var gaugeChart_tx = AmCharts.makeChart( "speedo_tx", {
     "endValue": 1250000,
     "startValue":0,
     "axisThickness": 2,
-    "color": '#4A8282',
+    "color": '#BBF9E6',
     "boldLabels": true,
     "usePrefixes": true,
     "axisAlpha": 1,
@@ -105,14 +105,14 @@ var gaugeChart_tx = AmCharts.makeChart( "speedo_tx", {
       "startValue": 1000000
     } ],
     "bottomText": "",
-    "bottomTextYOffset": 0,
+    "bottomTextYOffset": 10,
     "bottomTextFontSize":18,
-    "bottomTextColor":'#4A8282',
+    "bottomTextColor":'#52FAC7',
     "bottomTextBold":true,
     "endValue": 1250000
   } ],
   "arrows": [ {
-      "color": "#2D5A5A",
+      "color": "#18ADA3",
       "radius": '75%'
   } ],
   "export": {
@@ -123,7 +123,6 @@ var gaugeChart_tx = AmCharts.makeChart( "speedo_tx", {
 
 // set random value
 function updateNeedlePt(speedoVal) {
-  console.log("******************************************************** updating needle to "+speedoVal)
   if (speedoVal < 0) { speedoVal = 0 };
   if (speedoVal > 12500000) { speedoVal = 12500000 };
   speedoVal = Math.floor(speedoVal);
@@ -142,7 +141,6 @@ function updateNeedlePt(speedoVal) {
 
 // set random value
 function updateNeedleTx(speedoVal) {
-  console.log("******************************************************** updating needle to "+speedoVal)
   if (speedoVal < 0) { speedoVal = 0 };
   if (speedoVal > 12500000) { speedoVal = 12500000 };
   speedoVal = Math.floor(speedoVal);

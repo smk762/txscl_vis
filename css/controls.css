@@ -1,11 +1,9 @@
-
 .def_buttons {
-      font-size: 0.6em;
+      font-size: 0.5em;
       border:0.1em solid #2D5A5A;
       background-image: linear-gradient(to top, rgba(5, 5, 5, .9), rgba(74, 74, 74, .7));
-      -moz-border-radius:0.2em;
-      -webkit-border-radius:0.2em;
-      border-radius:0.2em;
+      -webkit-border-radius:0.1em;
+      border-radius:0.1em;
       text-align: center;
       display:inline-block !important;
       cursor:pointer;
@@ -16,15 +14,22 @@
       margin:1%;
       text-align: center;
       right:0%;
-      width:16%;
+      width:14%;
       z-index:200;   
 }
 .links {
-   width:30%;
    position:absolute;
    top:10px;
    right:10px;
    z-index: 9000;
+}
+#txsclLinks {
+   left:10px;
+   top:10px;
+   width:10%;
+}
+#txsclLinks div {
+   width:60%;
 }
 .tooltip {
       visibility: hidden;
@@ -32,15 +37,14 @@
       background-color: black;
       color: #fff;
       text-align: center;
-      padding: 1em 0;
+      padding: 1em;
       border-radius: 0.3em;
       position: absolute;
       opacity: 0.9;
-      top:3em;
+      top:6em;
       left:25%;
       z-index: 1000;
       font-size:1em;
-      text-decoration-style: none;
       text-shadow: none;
       font-weight: 400;
 }
@@ -57,4 +61,8 @@
 
 #code_btn:hover #code_tooltip {
     visibility: visible;
+}
+#comparisonTweet {
+      display:none;
+      opacity: 0;
 }

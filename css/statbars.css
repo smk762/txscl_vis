@@ -1,50 +1,16 @@
-html {
-	height:100%;
-	width:100%;
-}
-body {
-	height:100%;
-	width:100%;
-	background-position: center;
-	background-image: url("http://149.28.8.219/img/kmd80.gif");
-	background-blend-mode: overlay;
-	background-repeat: repeat;
-	background-color:  #161616; 
-	z-index: 0;
-	overflow: hidden;
-	display: block;  /* No floating content on sides 
-	font-family: Verdana, Geneva, sans-serif; */
-    font-family: 'Raleway', sans-serif;
-	font-size: 1.2vw;
-	color:#4A8282;
-	text-align: center;
-	backface-visibility:hidden;
-	-webkit-backface-visibility:hidden; 
-	-moz-backface-visibility:hidden; 
-	text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-}
-#reserved {
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Lato', sans-serif;
-    font-family: 'Oswald', sans-serif;
-    font-family: 'Open Sans', sans-serif;
-}
-
 #statsTableLeft {
 	position:absolute;
-	min-width: 200px;
-	padding-top: 1.2em;
-	left:-17%;
-	bottom:120px;
+	min-width: 150px;
+	left:0%;
 	height: 32%;
 	width:16%;
 	font-size: 0.5em;
-	z-index:50;
-	transition: left 1s;
+	z-index:33;
+	background-color: rgba(0,0,0,0.7);
+  	border-radius: 0.7em 0px 0px 0.7em;
 }
 #statsTableLeft div {
   	display:block;
-	margin: auto;
 }
 
 #barsLeft {
@@ -55,18 +21,17 @@ body {
 	left:5%;
 }
 #statsTableRight {
-	z-index:50;
+	z-index:33;
 	position:absolute;
-	left:100%;
-	min-width: 200px;
-	bottom:120px;
+	right:0%;
+	min-width: 150px;
 	width:16%;
 	font-size: 0.5em;
-	transition: left 1s;
+	background-color: rgba(0,0,0,0.7);
+  	border-radius: 0px 0.7em 0.7em 0px;
 }
 #statsTableRight div {
   	display:block;
-	margin: auto;
 }
 #barsRight {
 	position: absolute;
@@ -83,23 +48,21 @@ body {
 }
 .statLabel span {
 	margin:auto;
-	font-size: 900;
 	font-size-adjust: 0.6;
 }
 .statBar {
 	height: 1.1em;
 	border-radius: 0.1em 0.1em 0.1em 0.1em;
 	-webkit-border-radius: 0.1em 0.1em 0.1em 0.1em;
-	-moz-border-radius: 0.1em 0.1em 0.1em 0.1em;
 	position: relative;
 	margin:0px !important;
 }
 .statBorder{
 	height:1.1em;
-	background: #FFF;
-	border: solid #162b3e 0.1em;
+	background: #52FAC7;
+	border: solid #333 0.1em;
 	opacity: 0.2; 
-	z-index: 88;
+	z-index: 35;
 	top:-1.1em;
 	position: relative;
 }
@@ -108,34 +71,34 @@ body {
 	font-size: 1.3em;
 }
 #ac_active_5minBar { /* yellow */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #blk_5minBar {  /* orange */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #block_per_chainBar {  /* orange */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #pt_per_txBar {  /* yellow */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #tx_5minBar { /* green */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #tx_per_blockBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #tx_per_chainBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #pt_5minBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #pt_per_blockBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #pt_per_chainBar {  /* blue */
-  background-image: linear-gradient(to bottom, #005866, #4A8282);
+  background-image: linear-gradient(to bottom, #52FAC7, #52FAC7, #4A8282);
 }
 #label_values {
 	padding-top: 2em;
@@ -151,8 +114,6 @@ body {
 	position: absolute;
 	bottom:1em;
 }
-
-
 #lbl_1 {
 	left: 15px;
 }

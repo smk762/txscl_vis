@@ -11,13 +11,11 @@
 		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 		<script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
-
 		<!-- Highcharts JS -->
 		<script src="https://code.highcharts.com/stock/highstock.js"></script>
 		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 		<script src="https://code.highcharts.com/modules/boost.js"></script>
-
 		<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:700|Oswald|Raleway|Roboto" rel="stylesheet"> 
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/speedo.css" />
@@ -25,79 +23,106 @@
 		<link rel="stylesheet" href="css/graph.css" />
 		<link rel="stylesheet" href="css/controls.css" />
 		<link rel="stylesheet" href="css/animations.css" />
-		<link rel="stylesheet" href="css/pie.css" />
+		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
+		<!-- Graph -->
 		<div id="txscl_graph" style=""></div>
-		<div id="ptscl_graph" style=""></div>
-	<div class="" id="kmdLogo">
-		<a href="https://komodoplatform.com/" target="_blank"><img id='logoImg' src="img/kmd_logo_dark.gif" /> </a><br />
-		Payments per Second Scale Test <span style="font-size:0.7em"><br />64 ASSET CHAIN TEST PHASE DATA</span>
-	</div>    
-	<div id="speedoDiv_pt">
-		<div id='speedoText_pt'>Payments per second</div>
-		<div id="speedo_pt"></div>
-	</div>  
-	<div id="speedoDiv_tx">
-		<div id='speedoText_tx'>Transactions per second</div>
-		<div id="speedo_tx"></div>
-	</div>  
-		<div id="particles-js"></div>
-		<div id="statsTableLeft">
-			<div id="barsLeft">
-				<div class="statLabel" id="ac_active_5minLabel"><span class='statVal'>0</span> Asset Chains Active (last 5 min)</div>
-				<div class="statBar" id="ac_active_5minBar">&nbsp;</div>
-				<div class="statBorder" id="ac_active_5minBorder">&nbsp;</div>
+		<div class="" id="kmdLogo">
+			<a href="https://komodoplatform.com/" target="_blank"><img id='logoImg' src="img/kmd_logo_light.png" /> </a>
+			<span style="font-size:0.7em">64 ASSET CHAIN TEST PHASE DATA</span>
+		</div>    
+			<div id="timer"></div>
+		<div id='dashboard'>
+			<div id="speedoDiv_pt">
+				<div id="speedo_pt"></div>
+				<div id='speedoText_pt'>Payments per second</div>
+			</div>  
+			<div id="speedoDiv_tx">
+				<div id="speedo_tx"></div>
+				<div id='speedoText_tx'>Transactions per second</div>
+			</div>  
+			<!-- <div id="particles-js"></div> -->
+			<div id="statsTableLeft">
+				<div id="barsLeft">
 
-				<div class="statLabel" id="blk_5minLabel"><span class='statVal'>0</span> Blocks Solved per minute</div>
-				<div class="statBar" id="blk_5minBar">&nbsp;</div>
-				<div class="statBorder" id="blk_5minBorder">&nbsp;</div>
-				<div class="statLabel" id="tx_5minLabel"><span class='statVal'>0</span> Transactions in the (last 5 min)</div>
-				<div class="statBar" id="tx_5minBar">&nbsp;</div>
-				<div class="statBorder" id="tx_5minBorder">&nbsp;</div>
+					<div class="statLabel" id="blk_5minLabel"><span class='statVal'>0</span> Minutes per block</div>
+					<div class="statBar" id="blk_5minBar">&nbsp;</div>
+					<div class="statBorder" id="blk_5minBorder">&nbsp;</div>
+					<div class="statLabel" id="tx_5minLabel"><span class='statVal'>0</span> Transactions in the (last 5 min)</div>
+					<div class="statBar" id="tx_5minBar">&nbsp;</div>
+					<div class="statBorder" id="tx_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="tx_per_blockLabel"><span class='statVal'>0</span> Transactions per block (last 5 min)</div>
-				<div class="statBar" id="tx_per_blockBar">&nbsp;</div>
-				<div class="statBorder" id="tx_per_blockBorder">&nbsp;</div>
-				
-				<div class="statLabel" id="tx_per_chainLabel"><span class='statVal'>0</span> Transactions per Asset Chain in (last 5 min)</div>
-				<div class="statBar" id="tx_per_chainBar">&nbsp;</div>
-				<div class="statBorder" id="tx_per_chainBorder">&nbsp;</div>
-			</div>
-		</div> 
+					<div class="statLabel" id="tx_per_blockLabel"><span class='statVal'>0</span> Transactions per block (last 5 min)</div>
+					<div class="statBar" id="tx_per_blockBar">&nbsp;</div>
+					<div class="statBorder" id="tx_per_blockBorder">&nbsp;</div>
+					
+					<div class="statLabel" id="tx_per_chainLabel"><span class='statVal'>0</span> Transactions per Asset Chain in (last 5 min)</div>
+					<div class="statBar" id="tx_per_chainBar">&nbsp;</div>
+					<div class="statBorder" id="tx_per_chainBorder">&nbsp;</div>
+				</div>
+			</div> 
 
-		<div id="statsTableRight"> 
-			<div id="barsRight">
+			<div id="statsTableRight"> 
+				<div id="barsRight">
 
-				<div class="statLabel" id="pt_per_txLabel"><span class='statVal'>0</span> Payments per transaction (last 5 min)</div>
-				<div class="statBar" id="pt_per_txBar">&nbsp;</div>
-				<div class="statBorder" id="pt_per_txBorder">&nbsp;</div>
+					<div class="statLabel" id="pt_per_txLabel"><span class='statVal'>0</span> Payments per transaction (last 5 min)</div>
+					<div class="statBar" id="pt_per_txBar">&nbsp;</div>
+					<div class="statBorder" id="pt_per_txBorder">&nbsp;</div>
 
-				<div class="statLabel" id="block_per_chainLabel"><span class='statVal'>0</span> Blocks per Asset Chain (last 5 min)</div>
-				<div class="statBar" id="block_per_chainBar">&nbsp;</div>
-				<div class="statBorder" id="block_per_chainBorder">&nbsp;</div>	
+					<div class="statLabel" id="pt_5minLabel"><span class='statVal'>0</span> Payments in the (last 5 min)</div>
+					<div class="statBar" id="pt_5minBar">&nbsp;</div>
+					<div class="statBorder" id="pt_5minBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_5minLabel"><span class='statVal'>0</span> Payments in the (last 5 min)</div>
-				<div class="statBar" id="pt_5minBar">&nbsp;</div>
-				<div class="statBorder" id="pt_5minBorder">&nbsp;</div>
+					<div class="statLabel" id="pt_per_blockLabel"><span class='statVal'>0</span> Payments per block (last 5 min)</div>
+					<div class="statBar" id="pt_per_blockBar">&nbsp;</div>
+					<div class="statBorder" id="pt_per_blockBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_per_blockLabel"><span class='statVal'>0</span> Payments per block (last 5 min)</div>
-				<div class="statBar" id="pt_per_blockBar">&nbsp;</div>
-				<div class="statBorder" id="pt_per_blockBorder">&nbsp;</div>
+					<div class="statLabel" id="pt_per_chainLabel"><span class='statVal'>0</span> Payments per Asset Chain (last 5 min)</div>
+					<div class="statBar" id="pt_per_chainBar">&nbsp;</div>
+					<div class="statBorder" id="pt_per_chainBorder">&nbsp;</div>
 
-				<div class="statLabel" id="pt_per_chainLabel"><span class='statVal'>0</span> Payments per Asset Chain (last 5 min)</div>
-				<div class="statBar" id="pt_per_chainBar">&nbsp;</div>
-				<div class="statBorder" id="pt_per_chainBorder">&nbsp;</div>
-
+				</div>
 			</div>
 		</div>
 
-	<div class="links">
-		<a href="https://dexstats.info/" target="_blank"><div class="def_buttons" id="code_btn" onclick="">DEXstats<span class="tooltip" id="code_tooltip">More statistics <br />(BarterDEX and Komodo)</span></div></a>
-		<a href="https://www.youtube.com/watch?v=FzjXRiwKvRQ" target="_blank"><div class="def_buttons" id="info_btn" onclick="">Timeline<span class="tooltip" id="info_tooltip">Animated history of <br /> Komodo's technology</span></div></a>
-		<a href="https://github.com/smk762/txscl_vis" target="_blank"><div class="def_buttons" id="code_btn" onclick="">Code<span class="tooltip" id="code_tooltip">View code on GitHub</span></div></a>
-		<a href="https://www.reddit.com/r/komodoplatform/comments/8mhzj1/komodo_scalability_story_this_is_how_i_like_to/" target="_blank"><div class="def_buttons" id="info_btn" onclick="">Info<span class="tooltip" id="info_tooltip">More information about  <br />Komodo's World Record scaling tests</span></div></a>
-	</div>
+		<div class="links" id="txsclLinks">
+			<a href="https://dexstats.info/" target="_blank">
+				<div class="def_buttons" id="code_btn" onclick="">DEXstats<span class="tooltip" id="code_tooltip">More statistics <br />(BarterDEX and Komodo)</span></div>
+			</a>
+			<a href="https://www.youtube.com/watch?v=FzjXRiwKvRQ" target="_blank">
+				<div class="def_buttons" id="info_btn" onclick="">Timeline<span class="tooltip" id="info_tooltip">Animated history of <br /> Komodo's technology</span></div>
+			</a>
+
+			<!-- 
+			<a href="https://github.com/smk762/txscl_vis" target="_blank">
+				<div class="def_buttons" id="code_btn" onclick="">Code<span class="tooltip" id="code_tooltip">View code on GitHub</span></div>
+			</a>
+			 -->
+
+			<a href="https://www.reddit.com/r/komodoplatform/comments/8mhzj1/komodo_scalability_story_this_is_how_i_like_to/" target="_blank">
+				<div class="def_buttons" id="info_btn" onclick="">Info<span class="tooltip" id="info_tooltip">More information about  <br />
+				Komodo's World Record scaling tests</span></div>
+			</a>
+
+			<a href="https://www.reddit.com/r/komodoplatform/comments/8ti9ry/jl777_discusses_metachain_scaling_and_burn/" target="_blank">
+				<div class="def_buttons" id="code_btn" onclick="">Scaling<span class="tooltip" id="code_tooltip">jl777 chat logs explaining how Grandmother Merkle notarisation allows for a burn protocol across asset chains to elegantly achieve rapid linear scaling without sharding.</span></div>
+			</a>
+
+			<a href="https://coinmetrics.io/batching/" target="_blank">
+				<div class="def_buttons" id="code_btn" onclick="">Batching<span class="tooltip" id="code_tooltip">An article about UTXOs and the difference between transactions and payments</span></div>
+			</a>
+
+			<a href="https://medium.com/@EthAdvisor/komodo-platform-just-out-performed-visa-9e250dae8b4b" target="_blank">
+				<div class="def_buttons" id="code_btn" onclick="">Review<span class="tooltip" id="code_tooltip">Results of early test results surpassing VISA's transaction rate, and a brief summuray of how it was done.</span></div>
+				
+			</a>
+		</div>
+
+	   	<div id='smkLogo'><a href="http://cryptocartography.io" target='_blank'><img id='smkLogoMetric' src="img/logo_txt.png" /></a></div>
+
+		<!-- Countdown Functions -->
+		<script src="js/countdown.js"></script>
 		<!-- Custom JS -->
 		<script src="js/global.js"></script>
 		<script src="js/statbars.js"></script>
@@ -106,16 +131,17 @@
 		<script src="js/speedo.js"></script>
 		<script src="js/fluidity.js"></script>
 		<script src="js/particles.js"></script>
-		<script src="js/pie.js" /> 
+		<!-- <script src="js/pie.js" />  -->
 		<script src="js/controls.js"></script>
-		<script src="js/update_metrics.js" /> 
 		<!-- stats.js lib for particles -->
 		<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-<!-- Default Statcounter code for KMD Scale Test Metrics
-http://cryptocartography.io/txscl_vis/ -->
-<script type="text/javascript">var sc_project=11741352; var sc_invisible=1; var sc_security="d57c0fed"; </script>
-<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics Made Easy - StatCounter" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/11741352/0/d57c0fed/1/" alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
-<!-- End of Statcounter Code -->
+		<!-- Statcounter -->
+		<script type="text/javascript">var sc_project=11741352; var sc_invisible=1; var sc_security="d57c0fed"; </script>
+		<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+		<noscript>
+			<div class="statcounter">
+				<a title="Web Analytics Made Easy - StatCounter" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/11741352/0/d57c0fed/1/" alt="Web Analytics Made Easy - StatCounter"></a>
+			</div>
+		</noscript>
 	</body>
 </html>

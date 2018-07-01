@@ -1,12 +1,20 @@
 'use strict'
-
 var j_5min = [];
 function setHistory(json) {
-    $.getJSON("http://cryptocartography.io/json/sorted_history.json")
+    $.getJSON("http://cryptocartography.io/json/history_txscl.json")
         .done(function (data) {
             data.forEach(function(element) {
                 j_5min.push(element);                
-            }); 
+            });
+            let range = j_5min.length;
+            let top_time = 1530199707395;
+            if (Date.now()/1000 > top_time) {
+                let gap = Date.now()/1000 - top_time;
+                let gap_points = Math.floor(gap/5000);
+                for (var i = 0; i <= gap_points; i++) {
+                    j_5min.push([(top_time+5000*i+1),0]);
+                }
+            }
             let loadtime = (Date.now() - init_time)/1000;
             console.log(j_5min.length+" history records loaded in "+loadtime)
             drawGraphs();
@@ -55,10 +63,12 @@ Highcharts.theme_pt = {
         minorGridLineColor: '#4272B2', // ?
         tickColor: '#4272B2', // ?
         title: {
+          text: '',
             style: {
                 color: '#4272B2' // ?
             }
-        }
+        },
+        min: 0
     },
     yAxis: {
         gridLineColor: 'rgba(139, 139, 139, .3)', // top graph inner lines
@@ -72,6 +82,7 @@ Highcharts.theme_pt = {
         tickColor: '#4272B2', // ?
         tickWidth: 1,
         title: {
+          text: 'TRANSACTIONS PER SECOND   |   PAYMENTS PER SECOND',
             style: {
                 color: '#4272B2' // ?
             }
@@ -81,7 +92,15 @@ Highcharts.theme_pt = {
         backgroundColor: 'rgba(0, 0, 0, 0.85)',
         style: {
             color: '#F0F0F0'
-        }
+        },
+        formatter: function () {
+            var s = '<b>' +new Date(this.x).toUTCString()+'</b>';
+            $.each(this.points, function () {
+                s += '<br/>'+Math.round(this.y)+' '+this.series.name;
+            });
+            return s;
+        },
+        shared: true
     },
     plotOptions: {
         series: {
@@ -100,9 +119,24 @@ Highcharts.theme_pt = {
         },
         errorbar: {
             color: '4272B2' // ?
-        }
+        },
+        area: {
+          fillColor: {
+            linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+            },
+            stops: [
+                    [0, Highcharts.getOptions().colors[0]],
+                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                ]
+            }
+        },
     },
     legend: {
+        enabled: true,
         itemStyle: {
             color: '#4272B2' // ?
         },
@@ -180,35 +214,12 @@ Highcharts.theme_pt = {
             color: 'silver'
         }
     },
-
-    navigator: {
-        handles: {
-            backgroundColor: '#CDDDEA', // ?
-            borderColor: '#CDDDEA' // ?
-        },
-        outlineColor: '#CDDDEA',
-        maskFill: 'rgba(255,237,158,0.2)',  //yellow
-        series: {
-            color: '#CDDDEA', // ?
-            lineColor: '#00C416', // lower graph line
-            fill: '#E800D4' // ?
-        },
-        xAxis: {
-            gridLineColor: '#505053' // lower graph interval outlines
-        }
-    },
-
     scrollbar: {
-        barBackgroundColor: '#0F173E', // lower graph scrollbar
-        barBorderColor: '#808083',
-        buttonArrowColor: '#CCC',
-        buttonBackgroundColor: '#606063',
-        buttonBorderColor: '#606063',
-        rifleColor: '#111',
-        trackBackgroundColor: '#404043',
-        trackBorderColor: '#404043'
+        enabled: true
     },
-
+    navigator: {
+        enabled: false
+    },
     legendBackgroundColor: 'rgba(0, 0, 0, 0.9)',
     background2: '#505053',
     dataLabelsColor: '#B0B0B3',
@@ -305,6 +316,7 @@ Highcharts.theme_pt = {
             }
         },
         legend: {
+            enabled: true,
             itemStyle: {
                 color: '#4272B2' // ?
             },
@@ -381,49 +393,18 @@ Highcharts.theme_pt = {
             labelStyle: {
                 color: 'silver'
             }
-        },
-
-        navigator: {
-            handles: {
-                backgroundColor: '#CDDDEA', // ?
-                borderColor: '#CDDDEA' // ?
-            },
-            outlineColor: '#CDDDEA',
-            maskFill: 'rgba(255,237,158,0.2)',  //yellow
-            series: {
-                color: '#CDDDEA', // ?
-                lineColor: '#00C416', // lower graph line
-                fill: '#E800D4' // ?
-            },
-            xAxis: {
-                gridLineColor: '#505053' // lower graph interval outlines
-            }
-        },
-
-        scrollbar: {
-            barBackgroundColor: '#0F173E', // lower graph scrollbar
-            barBorderColor: '#808083',
-            buttonArrowColor: '#CCC',
-            buttonBackgroundColor: '#606063',
-            buttonBorderColor: '#606063',
-            rifleColor: '#111',
-            trackBackgroundColor: '#404043',
-            trackBorderColor: '#404043'
-        },
-
-        legendBackgroundColor: 'rgba(0, 0, 0, 0.9)',
-        background2: '#505053',
-        dataLabelsColor: '#B0B0B3',
-        textColor: '#FFD800',
-        contrastTextColor: '#F0F0F3',
-        maskColor: 'rgba(255,255,255,0.3)'
+        }
     };
 
 
-
+var pt_xy = [];
+var tx_xy = [];
+var pt5_xy = [];
+var tx5_xy = [];
 function drawGraphs() {
+    let smoothSpan = 12;
+    let smoothSpan5 = 60;
     // Apply the theme
-
     Highcharts.setOptions(Highcharts.theme_pt);
     Highcharts.setOptions({
       global: {
@@ -431,46 +412,66 @@ function drawGraphs() {
       }
     });
     // Create the chart
-    Highcharts.stockChart('ptscl_graph', {
+    Highcharts.stockChart('txscl_graph', {
       chart: {
         events: {
           load: function () {
             // set up the updating of the chart each second
             var seriesPt = this.series[0];
+            var seriesPt_smooth = this.series[1];
+            var seriesTx = this.series[2];
+            var seriesTx_smooth = this.series[3];
+            //var seriesTx = this.series[1];
             setInterval(function () {
-              var x = (new Date()).getTime(); // current time
-              seriesPt.addPoint([x, Math.round(pt_sec)], true, true);
-            }, 5000);
+              var x = (Math.round(new Date().getTime())/5)*5; // current time
+                if (pt_updated+15000 < Date.now()) {
+                    tx_sec = 0;
+                    pt_sec = 0;
+                }
+                seriesTx.addPoint([x, Math.round(tx_sec)], true, true);
+                updateNeedleTx(Math.round(tx_sec)); // per second
+                seriesPt.addPoint([x, Math.round(pt_sec)], true, true);
+                updateNeedlePt(Math.round(pt_sec)); // per second
+                seriesPt_smooth.addPoint([x, Math.round(pt5_sec)], true, true); // averaged over 5 minute
+                seriesTx_smooth.addPoint([x, Math.round(tx5_sec)], true, true); // averaged over 5 minute
+                console.log("x: "+x+" tx_sec: "+tx_sec+" pt_sec: "+pt_sec+" tx5: "+tx5_sec+" pt5: "+pt5_sec)
+            }, 5000); 
           }
         },
-        events: {
-          load: function () {
-            // set up the updating of the chart each second
-            var seriesTx = this.series[0];
-            setInterval(function () {
-              var x = (new Date()).getTime(); // current time
-              seriesTx.addPoint([x, Math.round(tx_sec)], true, true);
-            }, 5000);
-          }
-        }
+      zoomType: 'x'
       },
-      rangeSelector: {
+    rangeSelector: {
+        inputPosition: {
+            align: 'left'
+        },
+        buttonPosition: {
+            align: 'left'
+        },
         buttons: [{
-          count: 5,
           type: 'minute',
-          text: '5M'
+          count: 15,
+          text: '15m'
         }, {
-          count: 30,
-          type: 'minute',
-          text: '30M'
+          type: 'hour',
+          count: 1,
+          text: '1h'
+        }, {
+          type: 'hour',
+          count: 6,
+          text: '6h'
+        }, {
+          type: 'day',
+          count: 1,
+          text: '1d'
+        }, {
+          type: 'day',
+          count: 3,
+          text: '3d'
         }, {
           type: 'all',
           text: 'All'
         }],
-        inputEnabled: false,
-        selected: 0
-      },
-
+        },
       title: {
         text: ''
       },
@@ -478,81 +479,134 @@ function drawGraphs() {
       exporting: {
         enabled: false
       },
-      series: [{ // top graph
+      series: [
+        { //  // ============================================== Payments per second ==========================================================
         type: 'areaspline',
-        color: 'rgba(25,55,55,0.05)', // fill area color
-        lineColor: 'rgba(247,225,187,0.25)', // line color
-        name: 'Payments per second', 
+        color: 'rgba(80,240,190,0.05)', // fill area color
+        lineColor: 'rgba(80,240,190,0.05)', // line color
+        name: 'Payments per second (1 minute average)', 
         data: (function () {
-            var tx_xy = [];
             let p_total = 0;
             j_5min.sort(function(a, b){ return a.max_time-b.max_time });
             j_5min.forEach(function(element) {
-                tx_xy.push([
-                    element.max_time,
-                    element.sum_tx
-                ]);
-            });
-            // smooth over minute
-            for (var i = 0; i <= tx_xy.length-1; i++) {
-                let m = 0;
-                // handle tip and tail
-                for (var j = 6; j >= -5; j--) {
-                    let k = 0;
-                    if (j+i<0) {
-                        k=0;
-                    }
-                    else if (j+i>tx_xy.length-1) {
-                        k=tx_xy.length-1;
-                    }
-                    else {
-                        k=j+i;
-                    }
-                    m = m + tx_xy[k][1];
+                if (element.max_time < 1530057600000 ) {
+                    p_total = element.sum_pt;
                 }
-                tx_xy[i][1] =Math.round(m/12);
-            }
-            return tx_xy;
-        }()) }],
-      series: [{ // top graph
-        type: 'areaspline',
-        color: 'rgba(25,55,55,0.05)', // fill area color
-        lineColor: 'rgba(247,225,187,0.25)', // line color
-        name: 'Payments per second', 
-        data: (function () {
-            var pt_xy = [];
-            let p_total = 0;
-            j_5min.sort(function(a, b){ return a.max_time-b.max_time });
-            j_5min.forEach(function(element) {
+                else {
+                    p_total = element.sum_pt/5;   
+                }
+                    
                 pt_xy.push([
-                    element.max_time,
-                    element.sum_pt
+                    Math.round(element.max_time/5)*5,
+                    p_total
                 ]);
             });
-            // smooth over minute
-            for (var i = 0; i <= pt_xy.length-1; i++) {
-                let m = 0;
-                // handle tip and tail
-                for (var j = 6; j >= -5; j--) {
-                    let k = 0;
-                    if (j+i<0) {
-                        k=0;
-                    }
-                    else if (j+i>pt_xy.length-1) {
-                        k=pt_xy.length-1;
-                    }
-                    else {
-                        k=j+i;
-                    }
-                    m = m + pt_xy[k][1];
+            return smoothHistory(pt_xy,smoothSpan);
+        }()) },
+        { // ============================================== Payments per second (5 min average) ==========================================================
+        type: 'spline',
+        lineColor: 'rgba(80,240,190,0.45)', // line color
+        name: 'Payments per second (5 min average)', 
+        data: (function () {
+            let p_total = 0;
+            j_5min.forEach(function(element) {
+                if (element.max_time < 1530057600000 ) {
+                    p_total = element.sum_pt;
                 }
-                pt_xy[i][1] =Math.round(m/12);
-            }
-            return pt_xy;
-        }()) }]
-    });
-     document.getElementById("ptscl_graph").style.opacity = "0.95";
+                else {
+                    p_total = element.sum_pt/5;   
+                }
+                    
+                pt5_xy.push([
+                    Math.round(element.max_time/5)*5,
+                    p_total
+                ]);
+            });
+            return smoothHistory(pt5_xy,smoothSpan5);
+        }()) },
+        { // ============================================== Transactions per second ==========================================================
+        type: 'areaspline',
+        color: 'rgba(255,200,0,0.10)', // fill area color
+        lineColor: 'rgba(255,200,0,0.15)', // line color
+        name: 'Transactions per second (1 minute average)', 
+        data: (function () {
+            let t_total = 0;
+            j_5min.sort(function(a, b){ return a.max_time-b.max_time });
+            j_5min.forEach(function(element) {
+                if (element.max_time < 1530057600000 ) {
+                    t_total = element.sum_tx;
+                }
+                else {
+                    t_total = element.sum_tx/5;   
+                }
+                    
+                tx_xy.push([
+                    Math.round(element.max_time/5)*5,
+                    t_total
+                ]);
+            });
+            return smoothHistory(tx_xy,smoothSpan);
+            }()) },
+            { //  // ============================================== Transactions per second (5 min average) ==========================================================
+            type: 'spline',
+            lineColor: 'rgba(255,200,0,0.35)', // line color
+            name: 'Transactions per second (5 min average)', 
+            data: (function () {
+            let t_total = 0;
+            j_5min.forEach(function(element) {
+                if (element.max_time < 1530057600000 ) {
+                    t_total = element.sum_tx;
+                }
+                else {
+                    t_total = element.sum_tx/5;   
+                }
+                    
+                tx5_xy.push([
+                    Math.round(element.max_time/5)*5,
+                    t_total
+                ]);
+            });
+            return smoothHistory(tx5_xy,smoothSpan5);
+            }()) }
+        ]
+    })
+     document.getElementById("txscl_graph").style.opacity = "0.95";
      
 }
 //setTimeout(function() { drawGraph(); }, 15000);
      
+
+function smoothHistory(xy,span) {
+    if (span>1) {
+        for (var i = 0; i < xy.length-span; i++) {
+            let m = 0;
+            for (var j = 0; j < span; j++) {
+                m += xy[i+j][1];
+            }
+            xy[i][1] = Math.round(m/span);
+        }
+        let k = 0;
+        for (var i = xy.length-span; i < xy.length; i++) {
+            let m = 0;
+            for (var j = 0; j < span-k; j++) {
+                m += xy[i+j][1];
+            }
+            xy[i][1] = Math.round(m/(span-k));
+            k++;
+        }
+    }
+    return xy;
+}
+let smoothSum = [];
+smoothSum.pt = [];
+smoothSum.tx = [];
+function smoothLive(y,span,id) {
+    (smoothSum[id]).push(y);
+    if (smoothSum[id].length > span) { smoothSum[id].pop(); }
+    let smoothVal = Math.round(smoothSum[id].reduce(getSum)/smoothSum[id].length);
+    return smoothVal;
+}
+
+function getSum(total, num) {
+    return total + num;
+}
