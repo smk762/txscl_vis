@@ -16,5 +16,5 @@ setInterval(function() {
     if (when == 0) {
         document.getElementById("timer").innerHTML = "Payments per Second Scale Test - NEXT TEST NOT YET SCHEDULED";
     }
-}, 1000);<br />
+}, 1000);
              

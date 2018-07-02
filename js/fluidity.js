@@ -8,7 +8,7 @@ function slideIn() {
 	document.getElementById('dashboard').style.top = "0px";
 	logoWidth = document.getElementById('kmdLogo').offsetWidth;
 	document.getElementById('kmdLogo').style.left = "40%";
-	document.getElementById('kmdLogo').style.top = "30%";
+	document.getElementById('kmdLogo').style.top = "0.5%";
 	document.getElementById('kmdLogo').style.width = "20%";
 	console.log("done");
 }
@@ -38,7 +38,7 @@ function scaleStats() {
 	document.getElementById('logoImg').style.width = "100%";
 	document.getElementById('dashboard').style.top = "35%";
 	document.getElementById('kmdLogo').style.left = "40%";
-	document.getElementById('kmdLogo').style.top = "30%";
+	document.getElementById('kmdLogo').style.top = "0.5%";
     updateStatusBar('tx_per_block',tx_per_block);
     updateStatusBar('pt_per_block',pt_per_block);
     updateStatusBar('tx_per_chain',tx_per_chain);

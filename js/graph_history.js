@@ -218,7 +218,7 @@ Highcharts.theme_pt = {
         enabled: true
     },
     navigator: {
-        enabled: false
+        enabled: true
     },
     legendBackgroundColor: 'rgba(0, 0, 0, 0.9)',
     background2: '#505053',
@@ -440,9 +440,10 @@ function drawGraphs() {
         },
       zoomType: 'x'
       },
-    rangeSelector: {
+    rangeSelector: {    
+        verticalAlign: 'bottom',
         inputPosition: {
-            align: 'left'
+            align: 'right'
         },
         buttonPosition: {
             align: 'left'
@@ -471,6 +472,7 @@ function drawGraphs() {
           type: 'all',
           text: 'All'
         }],
+        selected:1
         },
       title: {
         text: ''
@@ -482,9 +484,10 @@ function drawGraphs() {
       series: [
         { //  // ============================================== Payments per second ==========================================================
         type: 'areaspline',
-        color: 'rgba(80,240,190,0.05)', // fill area color
-        lineColor: 'rgba(80,240,190,0.05)', // line color
+        color: 'rgba(0,240,166,0.05)', // fill area color
+        //lineColor: 'rgba(0,240,166,0.05)', // line color
         name: 'Payments per second (1 minute average)', 
+        showInNavigator: true,
         data: (function () {
             let p_total = 0;
             j_5min.sort(function(a, b){ return a.max_time-b.max_time });
@@ -505,8 +508,9 @@ function drawGraphs() {
         }()) },
         { // ============================================== Payments per second (5 min average) ==========================================================
         type: 'spline',
-        lineColor: 'rgba(80,240,190,0.45)', // line color
+        lineColor: 'rgba(80,240,190,0.85)', // line color
         name: 'Payments per second (5 min average)', 
+        showInNavigator: true,
         data: (function () {
             let p_total = 0;
             j_5min.forEach(function(element) {
@@ -529,6 +533,7 @@ function drawGraphs() {
         color: 'rgba(255,200,0,0.10)', // fill area color
         lineColor: 'rgba(255,200,0,0.15)', // line color
         name: 'Transactions per second (1 minute average)', 
+        showInNavigator: true,
         data: (function () {
             let t_total = 0;
             j_5min.sort(function(a, b){ return a.max_time-b.max_time });
@@ -549,8 +554,9 @@ function drawGraphs() {
             }()) },
             { //  // ============================================== Transactions per second (5 min average) ==========================================================
             type: 'spline',
-            lineColor: 'rgba(255,200,0,0.35)', // line color
+            lineColor: 'rgba(255,246,170,0.85)', // line color
             name: 'Transactions per second (5 min average)', 
+            showInNavigator: true,
             data: (function () {
             let t_total = 0;
             j_5min.forEach(function(element) {

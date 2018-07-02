@@ -14,7 +14,7 @@ body {
   overflow: hidden;
   display: block;  /* No floating content on sides 
   font-family: Verdana, Geneva, sans-serif; */
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.2vw;
   color: #BBF9E6;
   text-align: center;
@@ -43,11 +43,11 @@ canvas {
 }
 #timer {
   position:absolute;
-  width: 100%;
-  left:0%;
-  bottom: 15px;
+  width: 22%;
+  left:39%;
+  bottom: 3px;
   margin:auto;
-  z-index: 9005;
+  z-index: 9;
   color: #18ADA3;
 
 }

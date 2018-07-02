@@ -2,10 +2,11 @@
   position:absolute;
   left:50%;
   width: 20%;
+  top:7%;
   height: 32%;
   z-index: 24;
   overflow: visible;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0);
   padding: 0.7% 0px 0.7em 0px;
   border-radius: 0px 0px 0.7em 0px;
 }
@@ -31,10 +32,11 @@
   position:absolute;
   left:30%;
   width: 20%;
+  top:7%;
   height: 32%;
   z-index: 24;
   overflow: visible;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0);
   padding: 0.7% 0px 0.7em 0px;
   border-radius: 0px 0px 0px 0.7em;
 }

@@ -2,15 +2,15 @@
 .highcharts-area-series { background-color: #06263F; }
 .highcharts-navigator-mask-outside { background-color: #06263F; }
 /* .highcharts-navigator { background-color: #06263F; } */
-.highcharts-area { opacity:0.20 !important; }
+.highcharts-area { opacity:0.40 !important; }
 .highcharts-axis-labels { color:#52FAC7 !important; }
 .highcharts-xaxis-labels {  color:#52FAC7 !important; }
 .highcharts-range-selector-group { text-shadow: none; }
-.highcharts-input-group { right:10px !important; }
+/* .highcharts-input-group { right:10px !important; } */
 
 #txscl_graph {
   position: absolute;
-  top:25%;
+  bottom:3px;
   left:0%;
   opacity: 0;
   width:100%;

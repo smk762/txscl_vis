@@ -51,7 +51,7 @@
 
 .speedUp_tooltip {
       visibility: hidden;
-      width: 120px;
+      width: 100%;
       background-color: black;
       color: #fff;
       text-align: center;
@@ -59,10 +59,10 @@
       border-radius: 6px;
       position: absolute;
       opacity: 0.9;
-      top:-18px;
       z-index: 1000;
       font-size:9px;
-      top:-25px;
+      top:2%;
+      left:85%;
       text-decoration-style: none;
       text-shadow: none;
       font-weight: 400;
